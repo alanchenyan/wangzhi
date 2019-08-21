@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <title>商品列表</title>
+  <link rel="stylesheet" type="text/css" href="../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  <link rel="stylesheet" type="text/css" href="../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+  <link rel="stylesheet" type="text/css" href="../css/loaders.min.css" />
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/vue/vue.js"></script>
+  <script type="text/javascript" src="../script/usermgr.js"></script>
+  <script type="text/javascript" src="../script/md5.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript" src="../script/frameitemlist.js"></script>
+  <style>
+          body{
+            text-align:center
+          }
+
+      </style>
+ </head>
+ <body>
+   <div class="aui-content slide-box" id="good_list_panel"   >
+     <div class="good_main_kj" id="el_list">
+      <div class="good_row_item" v-for="item in dataitem" v-on:click="openitem(item)" v-cloak>
+       <div class="good_item_img">
+        <img src="../image/thum.png" v-bind:data-url="item.itempic" data-cache="no" />
+       </div>
+       <div class="good_item-name-box">
+         <span v-if="item.usertype == 1" class="good_item-name my_sv">{{item.itemtitle}}</span>
+         <span v-else-if="item.usertype == 0" class="good_item-name2 my_sv ">{{item.itemtitle}}</span>
+         <span v-else-if="item.usertype == 2" class="good_item-name3 my_sv ">{{item.itemtitle}}</span>
+         <span v-else-if="item.usertype == 3" class="good_item-name4 my_sv ">{{item.itemtitle}}</span>
+       </div>
+       <div class="good_item_price">
+        <span class="good_item_price_old">原价￥{{item.itemprice}}</span>
+
+        <span   class="good_item_price_sell" >{{item.sellnum}}人购买</span>
+       </div>
+       <div class="good_item_price2">
+        <span class="good_item_price_new">￥ {{item.newprice}}</span>
+
+
+        <span  v-if="item.couponprice >0" class="good_item_price_coupon">{{item.couponprice}}元券</span>
+       </div>
+       <div class="good_item_zhuan">
+        <div class="sr">
+         <div style="margin-left:5px">
+          分享赚
+         </div>
+         <div>
+          ￥{{item.commissionrate1}}
+         </div>
+        </div>
+        <div class="upz">
+         <div>
+          升级赚
+         </div>
+         <div>
+          ￥{{item.commissionrate2}}
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    <!-- loading 界面 -->
+    <section class="list-wrapper" style="background-color:#fff;" id="list-wrapper">
+     <div class="list-item-loading">
+      <div class="loader-inner ball-pulse">
+       <div></div>
+       <div></div>
+       <div></div>
+      </div>
+     </div>
+    </section>
+    <!--底线提示 -->
+    <div class="databootom" >
+        <span>~我是有底线的哦！~</span>
+    </div>
+
+   </div>
+   <div>
+
+   </div>
+
+</body>
+
+<script type="text/javascript">
+  apiready = function(){
+    pageMol.pageid = api.pageParam.frametype;
+    pageMol.initlize();
+    pageMol.dvv = new Vue({el:'#el_list',data:pageMol,methods:{
+            openitem:function(item){
+              openGoodDetails(item);
+            }
+          }});
+
+    $api.css($api.dom(".databootom"),'display:none');
+    if(pageMol.pageid == app.farme_love)
+    {
+        //猜你喜欢内容
+        pageMol.bindDataLove();
+    }
+    else if(pageMol.pageid == app.farme_band)
+    {
+        //品牌数据
+        pageMol.bindBandList(api.pageParam.cateid);
+    }
+    else if(pageMol.pageid == app.farme_thui)
+    {
+        //优质特惠宝贝
+        pageMol.bindThItem();
+    }
+    else if (pageMol.pageid == app.farme_you9 ){
+         //99包邮
+        pageMol.bindDataType(api.pageParam.cateid);
+    }
+    else if (pageMol.pageid == app.frame_muyin ){
+         //母婴列表
+        pageMol.bindMother(api.pageParam.mid);
+    }
+    else if (pageMol.pageid == app.frame_xuanpin ){
+         //选品库数据
+         //fid 选品库的ID
+        pageMol.bingFavorite(api.pageParam.fid);
+    }
+    else if (pageMol.pageid == app.frame_jd ){
+        //JD 页面数据
+        pageMol.datatype = 2;
+        pageMol.bingJdc(api.pageParam.cateid);
+    }
+    else if (pageMol.pageid == app.frame_pdd ){
+        //PDD页面数据
+        pageMol.datatype = 3;
+        pageMol.bingPdd();
+    }
+
+
+
+
+  };
+</script>
+</html>

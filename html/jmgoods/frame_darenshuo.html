@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>达人说</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <style>
+      *{margin:0;padding:0;}
+  *{-webkit-tap-highlight-color:rgba(210,210,210,0.35);}
+  html，body {   background-color：transparent！important; }
+
+  html,body{font:12px arial,宋体,sans-serif;    background：transparent; }
+.con{width:100%;overflow:hidden;background：transparent; }
+.con .itemleft{width:50%;overflow: hidden;float:left; margin-top: 15px; }
+.con .itemright{width:50%;overflow: hidden;float:left;margin-top: 5px;}
+
+.con .itemleft img{width:96%;margin:2% 1% 0 2%;display:block;border-radius:10px; }
+.con .itemright img{width:96%;margin:2% 2% 0 1%;display:block;border-radius:10px;}
+.item{position: relative;overflow: hidden; border-radius: 10px;box-shadow: 2px 2px 2px #eee;}
+.wf-setnum {
+    position: absolute;
+    line-height: 28px;
+    right: 2%;
+    padding: 0 6px 0 10px;
+    background-color: rgba(0,0,0,.6);
+    background-repeat: no-repeat;
+    background-position: left top;
+    border-radius: 16px 0 0 16px;
+    vertical-align: bottom;
+    bottom: 130px;
+}
+.wf-setnum span.num {
+    height: 28px;
+    font-size: 24px;
+    margin-right: 0;
+    position: relative;
+    bottom: -2px;
+    font-family: Trebuchet MS;
+    color: #fff
+}
+.wf-setnum span.text {
+  color: #fff;
+  position: relative;
+  line-height: 28px;
+  height: 28px;
+  bottom: 0;
+  display: inline-block;
+  zoom:1}
+  .footers{
+width:90%; background-color:#fff;height:95px; margin-left:2.5%;
+padding: 5px;
+  }
+  .title{
+    font-size: 14px;
+    height: 50px;
+    color: 		#2F4F4F;
+    text-overflow: -o-ellipsis-lastline;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ display: -webkit-box;
+ -webkit-line-clamp: 2;
+ line-clamp: 2;
+ -webkit-box-orient: vertical;
+  }
+      </style>
+  </head>
+  <div class="con">
+  			<div class="itemleft" id = 'el_list'>
+  				<div  class="item" v-for="item in dataitem" >
+  					<img v-bind:src="item.image"  >
+  					  <div class="wf-setnum">
+  				        <span class="num">{{item.count}}</span>
+  				        <span class="text">件</span>
+  				    </div>
+              <div class="footers" >
+                  <div class="title"> {{item.name}}</div>
+                  <div class="headlin">
+                      <div style="width:30px;float:left"><img v-bind:src="item.head_img" style=" border-radius:50%; "  /></div>
+                       <div style="float:left; margin-left:10px; margin-top:8px;">{{item.talent_name}}</div>
+                  </div>
+             </div>
+  				</div>
+
+
+  			</div>
+  			<div class="itemright" id = 'el_list1'>
+
+          <div class="item" v-for="item in dataitem1">
+  					<img v-bind:src="item.image"   >
+  					<div class="wf-setnum" style="right:3%;">
+  				        <span class="num">{{item.count}}</span>
+  				        <span class="text">件<span>
+  				    </div>
+              <div class="footers" >
+                  <div class="title"> {{item.name}}</div>
+                  <div class="headlin">
+                      <div style="width:30px;float:left"><img v-bind:src="item.head_img" style=" border-radius:50%; "  /></div>
+                       <div style="float:left; margin-left:10px; margin-top:8px;">{{item.talent_name}}</div>
+                  </div>
+             </div>
+  				</div>
+
+
+  			</div>
+  		</div>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/vue/vue.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jmgood/darenshuo.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+          pageMol.initlize();
+          pageMol.dvv = new Vue({el:'#el_list',data:pageMol});
+          pageMol.dvv1 = new Vue({el:'#el_list1',data:pageMol});
+
+          pageMol.bindData();
+      };
+
+
+  </script>
+  </html>

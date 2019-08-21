@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>浏览器</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../css/common.css" />
+      <script type="text/javascript" src="../script/api.js"></script>
+      <script type="text/javascript" src="../script/common.js"></script>
+      <script type="text/javascript" src="../script/usermgr.js"></script>
+
+      <style>
+          body{
+
+          }
+      </style>
+  </head>
+  <body>
+    <div class = 'normal-head-box' id = 'header'>
+         <div class = 'padding-t-10'>
+            <img src="../image/back.png" onclick="GoToHisBack()"  class = 'normal-bk-img'>
+              <img src="../image/ccx.png" onclick="GoToHisForward()"  class = 'normal-xx-img'>
+
+              <img src="../image/sssx.png" class = 'normal-r-img' onclick="GoToRefresh()">
+            <p class = 'normal-head-title' id="titlevale"></p>
+         </div>
+    </div>
+
+
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript">
+    function GetParam(url, id) {
+              url = url+ "";
+              regstr = "/(\\?|\\&)" + id + "=([^\\&]+)/";
+              reg = eval(regstr);//eval可以将 regstr字符串转换为 正则表达式
+              result = url.match(reg);//匹配的结果是：result[0]=?sid=22 result[1]=sid result[2]=22。所以下面我们返回result[2]
+
+              if (result && result[2]) {
+                  return result[2];
+              }
+        }
+
+      apiready = function(){
+          $api.fixStatusBar( $api.dom('#header') );
+          var title_obj = document.getElementById("titlevale");
+          title_obj.innerHTML= api.pageParam.tname;
+          var pagedata = api.pageParam.data;
+          var pageurl = api.pageParam.url;
+
+          var win_height = $api.dom('#header').offsetHeight;
+          api.addEventListener({
+              name:'keyback'
+          },function(ret,err){
+              GoToHisBack();
+          });
+          api.openFrame({
+              name: 'frame_browser',
+              url: pageurl,
+              rect: {
+                  marginTop:win_height,
+                  marginBottom:0,
+                  w: 'auto',
+                  h: 'auto'
+              }
+          });
+          var flag = true;
+          var isback = false;
+          //客户端窗体
+          api.setFrameClient({
+              frameName: 'frame_browser'
+          }, function(ret, err) {
+              console.log('BrowserView ...:' + $api.jsonToStr(ret));
+              var itemid= 0;
+              switch (ret.state) {
+                  case 0:   //0-开始加载
+
+
+                      break;
+                  case 1: //1-加载进度发生变化
+                      break;
+                  case 2:   //2-结束加载   ==URL
+                        if(isback)
+                           GoToHisBac2k();
+                      //break;
+                  case 3:   //3-title发生变化
+
+                      break;
+                  case 4: //4-url发生变化  ==URL
+                      var currurl = ret.url;
+                      flag = false;
+                      isback = false;
+                      if( currurl.indexOf("https://detail.m") >=0 ||
+                          currurl.indexOf("http://detail.m") >=0  ||
+                          currurl.indexOf("https://chaoshi.detail") >=0||
+                          currurl.indexOf("https://h5.m.taobao.com/awp/core/detail.htm") >=0
+                         ){
+
+                           if(!flag){
+                                flag = true;
+                                itemid = GetParam(currurl,'id');
+                                if(itemid >0 ){
+
+                                  open_good_detais_itemid(itemid);
+
+                                  api.historyBack({
+                                      frameName: 'frame_browser'
+                                  }, function(ret, err) {
+                                        if (!ret.status) {
+                                            isback = true;
+                                        }
+                                  });
+                                }
+                           }
+                      }
+                      //来自子淘宝授权的 url截取 code值；保存起来
+                      else if(ret.url.indexOf(app.urls.author) >=0){
+                            code = GetParam(ret.url,'code');
+                            var oldurl =  api.pageParam.url;
+                            var m_isrid = GetParam(oldurl,'isrid');
+                            if(code!='undefined' && code != null)
+                            {
+                                api.sendEvent({name: 'authorcode',extra: {  m_code: code,isrid:m_isrid}});
+                                //关闭当前窗体
+                                GoToHisForward();
+                            }
+                      }
+                      break;
+                  default:
+                      break;
+              }
+          });
+
+
+
+      };
+
+
+      //退回
+      function GoToHisBack(){
+        api.historyBack({
+            frameName: 'frame_browser'
+        }, function(ret, err) {
+            if (!ret.status) {
+                api.closeWin();
+            }
+        });
+      }
+
+      function GoToHisBac2k(){
+        api.historyBack({
+            frameName: 'frame_browser'
+        }, function(ret, err) {
+        });
+      }
+
+      //关闭
+      function GoToHisForward(){
+          api.closeWin();
+      }
+
+      //刷新
+      function GoToRefresh(){
+           api.execScript({
+               frameName: 'frame_browser',
+               script: 'location.reload();'
+           });
+
+      }
+
+
+  </script>
+  </html>

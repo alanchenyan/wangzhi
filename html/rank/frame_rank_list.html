@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>爆款排行榜</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/loaders.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.css" />
+
+    <script type="text/javascript" src="../../script/api.js"></script>
+    <script type="text/javascript" src="../../script/common.js"></script>
+    <script type="text/javascript" src="../../script/usermgr.js"></script>
+    <script type="text/javascript" src="../../script/vue/vue.js"></script>
+    <script type="text/javascript" src="../../script/rank/index.js"></script>
+
+    <style>
+
+    body html
+    {
+
+      width:100%;height:100%;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+    .cms-applist{margin:auto;width:100%;
+       min-height:100%;
+      background:#f4f4f4;color:#4c4c4c}
+    .cms-applist-fixed{position:fixed;top:0;left:0;z-index:999;margin:auto;width:100%;max-width:640px;background:#f4f4f4;height: 105px; }
+    @media screen and (min-width:640px)
+    {.cms-applist-fixed{margin-left:calc((100% - 640px)/ 2)} }
+
+    .cms-applist-details{overflow-x:auto;
+                        margin-left: 5%;
+                        margin-top: 20px;
+                        width: 90%;
+                        position:relative;
+                        border:1px solid #e6e6e6;
+                        border-radius:10px 10px 10px 10px;
+                        background:#fff;white-space:nowrap;-webkit-overflow-scrolling:touch}
+
+    .applist-classify-category{display:inline-flex;color:#999;flex-direction:column;align-items:center}
+     .applist-classify-category:active,.applist-classify-category:focus,.applist-classify-category:hover,.applist-classify-category:visited
+     {color:#999}
+     .applist-classify-category img{width:50px;height:50px}
+     .classify-category-active{color:#fe4d3d}
+     .classify-category-active img{background:#ffebeb}
+     .cms-goods-list{position:relative;margin-top:85px;margin-bottom:10px;}
+     .cms-applist-goods{position:relative;display:flex;border-radius:5px;background:#fff; width: 355px;}
+     .list-img{position:absolute;top:-12px;left:-6px;display:flex;padding-top:2px;background:url(../../image/rank.png) no-repeat;background-size:22px 124px;color:#fff;justify-content:center}
+     .list-one{width:22px;height:31px;background-position:0 -93px}
+      .list-two{width:22px;height:31px;background-position:0 -31px}
+      .list-three{width:22px;height:31px;background-position:0 0}
+      .list-four{width:22px;height:31px;background-position:0 -62px}
+      .applist-goods-message{width:calc(100% - 110px)}
+      .applist-goods-img{width:110px;height:110px;border-radius:5px}
+      .goods-message-title{width:100%;color:#999}
+      .goods-message-title img{position: relative;top: -1px;width: 24px;height: 12px;margin-right: 2px;}
+      .goods-message-sale{color:#4c4c4c}
+      .goods-message-sale strong{color:#fe4d3d}
+      .goods-message-num span:nth-of-type(2){color:#ff9c93}
+      .goods-message-cunpon{display:inline-block;border:1px solid #ff9c93;color:#ff9c93;line-height:16px}
+      .goods-message-cunpon span{border-left:1px dashed #ff9c93}
+      .goods-message-num,.goods-message-price{display:flex;color:#999;align-items:center;justify-content:space-between}
+      .goods-message-price span:first-child{color:#fe4d3d}
+      .goods-message-price{position:relative;top:14px}
+      .am-gotop-fixed .am-gotop-icon{line-height:40px}
+      .am-gotop-fixed{bottom:60px;width:40px}
+      </style>
+
+    </head>
+
+  <body>
+    <div class="cms-applist am-padding-horizontal-sm am-padding-vertical">
+      <div class="cms-applist-fixed">
+        <!-- 时间档选择 -->
+
+        <!-- 分类、商品列表页 -->
+        <div class="cms-applist-details">
+          <!-- 分类 -->
+          <div class="cms-applist-classify am-padding-horizontal-sm am-padding-vertical-xs" id="title_el">
+
+          </div>
+        </div>
+      </div>
+      <!-- 商品列表页 -->
+      <div class="cms-goods-list" id ="cms-goods-list" >
+        <span id="goods_list"  data-p="1" style="display:none">
+
+          <div class="cms-applist-goods am-padding-sm am-margin-top tobuy"  v-for="item in dataitem"  v-bind:data-itemid="item.itemid" data-p="1" v-on:click="openitem(item)" v-cloak>
+            <div v-if="item.rank+1 == 1 " class="list-img am-text-xs list-one">{{item.rank + 1}} </div>
+            <div v-if="item.rank+1 == 2 " class="list-img am-text-xs list-two">{{item.rank + 1}} </div>
+            <div v-if="item.rank+1 == 3 " class="list-img am-text-xs list-three">{{item.rank + 1}} </div>
+            <div v-else="item.rank+1 >= 4 " class="list-img am-text-xs list-four">{{item.rank + 1}} </div>
+
+            <div v-if="item.rank+1 == 4 " class="list-img am-text-xs list-four">{{item.rank + 1}} </div>
+            <img class="applist-goods-img" src="../image/thum.png" v-bind:data-url="item.itempic" data-cache="no" />
+            <div class="applist-goods-message am-padding-left-sm am-text-sm">
+              <!-- 成交量 -->
+              <div class="goods-message-sale am-text-xs am-text-left ">近2小时成交
+                <strong class="am-text-lg am-margin-horizontal-xs">{{item.sellnum2}}</strong>件</div>
+              <!-- 标题 -->
+              <div class="goods-message-title am-text-truncate">
+                <img  v-if="item.usertype == 1" src="../../image/frame0/tianmao.png" />
+                <img  v-else="item.usertype == 0" src="../../image/frame0/taobao.png" />
+                {{item.itemtitle}}</div>
+              <div class="goods-message-num am-margin-top-xs">
+                <!-- 券面额 -->
+                <span class="goods-message-cunpon am-text-xs am-padding-horizontal-xs" data="0">券
+                  <span class="am-padding-left-xs am-margin-left-xs">￥20</span></span>
+              </div>
+              <!-- 券后价、销量 -->
+              <div class="goods-message-price am-text-xs">
+                <span>券后￥
+                  <span class="am-text-lg"> {{item.newprice}}</span></span>
+                <span>月销{{item.sellnum}}</span></div>
+            </div>
+          </div>
+        </span>
+      </div>
+      <div class='am-text-center am-margin-vertical-sm am-text-sm am-text-danger loading'>
+
+
+        <!-- loading 界面 -->
+        <section class="list-wrapper" style="margin-top:130px;" id="list-wrapper">
+         <div class="list-item-loading">
+          <div class="loader-inner ball-pulse">
+           <div></div>
+           <div></div>
+           <div></div>
+          </div>
+         </div>
+        </section>
+
+
+
+
+
+      </div>
+
+
+    </div>
+
+
+  </body>
+
+
+  <script type="text/javascript">
+
+  apiready = function() {
+
+    pageMol.cateid = 0;
+    //今日排行
+
+    pageMol.initlize();
+    pageMol.BindCate();
+
+
+    pageMol.dvv = new Vue({el:'#goods_list',data:pageMol,methods:{
+            openitem:function(item){
+              openGoodDetails(item);
+            }
+          }});
+    pageMol.bindData();
+
+
+
+
+  };
+
+</script>
+
+</html>

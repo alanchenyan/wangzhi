@@ -1,0 +1,159 @@
+/*滑动样式*/
+.swiper-container {
+    width: 100%;
+}
+
+.head_classify{
+	 width: 100%;
+	 background-color: #fff !important;
+   height: 40px;
+   border-top: 1px solid #eee;
+      margin-top: 60px;
+}
+
+.head_classify>.swiper-pagination>.swiper-pagination-bullet , .head_classify>.swiper-pagination-two>.swiper-pagination-bullet
+, .head_classify>.swiper-pagination-thr>.swiper-pagination-bullet
+{
+
+  width: 24%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+  color:#757575;
+  opacity: 1;
+  background-color: #fff;
+  border-radius: 0px !important;
+  border-color: #fff !important;
+}
+
+ .head_classify>.swiper-pagination-two>.swiper-pagination-bullet,.head_classify>.swiper-pagination-thr>.swiper-pagination-bullet{
+    width: 20%;
+    font-size:12px;
+
+ }
+.swiper-pagination-two , .swiper-pagination-thr{
+    margin-left: -30px;
+}
+
+.head_classify>.swiper-pagination>.swiper-pagination-bullet-active , .head_classify>.swiper-pagination-two>.swiper-pagination-bullet-active
+, .head_classify>.swiper-pagination-thr>.swiper-pagination-bullet-active
+{
+  color:red;
+  border-bottom: 2px solid red !important;
+}
+
+.swiper-pagination{
+   padding-bottom: 2px;
+   width: 100%;
+}
+
+  /*商品样式*/
+  .aui-list-item-media{
+      width: 6.0em !important;
+      padding-right: 10px !important;
+  }
+  .aui-list{
+    background-image: none !important;
+  }
+  .good-chose>.aui-list-item{
+    background-image: none !important;
+    padding-left: 10px !important;
+  }
+  .aui-list-item-title
+  {
+    font-size: 12px !important;
+    font-weight: bolder !important;
+  }
+  .goods-text{
+    font-size: 13px !important;
+    /* -webkit-transform:scale(0.9) !important;  */
+    text-align: left !important;
+  }
+  .good-time{
+    margin-top: 5px;
+    color:#757575 !important;
+    width: 110%;
+    margin-left: -10px;
+
+  }
+  .goods-bottom{
+    margin-top: 9px;width: 100%;padding-right: 2px;
+  }
+  .goods-order{
+    margin-left: -5px;
+  }
+  .copy-span{
+    border:1px solid #ccc;
+    width: 40px;
+    border-radius: 25px;
+    text-align: center;
+  }
+  .order-num{
+    font-size: 14px;
+    margin-left: 11px;
+  }
+  .goods-price{
+    margin-left: -3px;
+    margin-top: 5px;
+  }
+  .new_price{
+    font-size: 16px !important;
+    color: red;
+    /* font-weight: bolder; */
+  }
+  .old_price
+  {
+    font-size: 12px !important;
+    -webkit-transform:scale(0.9) !important;
+    text-decoration:line-through;
+  }
+  .pay_people_box{
+    margin-left: 15px;
+    font-size: 12px !important;
+    /* -webkit-transform:scale(0.9) !important; */
+  }
+  .span-red-bg{
+    font-size: 12px !important;
+    padding: 1px 3px 1px 3px;
+    background-color: red;
+    color: #fff;
+    /* -webkit-transform:scale(0.9) !important; */
+    border-radius: 2px;
+  }
+  .span-cc-bg{
+    font-size: 12px !important;
+    background-color: #dff0d8;
+    padding: 1px 5px 1px 5px;
+    border-radius: 2px;
+    color: #28a745;
+  }
+  .span-state{
+    display:inline-block;
+    float: right;
+    font-size: 13px !important;
+
+    padding: 1px 5px 1px 5px;
+    border-radius: 5px;
+    color: #fff;
+  }
+  /*已到账 */
+  .span-state_daozhang{
+
+    background-color:#4299f0;
+
+  }
+  /*确认收货 未到账 */
+  .span-state_yiqueren{
+    background-color:#f66a7b;
+  }
+
+  /*失效订单*/
+  .span-state_shixiao{
+    background-color:#9C9C9C;
+  }
+
+  /*已付款-未确认收货*/
+  .span-state_fukuan{
+    background-color:#FFA500;
+  }

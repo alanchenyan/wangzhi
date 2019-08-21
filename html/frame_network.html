@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>网络异常</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+
+
+      <style>
+      .wrapperd{
+width: 100%;
+overflow-x: hidden;
+background: #fff;
+min-height: 100vh;
+}
+.wrapperd .headd{
+width: 100%;
+min-height: 6.875rem;
+
+
+}
+.wrapperd .headd .headd_img{
+width: 100%;
+}
+.wrapperd .navd{
+height: 40px;
+line-height: 40px;
+text-align: center;
+font-size: 0;
+background: #fff;
+
+}
+.wrapperd .navd .swiper-slide{
+font-size:13px;
+background: #7febdc;
+color: #fff;
+}
+.wrapperd .navd .swiper-slide.active{
+background: #467a6e;
+}
+
+.prev-img-bg{
+	width: 30px;
+	height: 30px;
+	background-color:rgba(0,0,0,.5);
+	position: absolute;;
+	z-index: 9999;
+	border-radius: 50%;
+	top: 35px;left: 15px;
+}
+.prev-img-bg>img{
+	width: 15px;height: 15px;
+	margin-top: 7px;
+	margin-left: 6px;
+}
+.nofansi{
+  height: 600px;
+  padding-top: 300px;
+  text-align: center;
+}
+.yaoqingbtn{
+  height: 40px;
+  background-color: red;
+  width: 100px;
+  margin-left: 36%;
+  margin-top: 20px;
+  color: #fff;
+  line-height: 40px;
+  font-size: 17px;
+  border-radius: 6%;
+  text-align: center;
+}
+
+      </style>
+  </head>
+  <div class="wrapperd">
+  			<div class="headd">
+
+          <div class = 'prev-img-bg'  onclick = "back();">
+            <img src="../image/backw.png" alt="placeholder+image">
+          </div>
+  			</div>
+
+  			<div class="maind">
+          <div  style="  margin-left:14%; margin-top:60px;">
+             <img src="../image/wifi.jpg"  width=250px/>
+           </div>
+           <div  style="  margin-left:23%;  ">
+               <span id="msgtxt" style="font-size:14px; color:	#828282">当前网络不可用,请稍后再试试</span>
+<span id="msgtxt2" style="font-size:10px; color:	#828282"> </span>
+            </div>
+            <div class="yaoqingbtn">重新加载</div>
+
+  			</div>
+  		</div>
+
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+
+  <script type="text/javascript">
+      var pames;
+      var ptype;
+      apiready = function(){
+          $api.fixStatusBar( $api.dom('.headd') );
+          var errinfo = api.pageParam.errinfo;
+          pames = api.pageParam.errpage;
+          ptype =  api.pageParam.ptype;
+          var offset = $api.offset( $api.dom('.headd'));
+          $api.text($api.dom("#msgtxt"), errinfo.msg);
+          $api.text($api.dom("#msgtxt2"), errinfo.body + " (code："+errinfo.code+")");
+
+
+          //重新连接
+         $api.addEvt($api.dom('.yaoqingbtn'), 'click', function(){
+              api.showProgress({title: '',text: '',modal: false});
+              api.rebootApp();  
+              api.hideProgress();
+         });
+
+      };
+
+      function back()
+      {
+         api.closeWin();
+      }
+  </script>
+  </html>

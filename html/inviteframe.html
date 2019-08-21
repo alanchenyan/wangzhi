@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>邀请好友</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../plugins/swiper/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/weui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/jquery-weui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/invite.css"/>
+    <style>
+      .txt_div{
+        width: 90%;
+        height: 130px;
+        border-radius: 10px;
+        border: 1px dashed red;
+        margin-top: 10px;
+        margin-left: 5%;
+        padding: 10px;
+        font-size: 13px;
+        background-color: #fff
+      }
+      #yqma{
+          font-size: 13px;
+      }
+      .share_txt{
+        width: 25%;
+        height: 25px;
+        background-color: red;
+        border-radius: 10px;
+        font-size: 13px;
+        margin-left: 35%;
+        text-align: center;
+        color: #fff;
+        line-height: 25px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = 'normal-head-box' id = 'header'>
+             <div class = 'padding-t-10'>
+                <img src="../image/back.png" onclick="api.closeWin()" class = 'normal-bk-img'>
+                <p class = 'normal-head-title fz-14'>邀请好友</p>
+             </div>
+        </div>
+
+
+         <div class="swiper-container head-swiper" id="investproSwiper">
+<div class="swiper-pagination"  ></div>
+            <div class="swiper-wrapper">
+
+            </div>
+        </div>
+
+    <div class="txt_div">
+好友邀请你加入网值APP,海量淘宝优惠券等你领<br>
+既省钱,又能赚钱哦<br>
+先领券,在购物,更划算<br>
+下载地址:<span id="shorurlid"></span>
+<p id="yqma"></p>
+
+    </div>
+<div class="share_txt" onclick="sharetxt()">复制内容 </div>
+
+
+        <div class = 'footer'>
+            <div>
+              <div class = 'foot-l-box' onclick="fzyam()">分享APP下载</div>
+              <div class = 'foot-r-box'>分享专属海报</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="fx-box" class="weui-popup__container popup-bottom" style = 'z-index: 9999;'>
+      <div class="weui-popup__overlay"></div>
+      <div class="weui-popup__modal" style = 'background-color:#fff !important;'>
+           <div class = 'fx-box'>
+              <p class = 'fx-title'>小提示:微信朋友圈如无法一键分享 ，请先 <span class = 'color-green'> "一键存图"</span> , 再手动 <span class = 'color-green'>"发朋友圈"</span>哦</p>
+
+              <div style = 'margin-top: 20px;'>
+                  <section class="aui-grid">
+                    <div class="aui-row">
+                        <div class="aui-col-xs-3" onclick="shareimg(0)">
+                            <img src="../image/share/share_wechat_icon.png" class = 'fx-icon'>
+                            <div class="aui-grid-label"  >微信好友</div>
+                        </div>
+                       <div class="aui-col-xs-3" onclick="shareimg(1)">
+                            <img src="../image/share/share_friend_icon.png" class = 'fx-icon'>
+                            <div class="aui-grid-label"  >朋友圈</div>
+                        </div>
+                       <div class="aui-col-xs-3"  onclick="shareimg(2)">
+                            <img src="../image/share/share_qq_icon.png" class = 'fx-icon'>
+                            <div class="aui-grid-label" >QQ好友</div>
+                        </div>
+                      <div class="aui-col-xs-3" onclick="shareimg(3)">
+                            <img src="../image/share/share_qzone_icon.png" class = 'fx-icon'>
+                            <div class="aui-grid-label"  >QQ空间</div>
+                        </div>
+                       <div class="aui-col-xs-3" onclick="shareimg(4)">
+                            <img src="../image/share/save_ii.png" class = 'fx-icon'>
+                            <div class="aui-grid-label"  >保存相册</div>
+                        </div>
+                        <div class="aui-col-xs-3"  onclick="shareimg(5)">
+                             <img src="../image/share/s_more.png" class = 'fx-icon'>
+                             <div class="aui-grid-label" >更多</div>
+                         </div>
+                    </div>
+                </section>
+                <p class = 'close-pop close-popup'>取消</p>
+              </div>
+           </div>
+      </div>
+    </div>
+
+
+</body>
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../plugins/swiper/swiper.min.js"></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/jquery-weui.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/usermgr.js"></script>
+<script type="text/javascript" src="../script/md5.js"></script>
+<script type="text/javascript" src="../plugins/jm/sharemgr.js"></script>
+<script type="text/javascript" src="../plugins/jm/canvasImg.js"></script>
+<script type="text/javascript">
+
+
+
+var abcSwiper = null;
+var sharimgs =[];
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+     $api.fixStatusBar( $api.dom('#investproSwiper') );  //权限判断；
+
+
+      var ims_arr = [];
+
+    //  api.setPrefs({
+  //        key: 'initer_imgpaths',
+    //      value:'',
+  //    });
+
+      if(usermgr.checkLogin()){
+          $api.text($api.dom('#yqma'), "邀请码:"+usermgr.get_userinfo().yqcode);
+          //获取分享的短网址
+          var parms = {url:"syscfg/get_share_url/token/"+usermgr.get_usertoken(),
+            callback:function(ret){
+                if(ret.flag) {
+                   api.setGlobalData({key: 'short_url',  value: ret.data});
+                   $api.text($api.dom('#shorurlid'), ret.data);
+                }
+                else {
+                }
+              }
+          }
+          JM_GET(parms);
+
+         api.getPrefs({
+              key: 'initer_imgpaths'
+          }, function(ret, err) {
+              var data = ret.value;
+              var obj = $api.strToJson(data);
+              $api.html($api.dom('.swiper-wrapper'),obj[0]);
+              abcSwiper = new Swiper(".head-swiper", {
+                    slidesPerView: 'auto',   //设置slider容器能够同时显示的slides数量
+                    centeredSlides: true,    //设定为true时，活动块会居中，而不是默认状态下的居左。
+                    effect: 'coverflow', //3d滑动
+                    loop: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+              });
+
+
+          });
+
+
+      }
+}
+
+function shareimg(sharetype){
+      isPermission(["storage"],"存储权限")
+      api.getPrefs({
+          key: 'initer_imgpaths'
+      }, function(ret, err) {
+          var data = ret.value;
+          if(data==""){
+              toast2("图片获取失败");
+              return;
+          }
+          var obj = $api.strToJson(data);
+          var objs = obj[1];
+          var path = objs[abcSwiper.realIndex];
+          var imgpah = "fs://"+path;
+          console.log("分享图:"+imgpah);
+          if(sharetype == 0){
+             //微信分享
+             sharemgr.shareWxImage(1,imgpah,'session');
+          }
+          else if(sharetype == 1){
+              //微信朋友圈
+              sharemgr.shareWxImage(1,imgpah,'timeline');
+          }
+          else if(sharetype == 2){
+              //QQ
+              sharemgr.shareQQimg(1,imgpah,'QFriend');
+          }
+          else if(sharetype == 3){
+            //QQ空间
+            sharemgr.shareQQimg(1,imgpah,'QZone');
+          }
+          else if(sharetype == 4){
+              //保存相册
+              api.saveMediaToAlbum({
+                  path: imgpah
+              }, function(ret, err) {
+                  if (ret && ret.status) {
+                      toast2('保存成功');
+                  } else {
+                      toast2('保存失败');
+                  }
+              });
+            }else {
+              var sharedModule = api.require('shareAction');
+              var imsgpth = [];
+              imsgpth.push(imgpah);
+              sharedModule.shareImage({images: imsgpth});
+          }
+      });
+
+     $("#fx-box").closePopup();
+}
+
+
+//计算根节点HTML的字体大小
+function htmlFontsize(){
+    var deviceWidth = document.documentElement.clientWidth;
+    if(deviceWidth > 750){
+        deviceWidth = 750;
+    }
+    var num = 7.0
+
+    document.documentElement.style.fontSize = deviceWidth / num + "px";
+}
+//根节点HTML的字体大小初始化
+htmlFontsize();
+
+$(window).resize(function(){
+    htmlFontsize();
+});
+
+
+ $('.foot-r-box').click(function(){
+       $("#fx-box").popup();
+ });
+
+function sharetxt(){
+      var contentstr = $api.text($api.dom(".txt_div"));
+      CopyData(contentstr);
+
+}
+
+
+function fzyam(){
+    var yqm = usermgr.get_userinfo().yqcode;
+    CopyData(yqm);
+    //获取短网址
+    var short_url =  api.getGlobalData({key: 'short_url'});
+    var str = '下载网值APP,领取大额优惠券,享受低价折扣优选【邀请码 '+yqm+'】';
+    var wx = api.require('wx');
+    wx.shareWebpage({
+        scene: 'session',
+        title: '网值APP-每天都是双11',
+        description: str,
+        thumb: 'widget://image/jm_logo.png',
+        contentUrl:short_url
+    }, function(ret, err) {
+        if (ret.status) {
+            toast2('分享成功');
+        } else {
+            alert(err.code);
+        }
+    });
+
+
+}
+ $(".close-pop").click(function(){
+       $("#fx-box").closePopup();
+      });
+</script>

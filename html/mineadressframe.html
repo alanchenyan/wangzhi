@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>收货地址</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css"/>  
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>   
+     <link rel="stylesheet" type="text/css" href="../css/shoucang.css"/> 
+    <style>
+      .aui-list-item-title{
+        color:#757575 !important;
+        font-weight: normal !important;
+      }
+      .shouhuo-box{
+        font-size: 14px;
+        margin-top: 5px;
+      }
+      .aui-content{
+        margin-top: 5px !important;
+      }
+      .defualt-shouhuo{
+        background-color: #fff;
+        font-size: 14px;
+        color:#757575;
+        padding:15px;
+        position: relative;
+      }
+      .chosed-img{
+        width: 15px;height: 15px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-bottom: 3px;
+        margin-right: 5px;
+      }
+      .btn-box{
+        position: absolute;
+        right: 20px;
+        top:15px;
+      }
+      .edit-btn{
+        border:1px solid #ccc;
+        border-radius: 25px;
+        font-size: 14px;
+        width: 40px;
+        text-align: center;
+        margin-right: 8px;
+      }
+      .de-btn{
+        border:1px solid red;
+        border-radius: 25px;
+        font-size: 14px;
+        width: 40px;
+        text-align: center;
+        color:red;
+      }
+
+      .footer-btn{
+        position: absolute;
+        bottom:0px;
+        background-color: #f93535;
+        width: 100%;
+        text-align: center;
+        color:#fff;
+        height: 50px;
+        line-height: 50px;
+      }
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = 'normal-head-box' id = 'header'>
+             <div class = 'padding-t-10'>
+                <img src="../image/back.png" class = 'normal-bk-img'>    
+                <p class = 'normal-head-title'>收货地址</p>  
+             </div>
+        </div>
+
+        <div class="aui-content">
+            <ul class="aui-list aui-media-list">
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-media-list-item-inner">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-text">
+                                <div class="aui-list-item-title aui-font-size-14"><span>姓名:</span> <span>胡总</span></div>
+                                <div class="aui-list-item-right">18925366291</div>
+                            </div>
+                            <div class="aui-list-item-text">
+                                <div class = 'shouhuo-box'>
+                                    <span>收货地址:</span>
+                                    <span>广东省中山市小榄镇海港城</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class = 'defualt-shouhuo'>
+            <img src="../image/banner/chosed.png" class = 'chosed-img'>
+            <span>默认地址</span>
+            <div class ='btn-box'>
+                <span class = 'edit-btn'>修改</span>
+                <span class = 'de-btn'>删除</span>
+            </div>
+
+        </div>
+
+        <p style = 'text-align: center;margin-top: 10px;'>到底了!别拉啦！</p>
+        
+
+        <div class = 'footer-btn'>
+            添加新的收货地址
+        </div>
+    </div>
+    
+
+</body>
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../plugins/swiper/swiper.min.js"></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+}  
+
+
+
+</script>

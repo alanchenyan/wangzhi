@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no,email=no,date=no,address=no" />
+  <title>分享赚</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../plugins/swiper/swiper.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/incom.css" />
+  <style>
+      .nav-head{
+        /*height: 205px;*/
+
+        /*padding-top: 15px;*/
+        padding-bottom: 5px;
+        background-color: red;
+
+      }
+      p{
+        color: 	#363636;
+      }
+      .nav-title-head-box{
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+      }
+      .head-main-img{
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        top:75px;left:30px;
+      }
+      .nav-img{
+        width: 20px;height: 20px;margin-top: 10px;
+        float: left;
+        margin-left: 10px;
+      }
+      .good_sign{
+        width: 20px;
+
+      }
+      .nav-title{
+        color:#fff;
+        font-size: 18px;
+        margin-right: 40px;
+        margin-top: 5px;
+      }
+      .gong-box{
+        background-color: #fffdf6;
+      }
+      .g-p{
+        color:#e69138;
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        display: inline-block;
+      }
+      .laba-img{
+        width: 15px;height: 15px;display: inline-block;vertical-align: middle;margin-left: 10px;
+      }
+
+      .swiper-container {
+         width: 100%;
+         /*height: 100%;*/
+         background-color: #fff;
+      }
+
+      #swiper-container-my{
+         margin-top: 0px;
+         padding-top: 10px;
+         /*height: 85% !important;*/
+      }
+      .swiper-slide {
+        font-size: 18px;
+        background: #fff;
+
+      }
+      .swiper-pagination{
+        width: 100%;
+        border-bottom: 1px solid #eee;
+      }
+      .swiper-pagination-bullet {
+        width: 50%;
+        height:30px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 12px;
+        color:#000;
+        opacity: 1;
+        background:#fff;
+        border-radius: 0;
+      }
+      .swiper-pagination-bullet-active {
+        color:red;
+        background: #007aff;
+        background:#fff;
+        /*border-bottom: 1px solid red;*/
+      }
+      .swiper-pagination-bullet-active>span{
+          width: 82px;
+          border-bottom: 1px solid red;
+      }
+
+
+      .pic-title-box{
+         font-size: 14px;
+         margin-left: 10px;
+      }
+
+      .pic-r-box{
+        font-size: 14px;
+        float:right;
+        margin-right: 10px;
+      }
+      .margin-l-10{
+        margin-left: 10px;
+
+        height: 100px;
+      }
+      .good_sel{
+        margin-top: 4px;
+        font-size: 13px;
+        color: 	#9C9C9C;
+      }
+      .good_price{
+          font-size: 17px;
+          font-weight: bold;
+          color: red;
+      }
+      .coupon_s{
+        background-image: linear-gradient(to right ,#ed5640, #f38b7c);
+        border-radius: 5px;
+        width: 80px;
+        color: #fff;
+        font-size: 13px;
+        text-align: center;
+        float: left;
+      }
+      .sell-good-all-box>.aui-col-xs-6{
+        padding-bottom: 10px !important;
+      }
+
+      .aui-col-5{
+        padding:10px !important;
+      }
+      .weixin-text-box{
+        border:1px solid #ccc;
+        border-radius: 8px;
+        margin-left: 60px;
+        margin-right: 60px;
+        padding: 5px;
+        margin-top: 5px;
+        position:relative;
+        height: 100px;
+      }
+      .weixin-text-box>p{
+        font-size:12px;
+      }
+
+      .weixin-gd-img{
+         position: absolute;right:0px;bottom:0px;
+         width: 50px;
+         height: 50px;
+      }
+      .thr-p{
+         width: 90%;
+      }
+      .yuji_s{
+         float: right;
+         background-image: linear-gradient(to right ,#ed5640, #f38b7c);
+         border-radius: 5px;
+         color: #fff;
+         font-size: 13px;
+         text-align: center;
+         width: 80px;
+      }
+      .lines{
+        height: 10px;
+        background-color: #eee;
+        width: 100%;
+        margin-top: 10px;
+      }
+      .nntitle{
+        height: 30px;
+        width: 95%;
+        margin-left: 2.5%;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 10px;
+        padding-top: 4px;
+      }
+      .order {
+   height:30px;
+   line-height: 30px;
+   text-align: center;
+}
+ .order .line {
+   display: inline-block;
+   width: 120px;
+
+   border-top: 1px solid #eee ;
+}
+.order .txt {
+
+   vertical-align: middle;
+   margin-left: 5px;
+   margin-right: 5px;
+}
+.sharebtn{
+  width: 100%;
+  height: 80px;
+  padding-top: 10px;
+}
+.sharebtn li{
+   float: left;
+   margin-left: 10px;
+}
+.sharebtn ul{
+   margin-left: 5px;
+}
+
+#checkbox-3-2:checked + label:before {
+	top: 4px;
+	left: 4px;
+	width: 20px;
+	height: 20px;
+}
+
+#checkbox-3-2 + label {
+	width: 10px;
+	height: 10px;
+}
+#checkbox-3-2 + label {
+	width: 10px;
+	height: 10px;
+}
+
+
+    </style>
+ </head>
+ <body>
+  <div class="box-warp" style="background-color: #fff;">
+   <div class="nav-head" id="header">
+    <div class="nav-title-head-box">
+     <img src="../../image/backw.png" class="nav-img" onclick = "api.closeWin();" />
+     <span class="nav-title">分享商品</span>
+    </div>
+   </div>
+  <!-- <div class="gong-box">
+    <img src="../../image/banner/laba.png" class="laba-img" />
+    <p class="g-p">预计您可以获得佣金￥12.2 可获得积分: 200</p>
+  </div>-->
+   <div class="swiper-container" id="swiper-container-my">
+    <div class="swiper-wrapper">
+     <div class="swiper-slide">
+      <div>
+
+       <div class="aui-content" style="background-color:#fff;padding-top: 1px;margin-bottom: 8px; ">
+        <div class="swiper-container" id="swiper-container-four">
+         <div class="swiper-wrapper">
+             <!--图片列表-->
+         </div>
+         <!-- Add Pagination -->
+         <div class="swiper-pagination-four" style="display: none;"></div>
+        </div>
+       </div>
+       <div class="lines"> </div>
+       <div class="pic-title-box" style=" border-top:1px solid #eee; padding:5px">
+         <div>
+           <div style="z-index:100;position:absolute;margin-top:4px;"><img class="good_sign" src="../../image/frame0/tianmao.png" alt="placeholder+image" /></div>
+            <div class="good_title" style="text-indent:22px;"  ></div>
+        </div>
+
+        <span class="good_price"></span>
+        <span class="oldprice" style="text-decoration:line-through; font-size:12px;color:	#9C9C9C; font-weight:1px ">23.2 </span>
+        <span class="good_sel" style="margin-left:48%;"> </span>
+        <p></p>
+        <div style=" width:90%; margin-top:5px; ">
+         <div class="coupon_s">ss
+         </div>
+         <div class="yuji_s">
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="lines"> </div>
+     <div class="nntitle"><span style="font-size:16px; color:	#696969; font-weight:bold; ">分享文案</span>
+     <div style="float:right;color:red; width:100px; " id="copywenan">
+       <img style="float:left" src="../../image/copybtn.png" width=20px; />
+       <span>复制文案</span>
+     </div>
+   </div>
+   <textarea id="wenan" style="background-color:#eee; border-radius:10px;overflow-y: auto; width:95%; margin-left:2.5%; height:150px;">
+   </textarea>
+
+ <div class="order">
+    	<span class="line"></span>
+    	<span class="txt">分享图文</span>
+    	<span class="line"></span>
+ </div>
+<div class="sharebtn">
+  <ul>
+    <li onclick="shareimg(0)"><img src="../../image/share/share_wechat_icon.png" width="60px;" /> </li>
+    <li onclick="shareimg(1)"><img src="../../image/share/share_friend_icon.png" width="60px;" /></li>
+    <li onclick="shareimg(2)"><img src="../../image/share/share_qq_icon.png" width="60px;" /> </li>
+    <li onclick="shareimg(3)"><img src="../../image/share/share_qzone_icon.png" width="60px;" /> </li>
+    <li onclick="shareimg(4)"><img src="../../image/share/s_more.png" width="60px;" /> </li>
+  </ul>
+</div>
+  </div>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/jquery.min.js"></script>
+  <script type="text/javascript" src="../../plugins/swiper/swiper.min.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/common.js"></script>
+  <script type="text/javascript" src="../../plugins/jm/sharemgr.js"></script>
+  <script type="text/javascript" src="../../script/usermgr.js"></script>
+  <script type="text/javascript" src="../../plugins/jm/canvasImg.js"></script>
+
+  <script type="text/javascript">
+  var pageMol = {
+
+    imglist:[],
+    iteminfo:"",
+    jmimg:'',  //合成图 Base64
+    jmimgfs:'', //合成图的FS图片
+    imglistfs:[], //FS列表
+    kouling:'',
+    currindex:0,    //当前选择图片的索引；
+  }
+  apiready = function () {
+      $api.fixStatusBar( $api.dom('#header') );
+      //获取传递过来的参数
+      var pagedata = api.pageParam.data;
+      //pagedata = {"imglist":["http://img.alicdn.com/imgextra/i1/2454549209/O1CN01sLNz7C2HtlsezpeO0_!!2454549209.jpg","http://img.alicdn.com/imgextra/i1/2454549209/O1CN01DEL1rX2Htlsci1ADL_!!2454549209.jpg","http://img.alicdn.com/imgextra/i4/2454549209/O1CN012HtlqOJ384FOwYr_!!2454549209.jpg","http://img.alicdn.com/imgextra/i1/2454549209/O1CN01Gwwpbw2HtlqOk48Pn_!!2454549209.jpg","http://img.alicdn.com/imgextra/i4/2454549209/O1CN012Htlq732gEn9hIH_!!2454549209.jpg"],"itemdata":{"itemprice":19.98,"itemid":"528731068410","usertype":1,"itempic":"https://img.alicdn.com/imgextra/i1/2400139193/O1CN01w5pd7m2HmRX2FhaEe_!!2400139193.jpg_310x310.jpg","couponstart":"2019-03-31 ","commissionrate":20,"couponendtime":"2019-04-01 ","newprice":9.98,"sellnum":611132,"couponprice":10,"itemtitle":"怡恩贝婴儿柔湿巾纸巾幼儿新生大包装特价成人家用宝宝手口屁专用"}}
+      //console.log(JSON.stringify(pagedata));
+      pageMol.imglist = pagedata.imglist;
+      pageMol.iteminfo = pagedata.itemdata;
+      pageMol.jmimg = pagedata.jmimg;  //合成图 Base64
+      pageMol.kouling = pagedata.kouling;
+      //初始化图片
+      var swiper_four = new Swiper('#swiper-container-four', {
+       slidesPerView: 3,
+       spaceBetween: 10,
+       pagination: {
+         el: '.swiper-pagination-four',
+         clickable: true,
+       },
+     });
+     //合成图增加上去
+     var htmljmimg = '<div class="swiper-slide"  > <img onclick="openimg(0)" src="'+pageMol.jmimg+'" id="imgs0"  class = "margin-l-10" ">';
+     htmljmimg =htmljmimg +'<div class="squaredTwo" style="position:absolute;top:-1px; left:89px;z-index:1000">';
+     htmljmimg =htmljmimg +'<input type="checkbox" id="checkbox-3-2" onclick="clickCheckbox(0)"  checked /><label for="checkbox-3-2"></label>';
+     htmljmimg =htmljmimg +'</div></div>';
+     swiper_four.addSlide(0,htmljmimg);
+
+      for (var i = 0; i < pageMol.imglist.length; i++) {
+          var index= i+1;
+          var img_src = pageMol.imglist[i];
+          if(pageMol.iteminfo.usertype == 0 || pageMol.iteminfo.usertype == 1){
+              img_src = img_src+"_150x150.jpg";
+          }
+
+          var htmls = '<div class="swiper-slide" onclick="openimg('+index+')" > <img src="'+img_src+'" id="imgs'+index+'"  class = "margin-l-10" ">';
+          htmls =htmls +'<div class="squaredTwo" style="position:absolute;top:-1px; left:89px;z-index:1000">';
+          htmls =htmls +'<input type="checkbox" id="checkbox-3-2" onclick="clickCheckbox('+index+')"  /><label for="checkbox-3-2"></label>';
+          htmls =htmls +'</div></div>';
+          swiper_four.addSlide(index,htmls);
+      }
+
+      //基本信息初始化
+      $api.text($api.dom(".good_title"),pageMol.iteminfo.itemtitle);
+      $api.text($api.dom(".good_price"),pageMol.iteminfo.newprice);
+      $api.text($api.dom(".good_sel"),changeW(pageMol.iteminfo.sellnum)+"人购买");
+      $api.text($api.dom(".oldprice"),pageMol.iteminfo.itemprice);
+      $api.text($api.dom(".coupon_s"),pageMol.iteminfo.couponprice+"元优惠券");
+      $api.text($api.dom(".yuji_s"),"预估赚"+clcrate1(pageMol.iteminfo.commissionrate,pageMol.iteminfo.newprice));
+      $api.text($api.dom(".g-p"),"预计您可以获得佣金￥"+pageMol.iteminfo.commissionrate+" 可获得网值币:1111");
+
+      //文案初始化
+      var wenanstr= pageMol.iteminfo.itemtitle +"\n"+"【价格】"+pageMol.iteminfo.itemprice+"元\n";
+      var wenanstr = wenanstr+"【券后价】"+pageMol.iteminfo.newprice+"元\n";
+      var wenanstr = wenanstr+"【下载网值APP再省】"+clcrate2(pageMol.iteminfo.commissionrate,pageMol.iteminfo.newprice)+"元\n"
+      if(pageMol.iteminfo.usertype == 2 || pageMol.iteminfo.usertype == 3){
+        var wenanstr = wenanstr+"购买地址:"+pageMol.kouling;
+      }else{
+        var wenanstr = wenanstr+"优惠券口令:"+pageMol.kouling;
+        var wenanstr = wenanstr+"\n----------\n复制这条信息打开【手机Tao宝】即可查看"
+      }
+
+
+      $api.text($api.dom("#wenan"),wenanstr);
+
+      //合成图 保存起来
+      var imagedata = pageMol.jmimg;
+      imagedata=imagedata.replace('data:image/png;base64,','')
+      var trans = api.require('trans');
+      trans.saveImage({
+          base64Str: imagedata,
+          imgPath:"fs://jmimg/",
+          imgName:pageMol.iteminfo.itemid+"_jm.png",
+      }, function(ret, err) {
+
+          if (ret.status) {
+              console.log("保存合成图-share:"+JSON.stringify(ret));
+              pageMol.jmimgfs = "fs://jmimg/"+pageMol.iteminfo.itemid+"_jm.png";
+              //下载图片
+              CanvasImg.downImgs(pageMol.imglist,function(flimgs){
+                      pageMol.imglistfs = flimgs;
+                      pageMol.imglistfs.unshift(pageMol.jmimgfs);
+              });
+
+          } else {
+               toast2(JSON.stringify(err));
+          }
+      });
+
+
+
+      $api.addEvt($api.dom('#copywenan'), 'click', function(){
+           var contentstr = $api.text($api.dom("#wenan"));
+           CopyData(contentstr);
+
+      });
+
+  }
+
+  function clickCheckbox(index) {
+
+      var listbox = $api.domAll($api.dom("#swiper-container-four"), '#checkbox-3-2');
+      for (var i = 0; i < listbox.length; i++) {
+          listbox[i].checked = false;
+      }
+      listbox[index].checked = true;
+      pageMol.currindex = index;
+
+  }
+
+  function openimg(index){
+      CanvasImg.openBrowserImg(pageMol.imglistfs,index);
+  }
+
+
+    //分享
+   function shareimg(type){
+       var imagelist = Array();
+       if(pageMol.currindex == 0){
+           imagelist.push(pageMol.jmimgfs);
+       }else{
+
+           imagelist.push(pageMol.imglistfs[pageMol.currindex]);
+       }
+       var contentstr = $api.text($api.dom("#wenan"));
+       CopyData(contentstr,function(){
+           if(type == 0){
+              //微信分享
+              sharemgr.shareWxImage(1,imagelist[0],'session');
+           }
+           else if(type == 1){
+               //微信朋友圈
+               sharemgr.shareWxImage(1,imagelist[0],'timeline');
+           }
+           else if(type == 2){
+               //QQ
+               sharemgr.shareQQimg(1,imagelist[0],'QFriend');
+           }
+           else if(type == 3){
+             //QQ空间
+             sharemgr.shareQQimg(1,imagelist[0],'QZone');
+           }else {
+               var sharedModule = api.require('shareAction');
+               pageMol.imglistfs.push(pageMol.jmimgfs);
+               sharedModule.shareImage({images: pageMol.imglistfs});
+           }
+
+
+       });
+
+
+
+
+   }
+
+
+
+
+</script>
+ </body>
+</html>

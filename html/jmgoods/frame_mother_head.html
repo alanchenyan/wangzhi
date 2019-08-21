@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>母婴精品</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/reset.css"/>
+      <link rel="stylesheet" type="text/css" href="../../plugins/swiper/swiper.min.css"/>
+      <script src="../../plugins/swiper/swiper.min.js"></script>
+      <script src="http://wq.360buyimg.com/fd/promote/base/zepto.min.js"></script>
+
+      <style>
+      .wrapperd{
+width: 100%;
+overflow-x: hidden;
+background: #f6f6f6;
+min-height: 100vh;
+}
+.wrapperd .headd{
+width: 100%;
+min-height: 6.875rem;
+
+}
+.wrapperd .headd .headd_img{
+width: 100%;
+}
+.wrapperd .navd{
+height: 40px;
+line-height: 40px;
+text-align: center;
+font-size: 0;
+background: #fff;
+
+}
+.wrapperd .navd .swiper-slide{
+font-size:13px;
+background: #7febdc;
+color: #fff;
+}
+.wrapperd .navd .swiper-slide.active{
+background: #467a6e;
+}
+
+.prev-img-bg{
+	width: 30px;
+	height: 30px;
+	background-color:rgba(0,0,0,.5);
+	position: absolute;;
+	z-index: 9999;
+	border-radius: 50%;
+	top: 30px;left: 15px;
+}
+.prev-img-bg>img{
+	width: 15px;height: 15px;
+	margin-top: 7px;
+	margin-left: 6px;
+}
+      </style>
+  </head>
+  <div class="wrapperd">
+  			<div class="headd">
+  				<img src="../../image/jmgoods/lmmy.jpg" class="headd_img"/>
+          <div class = 'prev-img-bg'  onclick = "back();">
+            <img src="../../image/backw.png" alt="placeholder+image">
+          </div>
+  			</div>
+  			<div class="navd">
+  				<div class="swiper-container">
+  					<div class="swiper-wrapper">
+  				        <div class="swiper-slide">母婴备孕</div>
+  				        <div class="swiper-slide">0至6个月</div>
+  				        <div class="swiper-slide">7至12个月</div>
+  				        <div class="swiper-slide">1至3岁</div>
+  				        <div class="swiper-slide">4至6岁</div>
+  				    	<div class="swiper-slide">7至12岁</div>
+  				    </div>
+  				</div>
+  			</div>
+  			<div class="maind">
+
+  			</div>
+  		</div>
+
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+  var swiper = new Swiper('.navd .swiper-container',{
+    slidesPerView :'4',
+    freeMode: true,
+        slidesPerViewFit:true
+  });
+  $(".navd .swiper-slide").click(function(){
+      if(!$(this).hasClass("active")){
+        $(this).addClass("active").siblings().removeClass("active");
+        swiper.slideTo($(this).index()-1,300, false)
+      }
+      api.setFrameGroupIndex({
+          name: 'frame_mother_group',
+          index: $(this).index()
+      });
+
+    })
+
+      apiready = function(){
+         $api.fixStatusBar( $api.dom('.headd') );
+        var pagetype = api.pageParam.data;
+        var offset = $api.offset( $api.dom('.headd'));
+        var offset_navd = $api.offset( $api.dom('.navd'));
+        //初始化窗体
+        //备孕：4040  0至6个月：4041 7-12月：4042 1-3岁：4043  4至6岁：4044 7至12岁：4045
+        var mids = Array();
+        mids[0] = 4040;
+        mids[1] = 4041;
+        mids[2] = 4042;
+        mids[3] = 4043;
+        mids[4] = 4044;
+        mids[5] = 4045;
+
+        var famrs = Array();
+        for (var i = 0; i < 6; i++) {
+            var m_mid = mids[i];
+            famrs[i]={name:'frame_m'+i,url:'widget://html/frame_item_list.html',pageParam:{mid:m_mid,frametype:pagetype} };
+        }
+        api.openFrameGroup({
+          name: 'frame_mother_group',
+          rect: {
+              x: 0,
+              y: offset.h+offset_navd.h,
+              w: 'auto',
+              h: 'auto'
+          },
+          frames:famrs
+        }, function(ret, err) {
+            var index = ret.index;
+            swiper.slideTo(index-1,300, false);
+            var domlist = $api.domAll(".swiper-slide");
+            for (var i = 0; i < domlist.length; i++) {
+                 $api.removeCls(domlist[i], 'active');
+            }
+            $api.addCls(domlist[index], 'active');
+
+        });
+
+
+      };
+
+      function back()
+      {
+         api.closeWin();
+          api.closeFrame({
+           name: 'frame_mother_group'
+         });
+
+      }
+  </script>
+  </html>

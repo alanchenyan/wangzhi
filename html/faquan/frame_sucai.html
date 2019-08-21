@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <title>素材</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/loaders.min.css" />
+  <style>
+          body{
+
+            margin: 0;
+            padding: 0;
+            background-color:#eee !important;
+                    text-align:center
+          }
+
+.content{
+background-color:#eee;
+height:100%;
+margin-top: 0px;
+}
+.s_qq{
+    width: 100%;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius:10px;
+    text-align:left;
+
+}
+
+.userline{
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+
+
+}
+.hedimg{
+    width: 35px;
+    height: 35px;
+    display: flex;align-items: center;
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.hedimg img{
+     width:35px;
+     height:35px ;
+     border-radius:25px
+}
+
+.hednick{
+    width: 75px;
+    height: 21px;
+    margin-top: 10px;
+    margin-left: 10px;
+    float: left;
+    font-size: 14px;
+}
+
+.uptime{
+    position: absolute;
+    width: 75px;
+    height: 20px;
+    margin-top: 33px;
+    margin-left: 67px;
+    font-size: 11px;
+    color: #8B8386;
+}
+.isc{
+    position: absolute;
+
+    margin-top: 11px;
+    margin-left: 135px;
+    font-size: 11px;
+     height:20px;
+     width: 35px;
+}
+
+.isteme{
+   line-height: 60px;
+    margin-left: 90%;
+    font-size: 11px;
+    height:20px;
+    width: 20px;
+}
+
+.txtjieshao{
+   margin-left: 62px;
+   margin-top: 5px;
+   width: 295px;
+   color: 	#2F4F4F;
+   margin-bottom: 15px;
+
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 5;
+   -webkit-box-orient: vertical;
+}
+
+.imglist{
+
+  margin-left: 62px;
+  margin-top: 5px;
+  width: 290px;
+
+
+}
+
+.ment{
+  padding: 10px;
+    margin-left: 60px;
+ font-size: 13px;
+  width: 76%;
+height: 115px;
+background-color: #f7f7f7;
+}
+.ment2{
+  padding: 10px;
+  margin-left: 60px;
+ font-size: 13px;
+  width: 75%;
+height: 20px;
+background-color: #fff;
+
+}
+
+
+.sharbtn{
+background: linear-gradient(to top right, #e89b9e, #f1a241);
+
+margin-left: 255px;
+  width: 95px;
+  height: 28px;
+border-radius:20px;
+line-height: 28px;/*设置其文字内容垂直居中*/
+ color: #fff;
+overflow:hidden;
+position: absolute;
+margin-top: 10px;
+
+}
+/* 商品价格标签 */
+.pricediv{
+  border-radius: 0 120px;
+  background: linear-gradient(to top right, red, #f1a241);
+
+  width: 75px;
+  color: #fff;
+  text-align: center;
+  font-size: 13px;
+  margin-left: 70px;
+}
+
+.sharbtn img{
+
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+    margin-left: 13px;
+}
+
+.fzpl{
+  float: right;
+  margin-right: 10px;
+ background-color: #CFCFCF;
+  border-radius:20px;
+  width: 75px;
+  text-align: center;
+
+}
+        ul,li{
+           list-style: none;
+           margin: 0;
+           padding: 0;
+       }
+       .list-img {
+           overflow: hidden;
+           margin-top: 6px;
+           margin-right: -4px;
+       }
+
+       .item-img {
+           box-sizing: border-box;
+           position: relative;
+           width: 33.333%;
+           float: left;
+           padding: 0 4px 4px 0;
+       }
+       /* 只有一项 */
+      /* :only-child 等 效 于 :first-child:last-child */
+      .item-img:only-child{
+          width: 50%;
+      }
+      /* 只有两项 */
+      .item-img:first-child:nth-last-child(2),
+      .item-img:first-child:nth-last-child(2) ~ .item-img{
+          width: 40%;
+      }
+      /* 只有四项 */
+      .item-img:first-child:nth-last-child(4),
+      .item-img:first-child:nth-last-child(4) ~ .item-img{
+          width: 35%;
+      }
+
+
+      .item-img:after {
+          display: block;
+          content: "";
+          width: 100%;
+          padding-top: 100%;
+      }
+      .item-img>img {
+          box-sizing: border-box;
+          position: absolute;
+          padding: 0 4px 4px 0;
+      }
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 50%;
+      }
+
+      </style>
+ </head>
+ <body bgcolor="#eee">
+
+  <div class="content" id="el_list">
+   <div class="s_qq" v-for="item in dataitem" v-cloak="">
+    <div class="userline">
+     <div class="hedimg">
+      <img src="../../image/t3.png" />
+     </div>
+     <div class="hednick">
+       小编推荐
+     </div>
+     <div class="uptime">
+       今天 {{item.addtime}}
+     </div>
+     <!--<div class="isc"> <img src="../../image/frame1/taobao.png"  /></div>-->
+     <div class="sharbtn" v-on:click="sharecl(item)" >
+      <img src="../../image/fsw.png"   />
+      <div style="float:right; font-size:14px;  margin-right:20px;">分享</div>
+     </div>
+    </div>
+    <div class="txtjieshao" v-bind:id="item.ids" v-on:click="fuzhi(item.ids)">
+      {{item.remarktj}}
+    </div>
+    <div class="imglist">
+     <ul class="list-img">
+      <li class="item-img" v-for="(imgurl,index) in item.imglist" v-on:click="openitemimg(item.imglist,index)"> <img v-bind:data-url="imgurl" src="../../image/thum.png" data-cache="no" alt="" /> </li>
+     </ul>
+    </div>
+
+
+    <div class="ment2">
+
+    </div>
+   </div>
+  </div>
+
+
+  <!-- loading 界面 -->
+  <section class="list-wrapper" style="background-color:#fff; margin-top:20px;" id="list-wrapper">
+   <div class="list-item-loading">
+    <div class="loader-inner ball-pulse">
+     <div></div>
+     <div></div>
+     <div></div>
+    </div>
+   </div>
+  </section>
+  <!--底线提示 -->
+  <div class="databootom" style='display:none'  >
+   <span>~我是有底线的哦！~</span>
+  </div>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/common.js"></script>
+  <script type="text/javascript" src="../../script/vue/vue.js"></script>
+  <script type="text/javascript" src="../../script/topsdk/taobao.js"></script>
+  <script type="text/javascript" src="../../script/goodshare/sucai.js"></script>
+  <script type="text/javascript" src="../../plugins/jm/jmdialog.js"></script>
+  <script type="text/javascript" src="../../plugins/jm/canvasImg.js"></script>
+  <script type="text/javascript" src="../../plugins/jm/sharemgr.js"></script>
+  <script type="text/javascript" src="../../script/usermgr.js"></script>
+  <script type="text/javascript">
+
+      apiready = function(){
+
+            pageMol.initlize();
+            pageMol.dvv = new Vue({el:'#el_list',data:pageMol,methods:{
+                    openitemimg:function(itemurl,index){
+                         CanvasImg.openBrowserImg(itemurl,index);
+                    },
+                    fuzhi:function(elid){
+                       //复制推荐语
+                       OnCopyMark(elid);
+                    },
+                    //分享商品。
+                    sharecl:function(item){
+                        if(!usermgr.checkLogin()){
+                          return ;
+                        }
+                        //打开分享功能
+                        jmdialog.open_share_dialog(function(index){
+                            api.showProgress({title: '',text: '',modal: false});
+                            //下载网络图 imglist
+                            CanvasImg.downImgs(item.imglist,function(flimgs){
+                                api.hideProgress();
+                                if(index == 0){
+                                   sharemgr.shareWxImage(flimgs.length,flimgs,'session');
+                                }
+                                else if(index == 1){
+                                   sharemgr.shareWxImage(1,flimgs[0],'timeline');
+                                }
+                                else if(index == 2){
+                                   sharemgr.shareQQimg(1,flimgs[0],'QFriend');
+                                }
+                                else if(index == 3){
+                                   sharemgr.shareQQimg(1,flimgs[0],'QZone');
+                                }
+                                else {
+                                  var sharedModule = api.require('shareAction');
+                                  sharedModule.shareImage({images: flimgs});
+                                  //关闭窗体
+                                  var dialogBox = api.require('dialogBox');
+                                  dialogBox.close({
+                                      dialogName: 'actionMenu'
+                                  });
+                                }
+                            });
+
+
+                        });
+                        //CanvasImg.canvasGoodsImg();
+
+                    }
+
+
+                  }});
+
+            pageMol.bindDataSc();
+
+
+
+      };
+
+      //复制描述内容
+      function OnCopyMark(el)
+      {
+          el = "#"+el;
+          //获得里面的文字内容
+          var contentstr = $api.text($api.dom(el));
+          CopyData(contentstr);
+
+
+      }
+
+
+  </script>
+ </body>
+</html>

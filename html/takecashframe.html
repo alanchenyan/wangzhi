@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>提现</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../plugins/swiper/swiper.min.css"/> 
+    <link rel="stylesheet" type="text/css" href="../css/aui.css"/>  
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>   
+     <link rel="stylesheet" type="text/css" href="../css/takecash.css"/> 
+    <style>
+      
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = 'normal-head-box' id = 'header'>
+             <div class = 'padding-t-10'>
+                <img src="../image/back.png" class = 'normal-bk-img'>    
+                <p class = 'normal-head-title'>提现</p>  
+             </div>
+        </div>
+
+        <div>
+           <div class = 'logo-box'>
+              <img src="../image/banner/logotest.png" class = 'logo-img'>
+              <img src="../image/banner/ic_withdrawal_way.png" class = 'to-img'>
+              <img src="../image/banner/ic_withdrawal_receive.png" class = 'logo-img'>
+           </div>
+        </div>
+
+        <div class="aui-content aui-margin-b-15 margin-t-30">
+             <ul class="aui-list aui-form-list">
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label fz-12">
+                            真实姓名
+                        </div>
+                        <div class="aui-list-item-input">
+                            <input type="text" placeholder="" readonly="">
+                        </div>
+                    </div>
+                </li>
+
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label fz-12">
+                            到账支付宝
+                        </div>
+                        <div class="aui-list-item-input" style = 'position: relative;' onclick = 'openwin("bindaliwin");'>
+                            <input type="text" placeholder="****先绑定" class = 'fz-12' readonly="">
+                            <span class = 'bd-zfb'>绑定支付宝</span>
+                        </div>
+                    </div>
+                </li>
+
+                 <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label fz-12">
+                            提现金额
+                        </div>
+                        <div class="aui-list-item-input">
+                            <input type="text" placeholder="请输入提现金额" class = 'fz-12'>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="aui-list-item">
+                    <div style = 'line-height: 44px;position: relative;width: 100%;'>
+                       <span class = 'can-use'>可用余额：￥<span>0</span></span>
+                       <span class = 'can-use can-right'>最低提现余额为：<span>1</span>元</span>
+                    </div>
+                </li>
+
+             </ul>
+        </div>
+
+        <div class = 'tel-msg'>
+          *每月25号后可提现上个月内确认收货的订单收益
+        </div>
+    
+        <div class = 'take-btn'>
+          提交申请
+        </div>
+
+        <div class = 'take-detail'>
+          收益明细
+        </div>
+    </div>
+    
+
+</body>
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../plugins/swiper/swiper.min.js"></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+}  
+
+
+
+</script>

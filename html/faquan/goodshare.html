@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <title>网值好货</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/loaders.min.css" />
+  <style>
+          body{
+
+            margin: 0;
+            padding: 0;
+            background-color:#eee !important;
+                    text-align:center
+          }
+
+.content{
+background-color:#eee;
+height:100%;
+margin-top: 0px;
+}
+.s_qq{
+    width: 100%;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius:10px;
+    text-align:left;
+
+}
+
+.userline{
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+
+
+}
+.hedimg{
+    width: 35px;
+    height: 35px;
+    display: flex;align-items: center;
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.hedimg img{
+     width:35px;
+     height:35px ;
+     border-radius:25px
+}
+
+.hednick{
+    width: 75px;
+    height: 21px;
+    margin-top: 10px;
+    margin-left: 10px;
+    float: left;
+    font-size: 14px;
+}
+
+.uptime{
+    position: absolute;
+    width: 75px;
+    height: 20px;
+    margin-top: 33px;
+    margin-left: 67px;
+    font-size: 11px;
+    color: #8B8386;
+}
+.isc{
+    position: absolute;
+
+    margin-top: 11px;
+    margin-left: 135px;
+    font-size: 11px;
+     height:20px;
+     width: 35px;
+}
+
+.isteme{
+   line-height: 60px;
+    margin-left: 90%;
+    font-size: 11px;
+    height:20px;
+    width: 20px;
+}
+
+.txtjieshao{
+   margin-left: 62px;
+   margin-top: 5px;
+   width: 295px;
+   color: 	#2F4F4F;
+   margin-bottom: 15px;
+
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 5;
+   -webkit-box-orient: vertical;
+}
+
+.imglist{
+
+  margin-left: 62px;
+  margin-top: 5px;
+  width: 290px;
+
+
+}
+
+.ment{
+  padding: 10px;
+    margin-left: 60px;
+ font-size: 13px;
+  width: 76%;
+height: 125px;
+background-color: #f7f7f7;
+}
+.ment2{
+  padding: 10px;
+  margin-left: 60px;
+ font-size: 13px;
+  width: 75%;
+height: 20px;
+background-color: #fff;
+
+}
+
+
+.sharbtn{
+background: linear-gradient(to top right, #e89b9e, #f1a241);
+
+margin-left: 255px;
+  width: 95px;
+  height: 28px;
+border-radius:20px;
+line-height: 28px;/*设置其文字内容垂直居中*/
+ color: #fff;
+overflow:hidden;
+position: absolute;
+margin-top: 10px;
+
+}
+/* 商品价格标签 */
+.pricediv{
+  border-radius: 0 120px;
+  background: linear-gradient(to top right, red, #f1a241);
+
+  width: 75px;
+  color: #fff;
+  text-align: center;
+  font-size: 13px;
+  margin-left: 70px;
+}
+
+.sharbtn img{
+
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+    margin-left: 13px;
+}
+
+.fzpl{
+  float: right;
+  margin-right: 10px;
+  background: linear-gradient(to top right, #e6e5e5, #e6e5e5);
+  border-radius:20px;
+  width: 75px;
+  text-align: center;
+  color: #f46848;
+
+}
+        ul,li{
+           list-style: none;
+           margin: 0;
+           padding: 0;
+       }
+       .list-img {
+           overflow: hidden;
+           margin-top: 6px;
+           margin-right: -4px;
+       }
+
+       .item-img {
+           box-sizing: border-box;
+           position: relative;
+           width: 33.333%;
+           float: left;
+           padding: 0 4px 4px 0;
+       }
+       /* 只有一项 */
+      /* :only-child 等 效 于 :first-child:last-child */
+      .item-img:only-child{
+          width: 50%;
+      }
+      /* 只有两项 */
+      .item-img:first-child:nth-last-child(2),
+      .item-img:first-child:nth-last-child(2) ~ .item-img{
+          width: 40%;
+      }
+      /* 只有四项 */
+      .item-img:first-child:nth-last-child(4),
+      .item-img:first-child:nth-last-child(4) ~ .item-img{
+          width: 35%;
+      }
+
+
+      .item-img:after {
+          display: block;
+          content: "";
+          width: 100%;
+          padding-top: 100%;
+      }
+      .item-img>img {
+          box-sizing: border-box;
+          position: absolute;
+          padding: 0 4px 4px 0;
+      }
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 50%;
+      }
+
+      </style>
+ </head>
+ <body bgcolor="#eee">
+
+  <div class="content" id="el_list">
+   <div class="s_qq" v-for="item in dataitem" v-cloak="">
+    <div class="userline">
+     <div class="hedimg">
+      <img src="../../image/t4.jpg" />
+     </div>
+     <div class="hednick">
+       小编推荐
+     </div>
+     <div class="uptime">
+       今天 {{item.addtime}}
+     </div>
+     <!--<div class="isc"> <img src="../../image/frame1/taobao.png"  /></div>-->
+     <div class="sharbtn" v-on:click="sharecl(item)" id="el_div1" >
+      <img src="../../image/fsw.png"   />
+      <div style="float:right; font-size:14px;  margin-right:20px;  ">分享</div>
+     </div>
+    </div>
+    <div class="txtjieshao" v-bind:id="item.ids" v-on:click="fuzhi(item.ids)">
+      {{item.remarktj}}
+    </div>
+    <div class="imglist">
+     <ul class="list-img">
+      <li class="item-img" v-for="(imgurl,index) in item.imglist" v-on:click="openitemimg(item.imglist,index)"> <img v-bind:data-url="imgurl" src="../../image/thum.png" data-cache="no" alt="" /> </li>
+     </ul>
+    </div>
+    <div class="ment"   id="el_div2" >
+     <div  v-bind:id="item.mds">{{item.itemname}}<br>
+【原价】 {{item.oldprice}}元<br>
+【券后价】 {{item.newprice}}元<br>
+复制这内容(复制评论后自动生成淘口令)
+进入【陶宝】即可领取
+     </div>
+     <div class="fzpl" v-on:click="fument(item.itemid,item.mds)">
+      复制评论
+     </div>
+    </div>
+
+    <div class="ment2">
+        <div style="color:#9C9C9C; width:74%;float:left;">销量: {{item.sellnum}} 件</div>
+        <div style="color:#9C9C9C; float:left;  width:25%; " v-on:click="openitem(item.itemid)">查看详情 ></div>
+    </div>
+   </div>
+  </div>
+  <!-- 弹窗 -->
+<canvas id="sharecanvas" style="background-color:white; width:80%;display: none;" class="am-text-center am-center"></canvas>
+
+  <!-- loading 界面 -->
+  <section class="list-wrapper" style="background-color:#fff; margin-top:20px;" id="list-wrapper">
+   <div class="list-item-loading">
+    <div class="loader-inner ball-pulse">
+     <div></div>
+     <div></div>
+     <div></div>
+    </div>
+   </div>
+  </section>
+  <!--底线提示 -->
+  <div class="databootom" style='display:none'  >
+   <span>~我是有底线的哦！~</span>
+  </div>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/common.js"></script>
+  <script type="text/javascript" src="../../script/vue/vue.js"></script>
+  <script type="text/javascript" src="../../script/topsdk/taobao.js"></script>
+  <script type="text/javascript" src="../../script/goodshare/index.js"></script>
+  <script type="text/javascript" src="../../plugins/jm/jmdialog.js"></script>
+  <script type="text/javascript" src="../../plugins/jm/canvasImg.js"></script>
+  <script type="text/javascript" src="../../plugins/jm/sharemgr.js"></script>
+  <script type="text/javascript" src="../../script/usermgr.js"></script>
+  <script type="text/javascript">
+
+      apiready = function(){
+            pageMol.initlize();
+            if(istest()){
+                $api.css($api.dom("#el_div1"),"display:none");
+                $api.css($api.dom("#el_div2"),"display:none");
+            }
+
+            pageMol.dvv = new Vue({el:'#el_list',data:pageMol,methods:{
+                    openitemimg:function(itemurl,index){
+
+                          /***************v-on:click="fuzhi(item.ids)"  ***************************/
+                         //打开商品详情
+                        //open_good_detais_itemid(itemid,true);
+                         CanvasImg.openBrowserImg(itemurl,index);
+                    },
+                    fuzhi:function(elid){
+                       //复制推荐语
+                       OnCopyMark(elid);
+                    },
+                    fument:function(itemid,mds)
+                    {
+                       //复制评论
+                       if(!usermgr.checkLogin()){
+                         return ;
+                       }
+                       //提示渠道授权
+                       if(Number(usermgr.get_rid()) == 0){
+                           authoTaobao(0);
+                           return;
+                       }
+                       pageMol.copyment(itemid,mds,usermgr.get_usertoken());
+                    },
+                    openitem:function(itemid)
+                    {
+                       //打开商品
+                       open_good_detais_itemid(itemid);
+                    },
+                    //分享商品。
+                    sharecl:function(item){
+                        isPermission(["storage"],"存储权限");
+                        if(!usermgr.checkLogin()){
+                          return ;
+                        }
+                        //提示渠道授权
+                        if(Number(usermgr.get_rid()) == 0){
+                          authoTaobao(0);
+                          return;
+                        }
+
+                        //打开分享功能
+                        jmdialog.open_share_dialog(function(index){
+                            //下载网络图 imglist
+                            pageMol.shareGoodsIMG(index,item,usermgr.get_usertoken());
+                            OnCopyMark(item.ids);
+                        });
+                        //CanvasImg.canvasGoodsImg();
+
+                    }
+
+
+                  }});
+
+            pageMol.bindData();
+
+
+
+      };
+
+      //复制描述内容
+      function OnCopyMark(el)
+      {
+          el = "#"+el;
+          //获得里面的文字内容
+          var contentstr = $api.text($api.dom(el));
+          CopyData(contentstr);
+      }
+
+
+  </script>
+ </body>
+</html>

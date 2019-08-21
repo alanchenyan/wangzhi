@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>我的收益</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/incom.css"/>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+        <div class = 'main-head'>
+            <div class = 'title-head-box'>
+                <img src="../../image/backw.png" class = 'bk-img'>
+                <p class = 'head-title'>我的收益</p>
+                <img src="../../image/banner/help.png" class = 'wen-img'>
+            </div>
+
+            <div class = 'incom-price-box'>
+                <span class = 'fz-26 color-w'>￥</span>
+                <span class = 'fz-28 color-w'>0</span>
+            </div>
+
+            <p class = 'incom-price-p'>我的累计总收益</p>
+            <p class = 'my-money'>账户余额(元):￥ <span id = 'my-money-id'>0</span></p>
+
+
+        </div>
+
+        <!-- 第二行 -->
+        <div class = "line-box1">
+             <div class="aui-row aui-row-padded">
+                <div class="aui-col-xs-4 icon-4-box">
+                    <div class = 'incom-title' onclick="tips('本月25日可以提现的金额,如果为0即不能提现')" >成交收入</div>
+                    <div class = 'incom-center' ><span>￥</span><span id="data1">0</span></div>
+                    <span class = 'income-bottom'>上月收益</span>
+                </div>
+                <div class="aui-col-xs-4 icon-4-box">
+                    <div class = 'incom-title' onclick="tips('本月卖出去的物品佣金,包含未确认收货 和 已确认收货')">预估收入</div>
+                    <div class = 'incom-center' ><span>￥</span><span id="data2">0</span></div>
+                    <span class = 'income-bottom'>本月收益</span>
+                </div>
+                <div class="aui-col-xs-4 icon-4-box">
+                    <div class = 'incom-title' onclick="tips('上月卖出去的物品佣金,包含未确认收货 和 已确认收货')">预估收入</div>
+                    <div class = 'incom-center' ><span>￥</span><span id="data3">0</span></div>
+                    <span class = 'income-bottom'>上月收益</span>
+                </div>
+
+            </div>
+         </div>
+
+         <!-- 第三行 -->
+          <div class = "mg-t-10 line-head">今日</div>
+          <div class = "line-box mg-t-2">
+             <div class="aui-row aui-row-padded">
+                <div class="aui-col-xs-4 icon-4-box">
+                    <div class = 'incom-title' onclick="tips('今日所有成交的订单数量')">付款单数</div>
+                    <div class = 'incom-center' ><span id="data4">0单</span></div>
+                </div>
+                <div class="aui-col-xs-4 icon-4-box">
+                    <div class = 'incom-title' onclick="tips('今日所有成交的订单金额总和,包含未确认收货 和 已确认收货')">预估收益</div>
+                    <div class = 'incom-center' ><span>￥</span><span id="data5">0</span></div>
+                </div>
+                <div class="aui-col-xs-4 icon-4-box">
+                    <div class = 'incom-title' onclick="tips('今日所有已确认收货的金额,包含上个月在今日确认的')">结算预估</div>
+                    <div class = 'incom-center' ><span>￥</span><span id="data6">0</span></div>
+                </div>
+
+            </div>
+         </div>
+
+         <!-- 第四行 -->
+         <div class = "mg-t-5 line-y-head">昨日</div>
+         <div class = "line-box mg-t-2">
+             <div class="aui-row aui-row-padded">
+                <div class="aui-col-xs-4 icon-4-box">
+                    <div class = 'incom-title' onclick="tips('昨日所有成交的订单数量')">付款单数</div>
+                    <div class = 'incom-center' ><span id="data7">0</span></div>
+                </div>
+                <div class="aui-col-xs-4 icon-4-box">
+                    <div class = 'incom-title' onclick="tips('昨日所有成交的订单金额总和,包含未确认收货 和 已确认收货')" >预估收益</div>
+                    <div class = 'incom-center' ><span>￥</span><span id="data8">0</span></div>
+                </div>
+                <div class="aui-col-xs-4 icon-4-box">
+                    <div class = 'incom-title'>结算预估</div>
+                    <div class = 'incom-center' ><span>￥</span><span id="data9">0</span></div>
+                </div>
+
+            </div>
+         </div>
+
+         <div class="aui-content aui-margin-b-15 mg-t-10">
+            <ul class="aui-list aui-list-in">
+                <li class="aui-list-item aui-list-item-middle" onclick="shouyilog()">
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-title fz-12">收益结算明细</div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-title fz-12">提现记录</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/aui-dialog.js"></script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+<script type="text/javascript">
+
+function binddata(){
+  //请求统计数据
+  api.showProgress({title: '努力加载中...',text: '',modal: false});
+  var parms = {
+    url:"order/getorderdetail/token/"+usermgr.get_usertoken(),
+    callback:function(ret){
+        if(ret.flag)
+        {
+          var data = ret.data;
+          $api.text($api.dom('#data1'), data.lastmonth_cj);
+          $api.text($api.dom('#data2'), data.month_yg);
+          $api.text($api.dom('#data3'), data.lastmonth_yg);
+
+          $api.text($api.dom('#data4'), data.today_bs+"单");
+          $api.text($api.dom('#data5'), data.today_yg);
+          $api.text($api.dom('#data6'), data.today_js);
+
+          $api.text($api.dom('#data7'), data.yesterday_bs+"单");
+          $api.text($api.dom('#data8'), data.yesterday_yg);
+          $api.text($api.dom('#data9'), data.yesterday_js);
+
+          $api.text($api.dom('#my-money-id'), usermgr.get_umoney());
+          api.hideProgress();
+          api.refreshHeaderLoadDone();
+        }
+        else {
+          api.refreshHeaderLoadDone();
+        }
+    }
+  }
+  JM_GET(parms);
+
+}
+
+apiready = function () {
+    $api.fixStatusBar($api.dom('.main-head') );
+    api.setRefreshHeaderInfo({
+        visible: true,
+        loadingImg: 'widget://image/refresh.png',
+        bgColor: '#fff',
+        textColor: '#000',
+        textDown: '下拉刷新...',
+        textUp: '松开试试...',
+        showTime: true
+    }, function(ret, err) {
+        binddata();
+
+    });
+
+
+    binddata();
+
+    $api.addEvt($api.dom('.bk-img'), 'click', function(){
+        api.closeWin();
+    });
+
+}
+//提示文字
+function tips(str){
+  var dialog = new auiDialog({});
+  //手机号登录情况 - 未注册手机---邀请码开始重新注册
+  dialog.alert({ title:"小提示", msg:str,buttons:['朕知道了'],},function(ret){
+          if(ret){
+
+          } })
+}
+
+function shouyilog(){
+  api.openWin({
+     name: 'frame_decimallog',
+     url: '../huodong/frame_decimallog.html',
+      showProgress:true,
+    pageParam: {
+      frametype: 2
+    }
+ });
+}
+</script>

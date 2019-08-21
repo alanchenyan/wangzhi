@@ -1,0 +1,333 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>网值商城主页面</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/home.css" />
+
+</head>
+<body>
+  <div class="wrapper">
+      <div class="borlin_top" style=" background-color:#fff; height:299px; border:0px solid red">
+        <div class="head" id="head">
+         <div class="head-search-wrap">
+          <div class="head-search">
+           <div class="input-wrap">
+            <div class="input-icon">
+             <i class="iconfont icon-search-1-copy"></i>
+            </div>
+            <input type="text" name="search" readonly="readonly" onclick="openserch()" class="input-search" placeholder="黏贴淘宝商品标题名称 领取优惠券" />
+           </div>
+           <div class="head-info">
+            <i class="iconfont icon-xinxi"></i>
+           </div>
+          </div>
+         </div>
+         <div class="head-nav"  >
+          <div class="jd_nav_fix">
+           <div class="jd_nav_auto">
+            <div class="jd_nav">
+             <!--span 为on时表示当前状态-->
+
+            </div>
+           </div>
+           <span class="jd_drop" > <i class="icon-xia iconfont"></i>
+            <!--下拉全部内容出现是给  jd_drop_down  增加  show--> </span>
+          </div>
+         </div>
+
+        </div>
+      </div>
+
+  </div>
+
+
+
+      <canvas id="sharecanvas" style=" display: none;" class="am-text-center am-center"></canvas>
+</body>
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/topsdk/taobao.js"></script>
+<script type="text/javascript" src="../script/index.js"></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/usermgr.js"></script>
+<script type="text/javascript" src="../plugins/jm/jmdialog.js"></script>
+<script type="text/javascript" src="../plugins/jm/canvasImg.js"></script>
+<script type="text/javascript">
+
+//腾讯个推回调行数
+var resultCallback = function(ret, err) {
+    if (ret.status) {
+        console.log("注册个推成功，token为：" + $api.jsonToStr(ret));
+    } else {
+        console.log("注册个推失败，错误码：" + err.code + "，错误信息：" + err.msg);
+    }
+};
+
+//收到透传消息
+var resultCallback1 = function(ret, err) {
+    console.log("[信鸽]收到透传消息，title：" + ret.title + "，content：" + ret.content +
+        "，customContent：" + ret.customContent);
+};
+//收到通知被展示的回调
+var resultCallback2 = function(ret, err) {
+    console.log("[信鸽]收到通知被展示的回调，title：" + ret.title + "，content：" + ret.content + "，customContent：" + ret.customContent + ",activity:" + ret.activity + ",actionType:" + ret.actionType + ",msgid:" + ret.msgid);
+};
+
+var t1 = 0;
+var isrun = false;
+    apiready = function () {
+        $api.fixStatusBar( $api.dom('#head') );
+        api.setStatusBarStyle({
+            style: 'dark',
+            color: 'red'
+        });
+        api.closeFrame({
+             name: 'frame_permission'
+         });
+        //初始化顶部导航条
+        pageMol.initlize();
+        //初始化底部导航栏
+        if(istest()){
+          pageMol.NVTabBarInit_ios();
+        }else{
+          pageMol.NVTabBarInit();
+        }
+
+        //初始化顶部导航条
+        pageMol.BindCateList();
+
+        //首次head高度没属性；做标记手动增加高度
+        pageMol.isflag = true;
+        pageMol.fnChange(0);
+        pageMol.isflag = false;
+
+        //同步返回结果：
+        var newapp = api.getPrefs({sync: true,key: 'newapp'});
+        if(!newapp || newapp == ''){
+          //  pageMol.openNewApp();
+        }
+
+
+        //消息事件；登录成功
+        api.addEventListener({
+            name: 'loginsucess'
+        }, function(ret, err) {
+            api.closeToWin({
+                name: 'main'
+            });
+              //  pageMol.fnChange(0);
+             toast2("用户:"+ret.value.username+" 登录成功");
+
+             pageMol.downShareImg();
+
+            //绑定推送账号
+            var params = { account: usermgr.get_userid() };
+            var tencentPush = api.require('tencentPush');
+            tencentPush.registerPush(params, resultCallback);
+        });
+
+        //消息事件；退出登录
+        api.addEventListener({
+            name: 'loginout_event'
+        }, function(ret, err) {
+            pageMol.fnChange(0);
+        });
+
+        //消息事件；回到首页
+        api.addEventListener({
+            name: 'home_event'
+        }, function(ret, err) {
+            pageMol.fnChange(0);
+            var frames = api.frames();
+        });
+
+        //消息事件；改变头部颜色
+        api.addEventListener({
+            name: 'changecolor_event'
+        }, function(ret, err) {
+             var box=document.getElementById('head');
+             box.style.background=ret.value;
+        });
+
+        //消息事件；退出登录
+        api.addEventListener({
+            name: 'swepr3_frame_event'
+        }, function(ret, err) {
+            pageMol.swperframe3(ret.value);
+        });
+
+
+        //加入腾讯个推送
+        var tencentPush = api.require('tencentPush');
+        //打开调试；上线关闭
+        var param = {debug:true};
+        tencentPush.config(param);
+        tencentPush.registerPush(resultCallback);
+        var params = { name: "message" };
+        tencentPush.setListener(params, resultCallback1);
+        var params2 = { name: "notifactionShow" };
+        tencentPush.setListener(params2, resultCallback2);
+
+
+        //应用从后台回到前台事件； 监听剪切板内容；提示是否搜索
+        api.addEventListener({
+            name:'resume'
+        }, function(ret, err){
+            SerchTitle();
+        });
+        if(!isrun){
+            SerchTitle();
+        }
+
+
+        isrun = true;
+
+        //消息事件；当用户授权成功 获得code消息
+        api.addEventListener({
+            name: 'authorcode'
+        }, function(ret, err) {
+            if(ret.value.m_code){
+                var isrid = ret.value.isrid; //请求session交换 并获取渠道 和 会员ID
+                Taobao.gettoekn(ret.value.m_code,usermgr.get_usertoken(),isrid);
+            }
+            else {
+               toast2("授权失败");
+            }
+        });
+
+        api.addEventListener({
+            name: 'keyback'
+        }, function(ret, err) {
+            var time_now = Date.parse(new Date());
+            if (time_now - t1 > 1000) {
+                t1 = time_now;
+                toast("连续按2次回退键,关闭APP");
+            }else {
+              api.closeWidget({silent : true});
+            }
+        });
+
+    }
+
+    //展开分类
+    $api.addEvt($api.dom('.jd_drop'), 'click', function(){
+          var is_cates_frame = api.getGlobalData({
+              key: 'is_cates_frame'
+          });
+          if(is_cates_frame == 0 || !is_cates_frame){
+              var win_height = $api.dom('#head').offsetHeight;
+              api.openFrame({
+                  name: 'frame_catesh',
+                  url: 'widget://html/dialog/frame_cates.html',
+                  bgColor:'rgba(0,0,0,0.5)',
+                  rect: {
+                      x: 0,
+                      y: win_height,
+                      w: api.winWidth,
+                      h: api.winHeight
+                  },
+                  animation:{
+                      type:"movein",
+                      subType:"from_top",
+                      duration:50
+                  },
+                  bounces:false
+              });
+          }else {
+              api.closeFrame({
+                name: 'frame_catesh'
+              });
+              api.setGlobalData({
+                  key: 'is_cates_frame',
+                  value: 0
+              });
+          }
+
+    });
+
+    function openserch(){
+        api.openWin({
+            name: 'serachwin',
+            url: './serachwin.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+    }
+
+    //选择分类
+    function SelCate(id)
+    {
+      var ellist = $api.domAll('#cateel');
+      for (var i = 0; i < ellist.length; i++) {
+           if(i == id){
+             $api.addCls(ellist[i], 'on');
+           }
+           else {
+             $api.removeCls(ellist[i], 'on');
+           }
+      }
+      api.setFrameGroupIndex({
+          name: pageMol.framegroupname[0],
+          index: id
+      });
+
+    }
+
+    function SerchTitle(){
+      //获取剪切版内容
+      var clipBoard = api.require('clipBoard');
+      clipBoard.get(function(ret, err) {
+          if (ret) {
+              var txtstr = ret.value;
+              var txtstr1 = txtstr.replace(/\s*/g,"");
+              if(txtstr!=null && txtstr != "" && txtstr1 !="" && typeof txtstr != "undefined" ){
+                var is_search_frame = api.getGlobalData({
+                    key: 'is_search_frame'
+                });
+                //判断是否是自己APP复制内容
+                var copyvalue = api.getPrefs({sync: true,key: 'copyvalue'});
+                if(copyvalue == txtstr){
+                    is_search_frame = true;
+                }
+                if(!is_search_frame || is_search_frame == 0){
+                    api.openFrame({
+                        name: 'frame_search',
+                        url: 'widget://html/dialog/frame_search.html',
+                        bgColor:'rgba(0,0,0,0.5)',
+                        rect: {
+                            x: 0,
+                            y: 0,
+                            w: api.winWidth,
+                            h: api.winHeight
+                        },
+                        pageParam: {
+                           str: txtstr
+                        },
+                        animation:{
+                            type:"movein",
+                            subType:"from_top",
+                            duration:200
+                        },
+                        bounces:false
+                    });
+
+                      clipBoard.set({
+                          value: ''
+                      }, function(ret, err) {});
+                }
+
+
+              }
+          }
+      });
+
+    }
+
+</script>

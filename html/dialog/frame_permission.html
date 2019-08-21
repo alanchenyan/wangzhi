@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>权限提示</title>
+      <style>
+      body{
+            background-color:#eee;
+
+        }
+        .headtip{
+            background-image:url(../../image/persionn.png);
+            background-repeat:no-repeat;
+            width:300px; height:374px;
+            background-size:100% 100%;
+            -webkit-box-shadow: #666 0px 0px 10px;
+   -moz-box-shadow: #666 0px 0px 10px;
+   box-shadow: #666 0px 0px 10px;
+   z-index:9999;
+   position: absolute;
+        }
+        .maindiv{
+            width: :50%;
+            margin-left: 8%;
+
+        }
+        .titlen{
+          width:250px;
+          height:100px;
+          background-color: #fff;
+          padding: 10px;
+        }
+
+
+      </style>
+  </head>
+  <body>
+    <div class="maindiv" style="background-color:#eee;z-index:9999">
+          <div>
+              <div class="headtip" style=" "></div>
+
+              <!--<div class="btn" style=" ">
+                  <div class="btntt" id="btn1" style="color:#9C9C9C;border-right:1px solid #eee" > 取消 </div>
+                <div class="btntt" id="btn2" style="color:#FF3030" > 确定 </div>
+              </div>-->
+        </div>
+    </div>
+
+
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/common.js"></script>
+  <script type="text/javascript" src="../../script/usermgr.js"></script>
+  <script type="text/javascript" src="../../script/topsdk/taobao.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+            $api.css($api.dom(".maindiv"),'margin-top:'+api.winHeight/3.7+"px");
+
+            var procbg = document.createElement("div"); //首先创建一个div
+            procbg.setAttribute("id","mybg"); //定义该div的id
+            procbg.style.background = "#000000";
+            procbg.style.width = "100%";
+            procbg.style.height = "100%";
+            procbg.style.position = "fixed";
+            procbg.style.top = "0";
+            procbg.style.left = "0";
+            procbg.style.zIndex = "1";
+            procbg.style.opacity = "0.6";
+            procbg.style.filter = "Alpha(opacity=70)";
+            document.body.appendChild(procbg);
+
+            //获取剪切版内容参数
+            var itemstr = api.pageParam.str;
+
+            //取消
+            $api.addEvt($api.dom('.headtip'), 'click', function(){
+
+              //去设置权限
+                  api.requestPermission({
+                      list:["storage"],
+                      code:1
+                  }, function(ret, err){
+                  });
+
+                 //初始化分类数据
+                 loadCateList(function(list){
+                      //进入主界面
+                      api.openWin({
+                          name: 'main',
+                          url: 'widget://html/main.html',
+                          bounces: false,
+                          vScrollBarEnabled: false,
+                          hScrollBarEnabled: false,
+                          slidBackEnabled: false
+                      });
+                 });
+
+            });
+
+
+      };
+  </script>
+  </html>

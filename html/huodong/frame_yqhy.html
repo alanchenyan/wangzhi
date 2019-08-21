@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+      <title>邀请好友-活动</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+
+      <link rel="stylesheet" type="text/css" href="../../css/yqhy/mui.min.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/yqhy/friend.css"/>
+      <style>
+      .set-up{
+          position: relative;
+          left: 0;
+          top: 0;
+
+          margin-top: 0px;
+          height: 100px;
+          animation-name:ca;
+          animation-iteration-count:1;
+          animation-duration:2s;
+          animation-iteration-count:infinite;
+      }
+      @-webkit-keyframes myname{
+    0%{
+        position: relative;
+        top: -4.1rem;
+    }
+    100%{
+        top: 4.1rem;
+    }
+}
+@-webkit-keyframes ca{
+    0%, 75%{-webkit-transform: none;transform: none}
+        75%,78%{-webkit-transform: scale(1);transform: scale(1);}
+        81%,84%{-webkit-transform: scale(1.1);transform: scale(1.1);}
+        84%,91%{-webkit-transform: scale(1.05);transform: scale(1.05);}
+        91%,90%{-webkit-transform: scale(1.2);transform: scale(1.2);}
+        90%,100%{-webkit-transform: scale(1);transform: scale(1);}
+}
+
+.prev-img-bg{
+	width: 30px;
+	height: 30px;
+	background-color:rgba(0,0,0,.5);
+	position: absolute;;
+	z-index: 9999;
+	border-radius: 50%;
+	top: 30px;left: 15px;
+}
+.prev-img-bg>img{
+	width: 15px;height: 15px;
+	margin-top: 7px;
+	margin-left: 6px;
+}
+      </style>
+  </head>
+  <body>
+    <div class="mui-content" >
+      <div class="headd">
+
+        <div class = 'prev-img-bg'  onclick = "back();">
+          <img src="../../image/backw.png" alt="placeholder+image"  onclick = "back();">
+        </div>
+      </div>
+  		<div id="con-top" >
+  			<span><img src="../../image/huodong/st.png" /></span>
+  			<!-- <a href="" class="guize">规则</a> -->
+  		</div>
+             <div id="zhanji"  onclick="openwin('./inviteframe','邀请',0)">
+                <img class="set-up" src="../../image/huodong/button.png">
+             </div>
+             <div id="jilu">
+             	<div class="jilu-top">
+             		<span style="font-size: 16px;font-weight: bold;width: 100%;text-align: center;display: block;float: left;">
+             			每成功邀请一位好友奖励4元，分3次发放
+             		</span>
+             		<span style="font-size: 12px;width: 100%;text-align: center;display: block;float: left;color: #ccc;margin-top: 10px;">
+             			好友当日
+             			<span style="color:#FF8A44;">使用网值时长</span>
+             			>3分钟，即可获得对应奖励
+             		</span>
+             	</div>
+             	<div class="jilu-box">
+             		<div class="jilu-box-left">好友登录并淘宝授权</div>
+             		<div class="jilu-box-right">+1元</div>
+             	</div>
+             	<div class="jilu-box">
+             		<div class="jilu-box-left">好友首次下单</div>
+             		<div class="jilu-box-right">+1元</div>
+             	</div>
+             	<div class="jilu-box">
+             		<div class="jilu-box-left">好友连续登陆7天</div>
+             		<div class="jilu-box-right">+2元</div>
+             	</div>
+
+             </div>
+             <div id="con-btom">
+             	<span style="font-weight: bold;width: 100%;float: left;text-align: center;margin-top: 20px;">
+             		怎么邀请好友
+             	</span>
+             	<span style="width: 100%;float: left;text-align: center;margin-top: 15px;font-size: 15px;color: #ccc;">
+             		——简单三步  立得收益——
+             	</span>
+             	<img src="../../image/huodong/p7.png"/>
+             </div>
+             <div  onclick="openwin('inviteframe','邀请',0)" class="button">
+             	<img src="../../image/huodong/bg.png"/>
+            </div>
+  	</div>
+
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/common.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+          $api.fixStatusBar( $api.dom('.con-top') );
+      };
+
+      function back()
+      {
+         api.closeWin();
+          api.closeFrame();
+
+      }
+  </script>
+  </html>

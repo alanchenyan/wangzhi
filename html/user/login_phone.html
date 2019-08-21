@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>输入手机号</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/user.css"/>
+
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = '' id = 'header'>
+             <div class = 'padding-t-10' style = 'height: 35px;'>
+                <img src="../../image/back.png" class = 'normal-bk-img'>
+                <!-- <p class = 'normal-head-title'>登陆</p>   -->
+             </div>
+        </div>
+
+
+        <div class= 'login-body'>
+            <img src="../../image/banner/shushouji.png" class = 'login-banner'>
+
+            <p style = 'text-align: center;font-size: 12px;margin-top: 15px;'>未注册手机验证后将自动登录</p>
+
+            <input id="telphone" type="tel"  style="height:35px;font-size:20px; margin-top:15px; margin-left:20%;" autofocus="autofocus"  placeholder="输入手机号"  >
+
+            <div class = 'btn bg-btn-red weixin-btn' id="xiayibu" style = 'margin-top: 50px;box-shadow: 5px 5px 5px #efb7a9; margin-bottom:10px' >
+                <span>下一步</span>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/aui-dialog.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+<script type="text/javascript">
+function isPoneAvailable(phone) {
+            var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+            if (!myreg.test(phone)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+
+     $api.addEvt($api.dom('#xiayibu'), 'click', function(){
+            var phone = $api.val($api.dom("#telphone"));
+            if(!isPoneAvailable(phone)){
+                toast2("手机号码无效");
+                return;
+            }
+            else {
+                isPhone(phone);
+            }
+            //alert(phone);
+
+     });
+
+     //退出事件
+     $api.addEvt($api.dom('.normal-bk-img'), 'click', function(){
+            api.closeWin();
+     });
+
+}
+
+
+//打开短信页面；发送短信
+function openSMSFrame()
+{
+
+  var phone = $api.val($api.dom("#telphone"));
+  usermgr.set_phone(phone);
+  var souretype =  api.pageParam.soure;
+  var param = Array();
+  param.name="login_sms";
+  param.url = "../user/login_sms_code.html";
+  param.reload = false;
+  param.pageParam = {soure:souretype};
+  openFram(param);
+}
+
+//打开邀请码界面
+function openInviteCode()
+{
+  var souretype =  api.pageParam.soure;
+  var param = Array();
+  param.name="login_invite";
+  param.url = "../user/login_invite_code.html";
+  param.reload = false;
+  param.pageParam = {soure:souretype};
+  openFram(param);
+}
+
+//检查手机号是否存在。。。
+/*  2-微信登录绑手机   1-手机号登录用户 */
+function isPhone(phone){
+  api.showProgress({title: '努力加载中...',text: '',modal: false});
+  var soure =  api.pageParam.soure;
+  var dialog = new auiDialog({});
+  var parms = {
+      url:"user/getphone/phone/"+phone,
+      callback:function(ret){
+          api.hideProgress();
+          if(ret.flag)
+          {
+             if(Number(ret.data) == 0){
+                 //未注册;;跳转到短信验证接口接口
+                 if(soure == 1)
+                 {
+                    if(usermgr.get_isreg() == 0)
+                    {
+                      //手机号登录情况 - 未注册手机---邀请码开始重新注册
+                      dialog.alert({ title:"粉喵提示", msg:'该手机号码未注册',buttons:['知道了','去注册'],},function(ret){
+                              if(ret){
+                                  if(ret.buttonIndex == 2){
+                                      var phone = $api.val($api.dom("#telphone"));
+                                      usermgr.set_phone(phone);
+                                      usermgr.set_isreg(1);
+                                      openInviteCode();
+                                  }
+                              } })
+                       return;
+                    }
+                    else {
+                        //用户通过注册来的；显示到手机文本上
+                        //$api.val($api.dom("#telphone"),usermgr.get_phone());
+                        openSMSFrame();
+
+                    }
+
+                 }
+                 if(soure == 2)
+                 {
+                    //微信登录情况-- 未注册手机- 短信验证进行绑定
+                    openSMSFrame();
+
+                 }
+
+             }
+             else {
+                 if(soure == 1)
+                 {
+                     //手机账号登录情况---已注册手机-- 跳转短信验证进行登录
+                     openSMSFrame();
+
+                 }
+                 if(soure == 2)
+                 {
+                   //微信登录情况--手机也注册了---提示用户手机绑定，去登录
+                   dialog.alert({ title:"粉喵提示", msg:'该手机号码已注册',buttons:['换个手机号','重新输入'],},function(ret){
+                           if(ret){
+
+                           } });
+                 }
+
+             }
+          }
+          else {
+              toast2('当前网络故障!请重试');
+          }
+      }
+  }
+  JM_GET(parms);
+
+}
+
+
+
+</script>

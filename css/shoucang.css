@@ -1,0 +1,69 @@
+/*商品样式*/
+.aui-list-item-media{
+		width: 8.0em !important;
+		padding-right: 10px !important;
+	}
+	.aui-list{
+		background-image: none !important;
+	}
+	.good-chose>.aui-list-item{
+		background-image: none !important;
+		padding-left: 10px !important;
+	}
+	.aui-list-item-title
+	{
+		font-size: 14px !important;
+		font-weight: bolder !important;
+	}
+	.goods-text{
+		font-size: 12px !important;
+		/* -webkit-transform:scale(0.9) !important;	 */
+		color: #2c2c2c;	
+		text-align: left !important;
+	}
+	.goods-price{
+		margin-left: -3px;
+		margin-top: 15px;
+	}
+	.new_price{
+		font-size: 16px !important;
+		color: red;
+		/* font-weight: bolder; */
+	}
+	.old_price
+	{	
+		font-size: 12px !important;
+		-webkit-transform:scale(0.9) !important;
+		/*text-decoration:line-through;*/
+	}
+	.pay_people_box{
+		margin-left: 15px;
+		font-size: 12px !important;
+		/* -webkit-transform:scale(0.9) !important; */
+	}
+	.span-red-bg{
+		font-size: 12px !important;
+		padding: 1px 3px 1px 3px;
+		background-color: red;
+		color: #fff;
+		/* -webkit-transform:scale(0.9) !important; */
+		border-radius: 2px;
+	}
+	.span-cc-bg{
+		font-size: 12px !important;
+		background-color: #dff0d8;
+		padding: 1px 5px 1px 5px;
+		border-radius: 2px;
+		color: #28a745;
+	}
+
+	.title-box{
+		position: relative;
+	}
+
+	.title-img{
+		width: 18px;
+		height: 10px;
+		margin-right: 8px;
+		/*margin-top: 2px;*/
+	}

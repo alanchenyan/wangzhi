@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>客服中心</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+
+    <style>
+        .aui-list-item-title{
+            font-size: 15px !important;
+        }
+        .rebtn{
+          float: right;
+          margin-right: 10px;
+         background-color: #fa758c;
+          border-radius:20px;
+          width: 60px;
+          text-align: center;
+          color: #fff
+        }
+
+        .bg-btn-red{
+            background-color: #e06666 ;
+            background:linear-gradient(to right,#e06666 , #f93535 , #f93535);
+            color:#fff;
+        }
+
+        .btn
+        {
+            text-align: center;
+            width: 80%;
+            margin:0 auto;
+            border-radius: 25px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .weixin-btn{
+            font-size: 14px;
+        }
+        .kefunei{
+           width: 90%;
+           height: 100px;
+           line-height: 100px;
+           margin-left: 5%;
+           border-radius: 10px;
+           background-color:	#FFDAB9;
+           margin-top: 15px;
+           text-align: center;
+           font-weight: bold;
+           color: red
+        }
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = 'normal-head-box' id = 'header'>
+             <div class = 'padding-t-10'>
+                <img src="../../image/back.png" class = 'normal-bk-img'>
+                <p class = 'normal-head-title'> 客服中心 </p>
+             </div>
+        </div>
+
+        <div class="aui-content aui-margin-b-25" style="margin-top:80px;">
+
+         <div class="kefunei">客服公众号:网值公众号 </div>
+
+
+          <div class = 'btn bg-btn-red weixin-btn' id="xiayibu" style = 'margin-top: 30px;box-shadow: 5px 5px 5px #efb7a9; margin-bottom:10px' >
+              <span>复制公众号名称</span>
+          </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+
+<script type="text/javascript">
+var pageMol = {
+
+  initlize:function() {
+
+  },
+}
+
+
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+     //if(usermgr.checkLogin())
+  //   {
+
+
+    // }
+
+      //复制
+     $api.addEvt($api.dom('#xiayibu'), 'click', function(){
+             CopyData("hubei3210");
+     });
+
+     //关闭
+    $api.addEvt($api.dom('.normal-bk-img'), 'click', function(){
+           api.closeWin();
+
+    });
+
+}
+
+
+</script>

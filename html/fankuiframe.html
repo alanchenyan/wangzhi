@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>意见反馈</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <style>
+      body{
+        font-size: 12px;
+      }
+      .head-help{
+        font-size: 14px;
+        background-color: #fff;
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 3px;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 10px;
+        color:red;
+      }
+      .input-box{
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 5px;
+      }
+      .text-boxs{
+         background-color:#fff;
+         height: 150px;
+         border-radius: 3px;
+         font-size: 14px;
+      }
+      .adimg-box{
+        background-color: #fff;padding:10px;
+      }
+      .adimg{
+         width: 60px;height: 60px; 
+      }
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = 'normal-head-box' id = 'header'>
+             <div class = 'padding-t-10'>
+                <img src="../image/back.png" class = 'normal-bk-img'>
+                <p class = 'normal-head-title'>意见反馈</p>
+             </div>
+        </div>
+
+        <div  class = 'head-help'>
+            如有疑问需要帮助,请联系专属客服快速解决
+        </div>
+
+        <div class = 'input-box'>
+            <textarea rows="3" cols="20" class = 'text-boxs' placeholder="请在此输入您的宝贵意见"></textarea>
+        </div>
+
+        <div style = 'margin:15px;'>
+            点击添加图片
+        </div>
+
+        <div class = "adimg-box">
+            <img src="../image/banner/adimg.png" class = 'adimg'>
+        </div>
+
+        <div class = 'take-ok-btn'>
+            提交
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../plugins/swiper/swiper.min.js"></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+}
+
+
+
+</script>

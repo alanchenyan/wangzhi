@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>商品详情</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../plugins/swiper/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/shopgood.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/loaders.min.css" />
+
+    <script type="text/javascript" src="../../plugins/swiper/swiper.min.js"></script>
+    <style>
+    .z_1{
+      float:right;
+      margin-right:20px;
+      font-size:13px
+    }
+
+    </style>
+</head>
+<body style = 'background-color: #fff;'>
+<div id="good_pannel" >
+	<div class = 'overlay'></div>
+	<div class = 'prev-img-bg'   onclick = "api.closeWin();">
+		<img src="../../image/backw.png" alt="placeholder+image">
+	</div>
+
+  <div class = 'fs-img-bg' onclick='api.closeWin();'>
+    <img src="../../image/homew.png" onclick='api.closeWin();' >
+  </div>
+
+	<div class = "head_mao" style = 'background-color: #fff;height: 62px;padding-top: 20px;display: none;'>
+		<img class = "back_img" src="../../image/back.png" alt="placeholder+image" onclick = "api.closeWin();">
+		<ul class = 'head_mao_ul'>
+			<li class = "head_act" onclick = "fngoscroll('good_baisc');">宝贝</li>
+			<li onclick = "fngoscroll('good_detail');">详情</li>
+			<li onclick = "fngoscroll('good_tj');">推荐</li>
+		</ul>
+		<img class = "fs_img" src="../../image/home.png" alt="placeholder+image">
+	</div>
+	<div style = 'clear: both;'></div>
+
+	<div class = 'good_body'>
+		<!-- 基本信息 -->
+		<div name="good_basic" id = "good_basic">
+			<!-- 轮播图片 宝贝图片 -->
+		    <div class="swiper-container" id = "swiper-container-one" style="height:350px;overflow:hidden;">
+		        <div class="swiper-wrapper" id ="good_imgs">
+
+		        </div>
+		        <!-- Add Pagination -->
+		        <div class="swiper-pagination-one"></div>
+		    </div>
+
+		    <!-- 标题,价格,券，小标题，服务 -->
+		    <div class = "good_info_box">
+		    	<div>
+					<img class = "good_sign" src="../../image/frame0/tianmao.png"  >
+					<p class = "good_title" onclick="copytitle()"> </p>
+
+		    	</div>
+		    	<div style = "clear: both;"></div>
+				<div class = "price_box">
+          <span class = "dicount_sign">卷后价</span>
+					<span class = "good_pirce_sign">￥</span>
+					<span class = "good_price"></span>
+
+					<span class = "prime_word">原价 ￥</span><span class = "good_prime"></span>
+					<span class = "buy_box"><span class = "rrr"></span>人已买</span>
+				</div>
+
+
+        <!--优惠券信息 -->
+				<div class = "discount_box"   onclick="open_tk_item()">
+					<div class = 'left-cir'></div>
+					<div class = 'right-cir'></div>
+					<div class = "discount_banner">
+						<div class = "discount_info">
+							<div class = "discount-title"></div>
+							<div class = 'disount-use-time'></div>
+						</div>
+						<div class = "discount_get">
+							立即领取
+						</div>
+					</div>
+				</div>
+      <!-- 结束-->
+      <!-- 隔层 -->
+        <div class = "space_box" id="el_yc2"></div>
+				<div class = "groom_box" id="el_yc1" >
+    				 <div class="shrae_div"  onclick = 'opensharewin();'>
+               <span class="s_1">分享赚</span><span id="fl_1"></span>
+               <span class="z_1"  >分享给好友<span style="font-weight:bold;margin-left:5px">></span></span>
+             </div>
+             <div class="upuser_div"  onclick="openwin('jm_title','升级团长',app.frame_userlevel)">
+               <span class="s_2">升级赚</span><span id="fl_2"></span>
+               <span class="z_1" >升级会员<span style="font-weight:bold;margin-left:5px">></span></span>
+             </div>
+				</div>
+
+
+		    </div>
+		</div>
+
+
+		<!-- 隔层 -->
+	    <div class = "space_box"></div>
+
+	    <!--  店名-->
+		<div class = 'store_info_box'>
+			 <div class="aui-media-list-item-inner">
+                <div class="aui-list-item-media">
+                    <img class = "store_logo" src="../../image/jm_logo.png">
+                </div>
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-text">
+                        <div id="shoptitle" class="aui-list-item-title store-title"></div>
+                        <div  class="aui-list-item-right">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "store-assess-box">
+
+            </div>
+		</div>
+
+		<!-- 隔层 -->
+	    <div class = "space_box"></div>
+
+	    <!-- 详情 -->
+	    <div name = "good_detail" id = "good_detail"  style="background-color:#fff; text-align:center;  ">
+        <p class="sell-good-title"> <span class="line"></span> <span class="txt">商品描述</span> <span class="line"></span> </p>
+  			<div class = "goods_detail_box"  >
+          <!-- loading 界面 -->
+          <section class="list-wrapper" style="background-color:#fff; margin-top:70px" id="list-wrapper">
+           <div class="list-item-loading">
+            <div class="loader-inner ball-pulse">
+             <div></div>
+             <div></div>
+             <div></div>
+            </div>
+           </div>
+          </section>
+
+  			</div>
+
+			<div class = "goods_type_box" style = "display: none;">
+				<ul class = "type-ul-box">
+					<li><span class = "goods-type-name">品牌</span><span class = "goods-type-value">天弘袋鼠</span></li>
+					<li><span class = "goods-type-name">大小</span><span class = "goods-type-value">小</span></li>
+					<li><span class = "goods-type-name">容纳电脑尺寸</span><span class = "goods-type-value">10英寸</span></li>
+				</ul>
+			</div>
+	    </div>
+
+
+	</div>
+
+	<div class = 'footer'  >
+	<!--	<div class = 'footer-level'><span>升级高级会员，可赚取3.14元佣金返利</span> <img src="../image/banner/rg.png" class = 'lever-right-img'><span class = 'go-level'>升级</span></div>-->
+			<!--<div class = 'footer-fs' onclick = 'opensharewin();'><span class = "fs_foot_span">分享</span></div>
+		<div class = 'footer-take' onclick="open_tk_item()"><span class = "yh_foot_span">领劵￥<span>15</span></span></div> -->
+    <div class="f_home" onclick="btnevent(1)">
+        <p style="margin-left:30%; "> <img src="../../image/home.png" height="22px" alt=""> </p>
+        <p class="p1"  > 首页 </p>
+    </div>
+    <div class="f_home" onclick="btnevent(2)">
+        <p style="margin-left:30%; " > <img id="sc_img" src="../../image/sz.png" height="22px" alt=""> </p>
+        <p class="p1"  > 收藏 </p>
+    </div>
+    <div class="f_home2">
+            <div class="btn_line">
+                  <div class="share_btn" onclick="btnevent(3)" id="el_yc3" > 分享 </div>
+                  <div class="share_buy" onclick="btnevent(4)" id="el_yc4"> 购买 </div>
+                  <div class="share_buy2" onclick="btnevent(4)" id="el_yc6" > 优惠购物此商品 </div>
+            </div>
+    </div>
+	</div>
+
+</div>
+<canvas id="sharecanvas" style="background-color:white; width:80%;display: none;" class="am-text-center am-center"></canvas>
+<!--弹出层-->
+<div id="loading_bg">
+    <div class="loading_open"> <img src="../../image/opentao.gif"  /> <div>
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/topsdk/taobao.js"></script>
+<script type="text/javascript" src="../../script/shopgood.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+<script type="text/javascript" src="../../plugins/jm/jmdialog.js"></script>
+<script type="text/javascript" src="../../plugins/jm/canvasImg.js"></script>
+<script>
+
+apiready = function () {
+  if(istest()){
+      $api.css($api.dom("#el_yc1"),"display:none");
+      $api.css($api.dom("#el_yc2"),"display:none");
+      $api.css($api.dom("#el_yc3"),"display:none");
+      $api.css($api.dom("#el_yc4"),"display:none");
+    //  $api.css($api.dom("#el_yc5"),"display:none");
+      $api.css($api.dom("#el_yc6"),"display:block");
+  }
+    pageMol.goodItem = api.pageParam.item;
+    pageMol.itemID = pageMol.goodItem.itemid;
+    if(!pageMol.goodItem ){
+        //ID不存在
+        toast("商品不存在:"+pageMol.itemID);
+        return;
+    }
+    if(pageMol.goodItem.couponprice > 0){
+        $api.text($api.dom(".share_buy"),"领券购买")
+    }
+
+    //获取收藏数据
+    api.getPrefs({
+        key: pageMol.KEYSHOU
+    }, function(ret, err) {
+          pageMol.shoucdata = ret.value;
+          if(pageMol.shoucdata!=null && pageMol.shoucdata!='')
+          {
+            var shouobj = $api.strToJson(pageMol.shoucdata);
+            if(shouobj){
+               //收藏数据
+               for (var i = 0; i < shouobj.length; i++) {
+                   var info = shouobj[i];
+                   if(info.itemid == pageMol.itemID){
+                        var el = $api.dom("#sc_img");
+                        $api.attr(el,'src',"../../image/szac.png");
+                        pageMol.issc = true;
+                        break;
+                   }
+               }
+            }
+          }
+
+    });
+
+    //alert(pageMol.itemID);
+    pageMol.initlize();
+    if(pageMol.datatype ==2){
+        //京东详情
+          pageMol.bindItemJd();
+    }
+    else if(pageMol.datatype ==3){
+        //拼多多详情
+        pageMol.bindItemPdd();
+    }
+    else {
+        pageMol.bindItems();
+    }
+
+
+
+}
+
+function copytitle(){
+  var str = $api.text($api.dom(".good_title"));
+  CopyData(str);
+
+}
+
+function openimg(index){
+     CanvasImg.openBrowserImg(pageMol.topimags,index);
+}
+
+//按钮事件
+function btnevent(event_id){
+    if(event_id == 1){
+        //回到首页
+        api.closeWin();
+    }
+    else if(event_id == 2){
+        //收藏
+        fnszbtn();
+    }
+    else if(event_id == 3){
+      opensharewin();
+    }
+    else if(event_id == 4){
+      open_tk_item();
+    }
+}
+
+//用户请求分享
+function opensharewin(){
+  if(!usermgr.checkLogin()){
+    return ;
+  }
+  if(pageMol.datatype ==2){
+      //京东
+      pageMol.getlinkurlJd(true);
+  }
+  else if(pageMol.datatype ==3){
+      //拼多多
+      pageMol.getlinkurlpdd(true);
+  }else {
+    //提示渠道授权
+    if(Number(usermgr.get_rid()) == 0){
+       authoTaobao(0);
+      return;
+    }
+    pageMol.sharegood();
+  }
+
+
+}
+
+//用户购买接口
+function open_tk_item(){
+  if(!usermgr.checkLogin()){
+    return ;
+  }
+  if(pageMol.datatype == 0 || pageMol.datatype == 1){
+    if(!istest()){
+      //提示渠道授权
+      if(Number(usermgr.get_rid()) == 0){
+        authoTaobao(0);
+        return;
+      }
+    }
+    openLoadin();
+    pageMol.getlinkurl();
+  }
+  else if(pageMol.datatype == 2){
+    //openLoadin();
+    pageMol.getlinkurlJd();
+  }
+  else if(pageMol.datatype == 3){
+    //openLoadin();
+    pageMol.getlinkurlpdd();
+  }
+}
+
+
+ function openLoadin(){
+     coverDiv();
+     var frameWidth = (api.frameWidth-250)/2;
+     var frameHeight = api.frameHeight/2-100;
+     $api.css($api.dom(".loading_open")," left: "+frameWidth+"px;top:"+frameHeight+"px;display:block")
+     var loadingdiv=document.getElementById("loading_bg");
+     loadingdiv.addEventListener("touchstart",function(e){
+                   e.stopPropagation();
+                   e.preventDefault();
+     },false);
+
+ }
+ function closeLoading(){
+    hideZhe();
+    $api.css($api.dom(".loading_open"),"display:none")
+ }
+  //显示遮罩
+  function coverDiv(){
+      var procbg = document.createElement("div"); //首先创建一个div
+      procbg.setAttribute("id","mybg"); //定义该div的id
+      procbg.style.background = "#000000";
+      procbg.style.width = "100%";
+      procbg.style.height = "100%";
+      procbg.style.position = "fixed";
+      procbg.style.top = "0";
+      procbg.style.left = "0";
+      procbg.style.zIndex = "500";
+      procbg.style.opacity = "0.6";
+      procbg.style.filter = "Alpha(opacity=70)";
+      document.body.appendChild(procbg);
+
+      procbg.addEventListener("touchstart",function(e){
+                    e.stopPropagation();
+                    e.preventDefault();
+      },false);
+
+      procbg.addEventListener("touchstart",function(e){
+                    e.stopPropagation();
+                    e.preventDefault();
+      },false);
+
+
+
+  }
+  //取消遮罩
+  function hideZhe() {
+      var body = document.getElementsByTagName("body");
+      var mybg = document.getElementById("mybg");
+      body[0].removeChild(mybg);
+  }
+
+  //收藏按钮
+  function fnszbtn(){
+     var el = $api.dom("#sc_img");
+     if(pageMol.issc){
+         $api.attr(el,'src',"../../image/sz.png");
+         pageMol.issc = false;
+     }else {
+         $api.attr(el,'src',"../../image/szac.png");
+         pageMol.issc = true;
+         toast2("收藏成功!");
+     }
+
+    //pageMol.goodItem
+    //设置收藏文件
+    var newjson = '';
+    if(pageMol.shoucdata!=null && pageMol.shoucdata !=''){
+        var shouobj = $api.strToJson(pageMol.shoucdata);
+        //删除
+        for (var i = 0; i < shouobj.length; i++) {
+            var info = shouobj[i];
+            if(info.itemid == pageMol.itemID){
+                 shouobj.splice(i,1)
+                 break;
+            }
+        }
+        if(pageMol.issc){
+            shouobj.unshift(pageMol.goodItem);
+        }
+        //最大收藏50个；删除最后一个
+        if(shouobj.length > 50){
+            shouobj.splice(50,1);
+        }
+        newjson = $api.jsonToStr(shouobj);
+    }else {
+      var arr=[];
+      arr.unshift(pageMol.goodItem);
+      newjson = $api.jsonToStr(arr);
+    }
+
+    api.setPrefs({
+        key: pageMol.KEYSHOU,
+        value: newjson
+    });
+
+  }
+
+
+</script>

@@ -1,0 +1,68 @@
+.swiper-container{height:350px;}
+#investproSwiper{margin-top: 1.02rem;}
+#investproSwiper .swiper-slide{width:3.5rem;height:300px;}
+
+.swiper-pagination{
+	margin-top: 200px;
+}
+/*底部*/
+.footer{
+	position: absolute;bottom:5px;z-index: 999;font-size: 14px;width: 100%;
+}
+
+.foot-l-box{
+	float: left;
+	width: 45%;
+	background-color: orange;
+	color:#fff;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 10px;
+	border-radius: 5px;
+}
+.foot-r-box{
+	float: right;
+	width: 45%;
+	background-color: red;
+	color:#fff;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	margin-right: 10px;
+	border-radius: 5px;
+}
+
+/*分享*/
+.fx-title{
+	margin-left: 25px;
+	margin-right: 20px;
+	font-size: 12px;
+}
+
+.fx-box{
+	/*padding:10px;*/
+	padding-top: 10px;
+}
+
+.aui-col-xs-3{
+	padding:5px !important;
+}
+
+.fx-icon{
+	width: 40px;
+	height: 40px;
+	margin:0 auto;
+}
+
+.close-pop{
+	background-color: #eee;
+	font-size: 14px;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+}
+
+.aui-grid-label{
+	font-size: 12px !important;
+}

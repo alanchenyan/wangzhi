@@ -1,0 +1,275 @@
+.main-head{
+	height: 205px;
+	background-image: url('../image/banner/mine_bg.png');
+	background-repeat: no-repeat;
+	background-size:100% 205px;
+	position: relative;
+	min-width: 320px;
+}
+
+.head-main-img{
+	border-radius: 50%;
+	width: 70px;
+	height: 70px;
+	position: absolute;
+	top:45px;left:30px;
+}
+.nick-name-box{
+	position: absolute;
+	top:45px;
+	left:115px;
+}
+.nickname-span{
+	color:#fff;
+	font-size: 14px;
+}
+.user-sign{
+	width:70px;
+	height: 18px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 2px;
+}
+
+.code-box{
+	color:#fff;
+	font-size: 14px;
+	position: absolute;
+	top:85px;
+	left:115px;
+}
+
+.code-span{
+	font-size: 16px;
+	font-weight: bolder;
+	vertical-align: middle;
+}
+
+.copy-span{
+	font-size: 12px;
+	margin-left: 3px;
+	background-color: red;
+	border-radius: 25px;
+	width:40px;
+	text-align: center;
+	-webkit-transform:scale(0.9);
+	vertical-align: middle;
+}
+
+.mess-img{
+	width: 25px;
+	height:25px;
+	position: absolute;
+	top: 35px;
+	right: 45px;
+}
+
+.set-img{
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	top: 35px;
+	right: 10px;
+}
+/*
+.fans-box{
+	font-size: 12px;
+	color: #fff;
+	position: absolute;
+	top: 115px;
+	left: 95px;
+	width: 50%;
+	height: 55px;
+  bottom: -10px;
+  text-align: center;
+	line-height: 35px;
+ border-radius: 10px;
+background: -webkit-linear-gradient(top, #2F4F4F 0%, #1C1C1C 100%);
+
+}
+*/
+.head-money-box{
+	height: 55px;
+	/* background-color: #fff; */
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.head-money-body{
+	/* background-color: #2c2c2c; */
+	/* background: linear-gradient(#525151,#2c2c2c,#2c2c2c); */
+
+
+	background-color:#fff;
+	height: 55px;
+	border-radius: 15px 15px 0px 0px;
+	padding-top: 8px;
+	padding-left: 35px;
+	padding-right: 15px;
+	/*min-width: 316px;*/
+}
+.head-price-box{
+	color:red;
+	font-size: 17px;
+	font-weight: bold;
+	width: 150px;
+}
+.head-take-btn{
+	float: right;
+	background-color: #f65c37;
+	color: #fff;
+	font-size: 13px;
+	margin-top: 8px;
+	width: 80px;
+	border-radius: 3px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+/*收益*/
+.income-box{
+	height: 68px;
+	background-color:#fff;
+		border-radius: 0px 0px 15px 15px;
+	margin-right: 10px;margin-left: 10px;
+	min-width: 300px;
+	-moz-box-shadow: 1px 1px 5px #909090;
+-webkit-box-shadow: 2px 2px 5px #909090;
+box-shadow:2px 2px 5px #eee;
+
+}
+.now-month-icome-box{
+	width:25%;
+	float: left;
+	position: relative;
+	text-align: center;
+	padding-top: 10px;
+  	border-radius: 0px 0px 25px 25px;
+}
+.now-day-icome-box{
+	width:33.333%;
+	float:left;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.now-title-p{
+	padding-bottom: 5px;
+	border-bottom: 0px solid #eee;
+	font-size: 12px;
+	margin-top: 5px;
+}
+
+.prev-title-p{
+	font-size: 12px;
+	margin-top: 10px;
+}
+
+.prev-dol{
+	color:red;
+}
+.prev-price{
+	color:red;
+}
+
+.sy-fbox{
+	background-color: #fff;
+	margin-right: 10px;
+	margin-left: 10px;
+ height: 55px;
+ padding-top: 10px;
+	padding-left: 17px;
+	padding-bottom: 5px;
+	margin-top: 10px;
+ margin-bottom: 2px;
+
+
+}
+.fz-12{
+	font-size: 12px;
+}
+.sy-h4>img{
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.sm-rgb{
+	font-size: 12px;
+	background-color: #f96446;
+	color:#fff;
+	width: 35px;
+	text-align: center;
+	border-radius: 3px;
+}
+/*4个小图标*/
+.icon-four-box{
+	background-color: #fff;
+	min-width: 300px;
+	height: 80px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-top: 5px;
+	border-radius: 15px;
+
+}
+.icon-4-box{
+	text-align: center;
+}
+.icon-4-img{
+	width: 25px;height: 25px;margin:10px auto;
+}
+
+/*会员专享*/
+.vip-auth-box{
+	background-color: #fff;
+	min-width: 300px;
+	height: 245px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 5px;
+	padding-top: 10px;
+	text-align: center;
+	border-radius: 15px;
+
+}
+.class-p-title{
+	font-size: 14px;
+	color:#2c2c2c;
+	/*margin-left: 15px;*/
+	padding-left: 15px;
+
+	padding-bottom: 5px;
+	text-align: left;
+}
+.class-p-title_line{
+	width: 95%;
+	background-color: #eee;
+	height: 1px;
+	margin-left: 2.5%;
+}
+.icon-3-img{
+	width: 35px;height:35px;margin:10px auto;
+}
+.vip-p-title{
+	color:#2c2c2c;
+	font-size: 14px;
+	font-weight: bolder;
+}
+.vip-f-title{
+	font-size: 12px;
+}
+
+/*我的成长值*/
+.my-line-value{
+	background-color: #fff;
+	margin-right: 10px;
+	margin-left: 10px;
+	height: 40px;
+	line-height: 40px;
+	padding-left:15px;
+}

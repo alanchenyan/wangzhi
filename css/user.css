@@ -1,0 +1,103 @@
+/*@charset "utf-8" */
+
+.aui-list-item-title{
+    font-size: 12px !important;
+}
+
+.box-warp{
+    background-image: url('../image/banner/bg_login.png');
+}
+
+.login-title{
+    font-size: 24px;
+    /*font-family:宋体;*/
+    font-family:NSimSun !important;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 50px;
+}
+.login-banner{
+    width: 55%;
+    height: auto;
+    margin:0 auto;
+}
+
+.login-body{
+    margin-top: 40px;
+}
+.bg-btn-red{
+    background-color: #e06666 ;
+    background:linear-gradient(to right,#e06666 , #f93535 , #f93535);
+    color:#fff;
+}
+
+.btn
+{
+    text-align: center;
+    width: 80%;
+    margin:0 auto;
+    border-radius: 25px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.weixin-btn{
+    font-size: 14px;
+}
+
+
+.bg-w-btn{
+    border:1px solid #2c2c2c;
+    font-size: 14px;
+}
+
+.login-input{
+    border-bottom:1px solid #eee !important;
+    font-size: 14px !important;
+    width: 80% !important;
+    margin:0 auto !important;
+    margin-top: 30px !important;
+}
+
+.code-box{
+    width: 80%;
+    margin:0 auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.code-input{
+     border-bottom:2px solid #ccc !important;
+     font-size: 22px !important;
+     font-weight:bold;
+     width: 20%!important;
+     display: inline-block !important;
+     margin-right: 5px !important;
+     text-align: center;
+}
+
+.code-act
+{
+    border-bottom: 2px solid red !important;
+}
+
+.send-msg{
+    text-align: center;font-size: 14px;margin-top: 15px;
+
+}
+
+.footer{
+    font-size: 12px;
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+        .wei-img{
+            width: 18px;
+            height: 15px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-bottom: 2px;
+        }

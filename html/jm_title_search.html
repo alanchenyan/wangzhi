@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>搜索</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <style>
+		header{ background-color: #F6F6F7; }
+		.header-item{
+             position: relative;
+             height: 50px;
+             background-color:#fff;
+             background-color: #F6F6F7;
+        }
+		.home-search-dom{
+            color: #999;
+            margin-left: 45px;
+            height: 35px;
+            line-height: 30px;
+            margin-right: 80px;
+            background-color: #eee;
+            border-radius: 5px;
+            padding-left: 35px;
+            width: 55%;
+            min-width: 160px;
+            outline:none;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .search_img {
+            height: 15px;
+            position: absolute;
+            left: 60px;
+            padding-top: 9px;
+            vertical-align: top;
+            bottom: 18px;
+        }
+
+
+        .back{
+            position: absolute;
+            bottom: 13px;
+            left:11px;
+            height: 20px;
+            width: auto;
+            /*padding-top: 7px;*/
+        }
+        .search_btn{
+        	border-radius: 25px;
+        	background-color: red;color: #fff;font-size: 12px;
+        	width: 50px;height: 30px;
+          text-align: center;
+          line-height: 30px;
+        	position: absolute;top: 12px;left: 80%;
+        	font-size: 12px;
+        }
+
+        .ddtype{
+            float: left;
+            margin-left: 5%;
+            border-radius:10%;
+            border: 1px solid #eee;
+            width: 74px;
+            text-align: center;
+            background-color:	#fff;
+            color:#828282;
+            font-size: 14px;
+            height: 30px;
+            line-height: 30px;
+        }
+        .showtype{
+          color: red;
+          font-weight: bold;
+          font-size: 15px;
+        }
+
+	</style>
+</head>
+<body>
+<div id="wrap" class="flex-wrap flex-vertical">
+	 <header  id="header">
+		<div class="header-item" id="home">
+            <img src="../image/back.png" class="back" onclick= "closefr()">
+
+            <input class = "home-search-dom" id = "home-search-dom" type="search" name="" placeholder="复制淘宝标题搜索更多优惠券~">
+                <!-- <span>推荐收益更高哦~</span> -->
+            <div class = "search_btn">搜索</div>
+
+            <img class = "search_img" src="../image/bride_search.png">
+
+        </div>
+        <div style="bgColor:1px solid blue; width:80%; height:35px; float:left;margin-left:10%; line-height:35px;">
+            <div id="eltaobao" class="ddtype showtype" onclick="sel(0)"  > 淘宝 </div>
+            <div id="eljd" class="ddtype"  onclick="sel(1)" > 京东 </div>
+            <div id="elpdd" class="ddtype"  onclick="sel(2)" > 拼多多 </div>
+        </div>
+	 </header>
+
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+var ser_type = 0;
+var s_key ="";
+function sel(tt){
+  $api.removeCls($api.dom("#eltaobao"),"showtype");
+  $api.removeCls($api.dom("#eljd"),"showtype");
+  $api.removeCls($api.dom("#elpdd"),"showtype");
+  api.closeFrame({
+      name: 'search_frame_list'
+  });
+
+  if(tt==0){
+      ser_type= 0;
+      $api.addCls($api.dom("#eltaobao"),"showtype");
+      openItemFrame(ser_type,s_key);
+  }
+  else if(tt==1){
+      ser_type = 1;
+      //京东
+      $api.addCls($api.dom("#eljd"),"showtype");
+      openItemFrame(ser_type,s_key);
+  }
+  else if(tt==2){
+    ser_type = 2;
+     //拼多多
+     $api.addCls($api.dom("#elpdd"),"showtype");
+     openItemFrame(ser_type,s_key);
+  }
+}
+
+apiready = function () {
+    $api.fixStatusBar( $api.dom('header') );
+    api.setStatusBarStyle({
+        style: 'dark',
+        color: '#fff'
+    });
+    ser_type = 0;
+    s_key = api.pageParam.s_key;
+    document.getElementById("home-search-dom").value = s_key;
+    if(s_key=='')
+      return;
+    addHistlist(s_key);
+    openItemFrame(ser_type,s_key);
+    $api.addEvt($api.dom('.search_btn'), 'click', function(){
+        s_key = document.getElementById("home-search-dom").value;
+        if(s_key=='')
+          return;
+
+        addHistlist(s_key);
+        //关闭窗体
+        api.closeFrame({
+            name: 'search_frame_list'
+        });
+        openItemFrame(ser_type,s_key);
+    });
+
+    //为了重复搜索
+    api.addEventListener({
+        name: 'shcer_old'
+    }, function(ret, err) {
+        document.getElementById("home-search-dom").value = ret.value.s_str;
+        if(s_key=='')
+          return;
+        addHistlist(ret.value.s_str);
+        //关闭窗体
+        api.closeFrame({
+            name: 'search_frame_list'
+        });
+        openItemFrame(0,ret.value.s_str);
+    });
+
+
+
+    document.onkeydown = function (event) {
+            var e = event || window.event;
+                if (e && e.keyCode == 13) { //回车键的键值为13
+                    s_key = document.getElementById("home-search-dom").value;
+                    if(s_key=='')
+                      return;
+                    addHistlist(s_key);
+                    //关闭窗体
+                    api.closeFrame({
+                        name: 'search_frame_list'
+                    });
+                    openItemFrame(0,s_key);
+                }
+    };
+
+
+}
+
+
+
+//打开搜索数据
+function openItemFrame(s_typ,s_key){
+  var head_height = $api.dom('#header').offsetHeight;
+  api.openFrame({
+    name: "search_frame_list",
+    url: './frame_item_list_filter.html',
+    rect: {
+        x: 0,
+        y: head_height,
+        w: 'auto',
+        h: 'auto'
+    },
+    pageParam: {
+        frametype: app.frame_search,
+        keywords:s_key,
+        searchtype:s_typ
+    }
+ });
+}
+
+//加入历史搜索记录
+function addHistlist(keystr) {
+  if(keystr == ''){
+    return;
+  }
+  //异步返回结果 ：
+  var keys = 'seach_list_lishi';
+  api.getPrefs({
+    key: keys
+  }, function(ret, err) {
+      var datastr = ret.value;
+      var objlist = Array();
+      if(datastr ==''){
+        objlist.unshift(keystr);
+      }else {
+          var objlist = $api.strToJson(datastr);
+          if(objlist == null) objlist = Array();
+
+          if(objlist.length >= 10){
+              objlist.pop();
+              objlist.unshift(keystr);
+          }else{
+             objlist.unshift(keystr);
+          }
+      }
+      //保存本地
+      api.setPrefs({
+          key: keys,
+          value:$api.jsonToStr(objlist)
+      });
+
+
+
+  });
+}
+
+function closefr(){
+  api.closeFrame({
+    name: 'search_frame_list'
+  });
+
+  api.closeFrame({
+    name: 'search_frame'
+  });
+
+
+}
+
+</script>

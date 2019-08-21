@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>达人说头部</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <style>
+          body{
+            background-color: #eee;
+          }
+          .wrapperd .navd .swiper-slide.active{
+          background: #467a6e;
+          }
+
+          .prev-img-bg{
+          	width: 30px;
+          	height: 30px;
+          	background-color:rgba(0,0,0,.5);
+          	position: absolute;;
+          	z-index: 9999;
+          	border-radius: 50%;
+          	top: 33px;left: 15px;
+          }
+          .prev-img-bg>img{
+          	width: 15px;height: 15px;
+          	margin-top: 7px;
+          	margin-left: 6px;
+          }
+      </style>
+  </head>
+  <body>
+<div  >
+<img src="../../image/darens.jpg" width="100%"  />
+</div>
+<div class="headd">
+  <div class = 'prev-img-bg'  onclick = "back();">
+    <img src="../../image/backw.png" alt="placeholder+image">
+  </div>
+</div>
+
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        $api.fixStatusBar( $api.dom('.headd') );
+        api.openFrame({
+            name: 'frame_darenshuo',
+            url: './frame_darenshuo.html',
+            bgColor:'rgba(0,0,0,0)',
+            rect: {
+                x: 0,
+                y: 79,
+                w: 'auto',
+                h: 'auto'
+            },
+            });
+      };
+
+      function back()
+      {
+         api.closeWin();
+          api.closeFrame({
+           name: 'frame_darenshuo'
+         });
+
+      }
+  </script>
+  </html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <title>标题窗体</title>
+  <link rel="stylesheet" type="text/css" href="../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  <link rel="stylesheet" type="text/css" href="../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../css/loaders.min.css" />
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript" src="../script/title_cate2_frame.js"></script>
+  <style>
+          body{
+            text-align:center
+          }
+      </style>
+ </head>
+ <body>
+   <div class = 'normal-head-box' id = 'header'>
+        <div class = 'padding-t-10'>
+           <img src="../image/back.png" onclick="back()"  class = 'normal-bk-img'>
+          <!--  <img src="../image/bride_search.png" class = 'normal-r-img'> -->
+           <p class = 'normal-head-title' id="titlevale"></p>
+        </div>
+   </div>
+
+
+
+   <div class="" style=" background:#fff;  "  >
+              <!-- loading 界面 -->
+              <section class="list-wrapper" id="list-wrapper">
+               <div class="list-item-loading">
+                <div class="loader-inner ball-pulse">
+                 <div></div>
+                 <div></div>
+                 <div></div>
+                </div>
+               </div>
+              </section>
+          </div>
+
+
+ </body>
+ <script type="text/javascript">
+   var curr_frame_name = "";
+   apiready = function(){
+      $api.fixStatusBar( $api.dom('#header') );
+      pageMol.currPageid = api.pageParam.data;
+      var titlename = api.pageParam.tname;
+
+      var title_obj = document.getElementById("titlevale");
+      title_obj.innerHTML= titlename;
+
+      pageMol.initlize();
+      pageMol.BindCateList(pageMol.currPageid);
+
+      pageMol.fnOpenFrameGroup(0,true);
+
+
+    //  pageMol.dvv = new Vue({el:'#el_list',data:pageMol});
+
+   };
+
+   function back()
+   {
+    api.closeWin();
+     api.closeFrame({
+        name: 'home_cate2_frame'
+      });
+
+   }
+</script>
+</html>

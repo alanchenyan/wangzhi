@@ -1,0 +1,107 @@
+body{
+	background-color: white;
+}
+#con-top{
+	width: 100%;
+	float: left;
+}
+#con-top img{
+	width: 100%;
+}
+.guize{
+	width: 55px;
+	display: block;
+	height: 25px;
+	line-height: 25px;
+	background-color: #F14426;
+	color: white;
+	font-size: 15px;
+	text-align: center;
+	border-top-left-radius:30px ;
+	border-bottom-left-radius: 30px;
+	position: absolute;
+	top: 12px;
+	right: 0px;
+}
+#zhanji{
+	float: left;
+	width: 100%;
+	height: 100px;
+	background-color: white;
+	border-bottom:10px solid #EFEFEF;
+}
+.zhanji-left{
+	width: 50%;
+	height: 90px;
+	float: left;
+}
+.zhanji-right{
+	width: 50%;
+	height: 90px;
+	float: left;
+}
+#jilu{
+	float: left;
+	width: 100%;
+	height: auto;
+	background-color: white;
+	border-bottom:10px solid #EFEFEF;
+	padding-bottom: 30px;
+}
+.jilu-top{
+	float: left;
+	width: 92%;
+	margin-left: 4%;
+	height: 70px;
+	border-bottom: 2px solid #FF8A44;
+	margin-top: 15px;
+}
+.jilu-box{
+	float: left;
+	width: 92%;
+	margin-left: 4%;
+	height: 35px;
+	line-height: 35px;
+	border-left: 1px solid #EFEFEF;
+	border-right: 1px solid #EFEFEF;
+	border-bottom: 1px solid #EFEFEF;
+}
+.jilu-box-left{
+	width: 50%;
+	text-align: center;
+	float: left;
+	height: 35px;
+	font-size: 14px;
+	font-weight: bold;
+}
+.jilu-box-right{
+	width: 50%;
+	text-align: center;
+	float: left;
+	height: 35px;
+	font-size: 14px;
+	font-weight: bold;
+}
+#con-btom{
+	background-color: white;
+	float: left;
+	width: 100%;
+	height: auto;
+	padding-bottom: 80px;
+}
+#con-btom img{
+	margin-top: 20px;
+	width: 100%;
+	/*margin-left: 2%;*/
+}
+.button{
+	width: 100%;
+    position: fixed;
+    bottom:0px;
+	height: 45px;
+
+}
+.button img{
+	width: 100%;
+	height: 45px;
+}

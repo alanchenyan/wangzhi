@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <title>商品筛选列表</title>
+  <link rel="stylesheet" type="text/css" href="../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  <link rel="stylesheet" type="text/css" href="../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+  <link rel="stylesheet" type="text/css" href="../css/loaders.min.css" />
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/vue/vue.js"></script>
+  <script type="text/javascript" src="../script/md5.js"></script>
+  <script type="text/javascript" src="../script/usermgr.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript" src="../script/frame_item_list_filter.js"></script>
+  <style>
+          body{
+            text-align:center
+          }
+
+      </style>
+ </head>
+ <body>
+   <!--条件筛选条 -->
+    <div class="aui-grid" style="z-index:101; position:fixed; width: 100%;top:0px  "  >
+        <div class = "sort_boxs">
+             <div class="aui-row aui-row-padded" id="sort_list"   style = "width:100%">
+                <div class="aui-col-xs-3 " onclick="SortCahnage(0)" >
+                    <span>综合</span>
+                </div>
+                <div id = "s_price" class="aui-col-xs-3" onclick="SortCahnage(1)" >
+                    <span>价格</span>
+                      <img class = "sort_img_s"  sdata="0" src="../image/shang.png" alt="placeholder+image">
+                      <img class = "sort_img_x"  xdata="0" src="../image/sxia.png" alt="placeholder+image">
+                </div>
+                <div  id="s_yy" class="aui-col-xs-3" onclick="SortCahnage(2)">
+                    <span>佣金</span>
+                    <img class = "sort_img_s"  sdata="0" src="../image/shang.png" alt="placeholder+image">
+                    <img class = "sort_img_x" xdata="0" src="../image/sxia.png" alt="placeholder+image">
+                </div>
+                <div id="s_xl" class="aui-col-xs-3" onclick="SortCahnage(3)">
+                    <span>销量</span>
+                    <img class = "sort_img_s"    sdata="0" src="../image/shang.png" alt="placeholder+image">
+                    <img class = "sort_img_x"   xdata="0" src="../image/sxia.png" alt="placeholder+image">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="aui-content slide-box" id="good_list_panel" style="margin-top:48px"   >
+      <div class="good_main_kj" id="el_list">
+       <div class="good_row_item" v-for="item in dataitem" v-on:click="openitem(item)" v-cloak>
+        <div class="good_item_img">
+         <img src="../image/thum.png" v-bind:data-url="item.itempic" data-cache="no" />
+        </div>
+        <div class="good_item-name-box">
+         <span v-if="item.usertype == 1" class="good_item-name my_sv">{{item.itemtitle}}</span>
+         <span v-else-if="item.usertype == 0" class="good_item-name2 my_sv ">{{item.itemtitle}}</span>
+         <span v-else-if="item.usertype == 2" class="good_item-name3 my_sv ">{{item.itemtitle}}</span>
+         <span v-else-if="item.usertype == 3" class="good_item-name4 my_sv ">{{item.itemtitle}}</span>
+        </div>
+        <div class="good_item_price">
+         <span class="good_item_price_old">原价￥{{item.itemprice}}</span>
+         <span class="good_item_price_sell">{{item.sellnum}}人购买</span>
+        </div>
+        <div class="good_item_price2">
+         <span class="good_item_price_new">￥ {{item.newprice}}</span>
+         <span class="good_item_price_coupon">{{item.couponprice}}元券</span>
+        </div>
+        <div class="good_item_zhuan">
+         <div class="sr">
+          <div style="margin-left:5px">
+           分享赚
+          </div>
+          <div>
+           ￥{{item.commissionrate1}}
+          </div>
+         </div>
+         <div class="upz">
+          <div>
+           升级赚
+          </div>
+          <div>
+           ￥{{item.commissionrate2}}
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     <!-- loading 界面 -->
+     <section class="list-wrapper" style="background-color:#fff;" id="list-wrapper">
+      <div class="list-item-loading">
+       <div class="loader-inner ball-pulse">
+        <div></div>
+        <div></div>
+        <div></div>
+       </div>
+      </div>
+     </section>
+     <!--底线提示 -->
+     <div class="databootom" >
+         <span>~我是有底线的哦！~</span>
+     </div>
+
+    </div>
+    <div>
+
+    </div>
+</body>
+
+<script type="text/javascript">
+  apiready = function(){
+
+    pageMol.pageid = api.pageParam.frametype;
+    pageMol.initlize();
+    pageMol.dvv = new Vue({el:'#el_list',data:pageMol,methods:{
+            openitem:function(item){
+              openGoodDetails(item);
+            }
+          }});
+    if(pageMol.pageid == app.farme_newday)
+    {
+        //今日上新
+        pageMol.bindNewItemData();
+    }
+
+    if(pageMol.pageid == app.frame_search)
+    {
+        // 关键词的搜索
+        pageMol.keywods = encodeURI(api.pageParam.keywords);
+        pageMol.searchtype = api.pageParam.searchtype;
+        pageMol.bindNewItemData();
+    }
+
+
+  };
+</script>
+</html>

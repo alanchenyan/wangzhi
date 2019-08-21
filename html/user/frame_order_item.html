@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/orderdetail.css" />
+      <style>
+          body{
+
+          }
+          .nofansi{
+            height: 600px;
+            padding-top: 300px;
+            text-align: center;
+          }
+          .yaoqingbtn{
+            height: 40px;
+            background-color: red;
+            width: 100px;
+            margin-left: 38%;
+            margin-top: 20px;
+            color: #fff;
+            line-height: 40px;
+            font-size: 17px;
+            border-radius: 6%;
+          }
+          .shoptypecs{
+            width: 55px;
+            background-color: red;
+            border-radius: 10px;
+            height: 20px;
+            color: #fff;
+            line-height: 20px;
+            text-align: center;
+
+          }
+      </style>
+  </head>
+  <body>
+    <div class="aui-content aui-margin-b-15">
+     <ul class="aui-list aui-media-list good-chose" id="el_tj_list">
+       <!-- 列表 -->
+      <li class="aui-list-item"  v-for="item in datalist" v-cloak>
+       <div class="aui-media-list-item-inner">
+        <div class="aui-list-item-inner">
+         <div class="aui-list-item-text">
+          <div class="aui-list-item-title ellipsis-1">
+              <span  v-if="item.ordertype == 0" class="shoptypecs"  > 淘宝网 </span>
+              <span  v-if="item.ordertype == 1" class="shoptypecs"  > 拼多多 </span>
+              <span  v-if="item.ordertype == 2" class="shoptypecs"  > 京东 </span>{{item.itemtitle}}
+          </div>
+         </div>
+         <div class="aui-list-item-text good-time">
+          <div class="goods-text">
+           <span class="scal-8">创建日  {{item.createtime}}</span>
+          </div>
+          <div class="goods-text">
+           <span v-if="item.newstate == 3" class="scal-8">结算日 {{item.createtime}}</span>
+          </div>
+         </div>
+         <div class="aui-list-item-text">
+          <div class="goods-order">
+           <span class="order-num scal-12">订单号: {{item.orderid}}</span>
+          </div>
+         </div>
+         <div class="aui-list-item-text">
+          <div class="goods-bottom">
+           <span class="span-cc-bg" style="display:inline-block;float: left;">预估收益 ￥<span> {{item.commission}}</span> </span>
+           <span  v-if="item.orderstate == 0" class="span-state span-state_daozhang"> 失效 </span>
+           <span  v-if="item.orderstate == 1" class="span-state span-state_yiqueren"> 有效 </span>
+
+          </div>
+         </div>
+        </div>
+       </div> </li>
+        <!-- 列表结束 -->
+
+     </ul>
+    </div>
+    <div class="nofansi">
+
+        <div style="color:#696969">没有订单数据,快去邀请朋友一起购物吧</div>
+         <div class="yaoqingbtn">前往邀请</div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/vue/vue.js"></script>
+    <script type="text/javascript" src="../../script/common.js"></script>
+    <script type="text/javascript" src="../../script/usermgr.js"></script>
+  <script type="text/javascript" src="../../script/user/order.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+          $api.addCls($api.dom(".nofansi"), 'l_hide');
+            //渲染数据
+            pageMol.dvv = new Vue({el:'#el_tj_list',data:pageMol});
+            pageMol.initlize();
+
+            pageMol.bindData();
+
+
+      };
+  </script>
+  </html>

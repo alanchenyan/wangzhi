@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no,email=no,date=no,address=no" />
+  <title>分类列表</title>
+  <link rel="stylesheet" type="text/css" href="../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../plugins/swiper/swiper.min.css" />
+  <link rel="stylesheet" type="text/css" href="../plugins/jdclassify/ectouch.css" />
+  <link rel="stylesheet" type="text/css" href="../css/frame1.css" />
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript" src="../script/jquery.min.js"></script>
+  <script type="text/javascript" src="../plugins/swiper/swiper.min.js"></script>
+  <script>
+
+var brandstr = [];
+
+      apiready = function(){
+          //初始化天猫分类品牌
+        //  bnindtm(0vv);
+          bnindtmsub(1);
+          //初始化父分类
+          var root_list_data = api.getGlobalData({key: 'rootCateList0'});
+          if(!root_list_data)
+          {
+              api.toast({msg: '系统错误,找不到分类0',duration: 2000,location: 'bottom'});
+          }
+          else {
+              bindList(jQuery.parseJSON(root_list_data))
+          }
+          //初始化第一个大分类
+          var root_one_data = api.getGlobalData({key: 'rootCateList1'});
+          if(!root_one_data){
+                api.toast({msg: '系统错误,找不到分类1',duration: 2000,location: 'bottom'});
+          }
+          else {
+              bindSubList(jQuery.parseJSON(root_one_data))
+          }
+
+      };
+
+
+      //渲染子列表数据
+      function bindSubList(listData){
+          $('#sublist2').html("");
+        for (var i = 0; i < listData.length; i++) {
+            var chcheimgid = "cacheimg_"+listData[i].id;
+            $('#sublist2').append('<li class="w-3" onclick="openCateFrame('+listData[i].id+')"><img id="el_cache_img"  data-url="'+listData[i].app_icon+'"   src="../image/thum.png"/><span>'+listData[i].name+'</span></li>');
+        }
+        var cache_el = $api.domAll('#el_cache_img');
+        imageCache2(cache_el);
+      }
+
+      //渲染数据列表
+      function bindList(listData)
+      {
+        for (var i = 0; i < listData.length; i++) {
+            if(i == 0)
+              $('#sidebar ul').append("<li class='active' id='category'"+listData[i].id+">"+listData[i].name+"</li>");
+            else {
+                $('#sidebar ul').append("<li   id='category'"+listData[i].id+">"+listData[i].name+"</li>");
+            }
+         }
+         //绑定点击事件
+         $('#sidebar ul li').click(function(){
+             $(this).addClass('active').siblings('li').removeClass('active');
+             var index = $(this).index()+1;
+            // alert(index);
+             //$('.j-content').eq(index).show().siblings('.j-content').hide();
+             //检测缓存
+             var root_sub_list_data = api.getGlobalData({key: 'rootCateList'+index});
+             if(!root_sub_list_data) {
+                    api.toast({msg: '系统错误,找不到分类'+index,duration: 2000,location: 'bottom'});
+             }
+             else {
+                 bindSubList(jQuery.parseJSON(root_sub_list_data));
+                 bnindtmsub(index);
+             }
+         })
+      }
+
+      //品牌分类数据绑定
+      function bnindtmsub(cateid){
+            if(brandstr[cateid]!= null){
+              $api.html($api.dom("#tianmao_list2"),brandstr[cateid]);
+              var cache_el = $api.domAll('#img_cache_s');
+              imageCache2(cache_el);
+              return;
+            }
+            api.showProgress({title: '正在加载...',  text: '',  modal: true});
+            var parms = {
+                url:"brandc/getdata/cateid/"+cateid,
+                callback:function(ret){
+                    if(ret.flag)
+                    {
+                        api.hideProgress();
+                        var dataModel = ret.data;
+                        var htmlstr = "";
+                        for(var i = 0; i < dataModel.length; i++)
+                        {
+
+                           var info = dataModel[i];
+                           htmlstr += '<li onclick="openBrowser(\''+info.urls+'\',\''+info.name+'\')"><div class="scal-img"><img src="../image/thum1.png" id="img_cache_s" data-url="'+info.imgs+'" /></div>';
+                           htmlstr += '<div class="scal-span-title">'+info.name+'</div>';
+                           htmlstr += '<div class = "scal-span">平均返利'+info.rebate+'%</div></li>';
+                        }
+                        brandstr[cateid] = htmlstr;
+                        $api.html($api.dom("#tianmao_list2"),htmlstr);
+                        var cache_el = $api.domAll('#img_cache_s');
+                        imageCache2(cache_el);
+                    }
+                    else {
+                        api.hideProgress();
+                    }
+                }
+            }
+            JM_GET(parms);
+        }
+
+
+  </script>
+ </head>
+ <body>
+  <div>
+   <!--分类主导航-->
+   <div class="menu-left" id="sidebar">
+    <ul>
+    </ul>
+   </div>
+   <!--分类子导航-->
+   <section id="subCatelist" class="menu-right">
+    <!-- <h5>鞋/箱包</h5> -->
+    <div class="bandlist">
+     <div class="header">
+      <span class="line"></span>
+      <span class="text">品牌店铺</span>
+      <span class="line"></span>
+     </div>
+     <ul id="tianmao_list2">
+      <!--分类品牌店铺列表-->
+     </ul>
+    </div>
+    <div class="header">
+     <span class="line"></span>
+     <span class="text">分类导航</span>
+     <span class="line"></span>
+    </div>
+    <ul id="sublist2">
+    </ul>
+   </section>
+  </div>
+ </body>
+</html>

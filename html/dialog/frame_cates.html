@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>分类面板</title>
+
+      <style>
+          body{
+              margin: 0;
+          }
+
+          .jd_drop_down.show .floor_menu {
+            -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+                    transition: transform 0.6s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+            -webkit-transform: translate3d(0, 0, 0);
+                    transform: translate3d(0, 0, 0);
+          }
+
+          .jd_drop_down {
+            width: 100%;
+
+            background-color: #fff;
+          }
+
+          .jd_drop_down .select_floor {
+            width: 100%;
+            height: 2.25rem;
+            background: #fff;
+            border-bottom: 1px solid #dddddd;
+            line-height: 2.25rem;
+            padding-left: 0.75rem;
+            font-size: 0.6rem;
+            color: #666;
+          }
+          .jd_drop_down .floor_menu {
+            padding: 0 0.1rem;
+            margin-left: 13px;
+
+
+          }
+          .jd_drop_down .floor_menu div{
+            width: 3.95rem;
+            text-align: center;
+            font-size: 0.7rem;
+            margin-left: 0.7rem;
+            color: #666;
+            display: inline-block;
+            margin-top: 0.75rem;
+            vertical-align: top;
+          }
+          .jd_drop_down .floor_menu div span{
+          	display: block;
+          	margin: 0 0.35rem;
+            margin-top: 5px;
+          	height: 1.5rem;
+          	line-height: 1.15rem;
+            font-size: 14px;
+          }
+          .jd_drop_down .floor_menu .floor_item_img{
+          	width: 3.0rem;
+          	height: 3.0rem;
+          	display: block;
+          	margin: 0 auto;
+          }
+          .jd_drop_down .floor_menu div.on {
+            color: #E93B3D;
+            box-sizing: border-box;
+
+            line-height: 1.45rem;
+          }
+          .jd_drop_down .select_up {
+            position: absolute;
+            width: 2.5rem;
+            height: 2.25rem;
+            top: 0;
+            right: 0;
+            background: #fff;
+            color: #666;
+            text-align: center;
+            line-height: 2.25rem;
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+          }
+
+      </style>
+  </head>
+  <body>
+
+    <!--导航下拉 Start-->
+    <div class="jd_drop_down" id="jd_drop_down">
+     <div class="floor_menu">
+      <!--选中状态增加on-->
+    </div>
+    </div>
+
+    <img style="margin-left:45%; width:30px; margin-top:20px;"  class = "close-img" src="../../image/banner/close.png" onclick = "closeFrame();">
+
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/common.js"></script>
+
+  <script type="text/javascript">
+      apiready = function(){
+
+        api.setGlobalData({
+            key: 'is_cates_frame',
+            value: 1
+        });
+
+        //获得大分类数据
+        var root_list_data = getCateData(0);
+
+        var cate_list_data = $api.strToJson(root_list_data);
+        var catehtml="";
+        for (var i = 0; i < cate_list_data.length; i++) {
+            catehtml+= "<div  onclick='openCateFrame("+cate_list_data[i].id+")' ><img src='../../image/thum.png' data-url='"+cate_list_data[i].app_icon+"' id='img_cache_s'  class='floor_item_img' />";
+            catehtml+= "<span>"+cate_list_data[i].name+"</span>";
+            catehtml+= "</div>";
+        }
+
+        $api.html($api.dom(".floor_menu"),catehtml);
+        imageCache2($api.domAll("#img_cache_s"));
+      };
+
+      function closeFrame(){
+        api.setGlobalData({
+            key: 'is_cates_frame',
+            value: 0
+        });
+        api.closeFrame();
+
+      }
+  </script>
+  </html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>我的收藏</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/loaders.min.css" />
+ <script type="text/javascript" src="../script/vue/vue.js"></script>
+ <script type="text/javascript" src="../script/md5.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = 'normal-head-box' id = 'header'>
+             <div class = 'padding-t-10'>
+                <img src="../image/back.png" class = 'normal-bk-img' onclick="api.closeWin()">
+                <p class = 'normal-head-title'>我的收藏</p>
+             </div>
+        </div>
+
+
+          <div class="aui-content aui-margin-b-15" id="div_list_data" style=" margin-top:74px;z-index:101;  "  >
+                              <ul class="aui-list aui-media-list good-chose" id="el_vue_list">
+                                  <li   class="aui-list-item"  v-for="item in dataitem"  v-on:click="openitem(item)"  v-cloak>
+                                      <div class="aui-media-list-item-inner">
+                                          <div class="aui-list-item-media">
+                                              <img src="../image/thum.png" v-bind:data-url="item.itempic" data-cache="no"   width="120" height="120">
+                                          </div>
+                                          <div class="aui-list-item-inner">
+                                              <!-- 标题 -->
+                                              <div class="aui-list-item-text">
+                                                  <div class="aui-list-item-title">{{item.itemtitle}}</div>
+                                              </div>
+                                              <!-- 简介 -->
+                                              <div class="aui-list-item-text">
+                                                  <div class="goods-text">
+
+                                                  </div>
+                                              </div>
+                                              <!-- 价格 -->
+                                              <div class="aui-list-item-text">
+                                                  <div class="goods-price">
+                                                      <span class = "new_price">￥  {{item.newprice}}</span>
+
+                                                      <span v-if="item.usertype == 1" class = "old_price">天猫价￥{{item.itemprice}}</span>
+                                                      <span v-else="item.usertype == 0" class = "old_price">淘宝价￥{{item.itemprice}}</span>
+
+                                                  </div>
+                                              </div>
+                                              <div class="aui-list-item-text" style = "margin-top: 9px;width: 100%;  ">
+
+                                                <span class ="pay_people_num">{{item.sellnum}}人已购买</span>
+                                              </div>
+                                              <!--  底部 -->
+                                              <div class="aui-list-item-text">
+                                                  <div class="goods-bottom" style = "margin-top: 3px;width: 100%;padding-right: 2px;">
+                                                      <span class ="span-red-bg" style ="float:left;">卷</span><span class ="span-red-bg" style ="float:left;padding-left: 5px;padding-right: 5px;">￥<span>{{item.couponprice}}</span></span>
+
+                                                      <span class ="span-cc-bg" style = "display:inline-block;float: right;">预估收益
+                                                          ￥<span>{{item.commissionrate1}}</span>
+                                                      </span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </li>
+                              </ul>
+                      </div>
+
+    </div>
+
+
+</body>
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/usermgr.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+var pageMol={
+    dvv:null,     //vue数据渲染
+    loadcomplate: false, //数据是否加载完成
+    dataitem:[],   //数据列表
+}
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+
+     pageMol.dvv = new Vue({el:'#div_list_data',data:pageMol,methods:{
+               openitem:function(item){
+                 openGoodDetails(item);
+               }
+           }});
+
+
+     //获得文件收藏数据
+     //获取收藏数据
+     api.getPrefs({
+         key: 'KEY_SHOUCANG'
+     }, function(ret, err) {
+           var shoucdata = ret.value;
+           if(shoucdata!=null && shoucdata!='')
+           {
+               var shouobj = $api.strToJson(shoucdata);
+               for (var i = 0; i < shouobj.length; i++) {
+                    var info = shouobj[i];
+                    info.commissionrate1 = clcrate1(info.commissionrate,info.newprice);
+                    info.commissionrate2 = clcrate2(info.commissionrate,info.newprice);
+                    pageMol.dataitem.push(info);
+
+               }
+
+               var th_dom = $api.dom("#div_list_data");
+               Vue.nextTick(function(){
+                   //缓存图片
+                   imageCache(th_dom);
+                   hide_div2(th_dom);
+               });
+           }
+
+     });
+
+}
+
+
+
+</script>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>网值</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/public.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/an-skill-bar.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/frame2.css"/>
+
+    <script type="text/javascript" src="../script/api.js"></script>
+    <script type="text/javascript" src="../script/common.js"></script>
+    <script type="text/javascript" src="../script/frame2.js"></script>
+
+    <script type="text/javascript" src="../script/jquery.min.js"></script>
+    <script type="text/javascript" src="../plugins/an-skill-bar.js"></script>
+
+    <style>body{background: #f6f6f6;}
+
+    .user-sign{
+      width:70px;
+      height: 18px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+
+
+#skill {
+  width: 100%;
+  background-color: #e3e3e3;
+  padding: 30px;
+  display: block;
+  border-radius: 5px;
+  margin: auto;
+}
+.take-ok-btn{
+	width: 200px;
+	border-radius: 25px;
+	background-color: red;
+	color:#fff;
+  font-weight: bold;
+	text-align: center;
+	height: 40px;
+	line-height: 42px;
+	font-size: 15px;
+	margin:20px auto;
+  box-shadow:0px 5px 5px red
+}
+
+    </style>
+
+
+</head>
+<body>
+  <div class="wrapper">
+  			<div class="head">
+  				<div class="head-top flex flex-pack-justify flex-align-center">
+  					<div class="head-user-main flex flex-1 flex-align-center">
+  						<img src="" class="head-user-img"/>
+  						<div class="head-user-info flex-1">
+  							<div class="name oneline" id="d_nickname"></div>
+  							<div class="fs" id="d_level">   <img class = 'user-sign' src="../image/user/level1.png"> </div>
+  						</div>
+  					</div>
+  					<div class="head-right flex flex-pack-justify">
+  						<span class="flex-1 oneline">邀请码：<i id="text" class="d_yaqma">X</i></span>
+  						<span class="head-btn" id="copy">复制</span>
+  					</div>
+  				</div>
+  			</div>
+  			<div class="main">
+  				<div class="mod mod1">
+  					<div class="mod-title">
+  						<h3>成为团长&nbsp;&nbsp;享<span>3</span>大特权</h3>
+  					</div>
+  					<div class="mod-spa">成为会员预计一年可省 ￥9468</div>
+  					<div class="mod-items flex">
+  						<div class="item flex-1">
+  							<img src="../image/frame2/item-img1.jpg" class="item-img"/>
+  							<div class="item-info oneline">免费优惠券</div>
+                <div class="item-info1 oneline">大额优惠券</div>
+  						</div>
+  						<div class="item flex-1">
+  							<img src="../image/frame2/item-img2.jpg" class="item-img"/>
+  							<div class="item-info oneline">自购物返佣</div>
+                <div class="item-info1 oneline">奖励提升50%</div>
+  						</div>
+  						<div class="item flex-1">
+  							<img src="../image/frame2/item-img3.jpg" class="item-img"/>
+  							<div class="item-info oneline">直接粉丝购物</div>
+                <div class="item-info1 oneline">奖励提升32%</div>
+  						</div>
+  					</div>
+            <div class="mod-items flex">
+              <div class="item flex-1">
+                <img src="../image/frame2/j1.jpg" class="item-img2"/>
+                <div class="item-info oneline">间接粉丝购物</div>
+                <div class="item-info1 oneline">奖励提升22%</div>
+              </div>
+              <div class="item flex-1">
+                <img src="../image/frame2/j5.jpg" class="item-img2"/>
+                <div class="item-info oneline">团队收益奖励</div>
+                <div class="item-info1 oneline">奖励3%</div>
+              </div>
+              <div class="item flex-1">
+                <img src="../image/frame2/j7.jpg" class="item-img2"/>
+                <div class="item-info oneline">专属客服辅导</div>
+                <div class="item-info1 oneline">一对一贴心服务</div>
+              </div>
+            </div>
+  					<div class="hr"></div>
+  					<div class="mod-set-text">晋升<span>团长</span>条件<i class="iconfont icon-you1"></i></div>
+  					<div class="mod1-pro">
+               <div style="width:100%; line-height:15px; text-align:left;margin-top:10px;"  >
+                <span style="font-size:12px">邀请50个直属用户下载注册 </span>
+                <div class="skillbar html" style="float:left;">
+              	  <div class="filled" id="el_fansi1"   ></div>
+              	</div>
+                 <div id="el_fanstr1" style="width:8%; float:left;margin-left:3px;font-size:11px; ">20/50(人)</div>
+              </div>
+
+              <div style="width:100%; line-height:15px; text-align:left;margin-top:25px;"  >
+               <span style="font-size:12px">间接邀请用户下载注册100人以上</span>
+               <div class="skillbar html" style="float:left;">
+                 <div class="filled" id="el_fansi2"  ></div>
+               </div>
+                <div id="el_fanstr2" style="width:8%; float:left;margin-left:3px;font-size:11px; ">20/100(人)</div>
+              </div>
+
+  					</div>
+
+            <!--邀请按钮 -->
+  					<div class="mod1-btn" onclick="openwin('inviteframe','分享',0)"></div>
+  				</div>
+          <div class = 'take-ok-btn'  >
+              立即升级团长
+          </div>
+  				<div class="mod mod2">
+  					<div class="mod2-text"><div class="text-m">￥</div>完成粉丝任务，得丰厚奖励</div>
+  					<!--<div class="mod2-go flex flex-pack-justify flex-align-center">
+  						<div class="left">我的现金收益：<span>0</span> 元</div>
+  						<div class="right">去体现 <i class="iconfont icon-you"></i></div>
+  					</div>-->
+  					<!--<div class="mod2-ts flex flex-align-center">
+  						<div class="left iconfont icon-gantanhao"></div>
+  						<div class="right flex-1">粉丝任务仅限粉丝参与，升级成为会员后，现金方随平台奖励发放</div>
+  					</div> -->
+
+  					<div class="mod2-items">
+  						<div class="mod2-item flex flex-align-center flex-pack-justify">
+  							<div class="left">
+  								<div class="money"><span>￥</span>4元</div>
+  							</div>
+  							<div class="center flex-1 oneline">邀请好友立得4元</div>
+  							<div class="right" onclick="openwin('huodong/frame_yqhy','邀请',0)" >去邀请</div>
+  						</div>
+  						<div class="mod2-item flex flex-align-center flex-pack-justify">
+  							<div class="left">
+  								<div class="money"><span>￥</span>8元</div>
+  							</div>
+  							<div class="center flex-1 oneline">连续签到红包奖励</div>
+  							<div class="right"  onclick="openwin('huodong/frame_signin','签到',0)">去签到</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+</body>
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/usermgr.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.skillbar').skillbar({
+        speed: 1000,
+    });
+});
+  var f1 = 0;
+  var f2 = 0;
+        apiready = function(){
+              $api.fixStatusBar( $api.dom('.head') );
+              if(usermgr.checkLogin())
+              {
+                 $api.text($api.dom('#d_nickname'), usermgr.get_username());
+
+                 if(usermgr.get_userinfo().avatarurl != ''){
+                   $api.attr($api.dom('.head-user-img'),'src',usermgr.get_userinfo().avatarurl);
+                 }else{
+                   $api.attr($api.dom('.head-user-img'),'src',"../image/thum.png");
+                 }
+                 $api.text($api.dom('.d_yaqma'), usermgr.get_userinfo().yqcode);
+
+                 //会员等级
+                 if(usermgr.get_userinfo().ulevel== 0){
+                       $api.attr($api.dom('.user-sign'),'src','../image/user/level1.png');
+                  }
+                  else if(usermgr.get_userinfo().ulevel== 1){
+                     $api.attr($api.dom('.user-sign'),'src','../image/user/level1.png');
+                  }
+                  else if(usermgr.get_userinfo().ulevel== 2){
+                    $api.attr($api.dom('.user-sign'),'src','../image/user/level2.png');
+                    $api.attr($api.dom('.take-ok-btn'),'display:none');
+
+                  }
+                 //复制邀请码
+                $api.addEvt($api.dom('.head-btn'), 'click', function(){
+                       var yacode = usermgr.get_userinfo().yqcode;
+                       CopyData(yacode);
+                });
+
+                //获取粉丝数量
+                api.showProgress({title: '努力加载中...',text: '',modal: false});
+                var parms = {
+                    url:"user/fansicount/token/"+usermgr.get_usertoken(),
+                    callback:function(ret){
+                      api.hideProgress();
+                        if(ret.flag){
+                            f1 = ret.data.f1;
+                            f2 = ret.data.f2;
+                            $api.text($api.dom('#el_fanstr1'),f1+'/50(人)');
+                            $api.text($api.dom('#el_fanstr2'),f2+'/100(人)');
+                            f1= f1/50 *100;
+                            f2= f2/100 *100;
+                            $api.attr($api.dom('#el_fansi1'),'data-width',f1+'%');
+                            $api.attr($api.dom('#el_fansi2'),'data-width',f2+'%');
+                            $('.skillbar').skillbar({
+                                speed: 1000,
+                            });
+
+                        }
+                    }
+                }
+                JM_GET(parms);
+
+
+
+
+                $api.addEvt($api.dom('.take-ok-btn'), 'click', function(){
+                      //升级团长
+                      if(f1>=50 && f2 >=100){
+                          api.showProgress({title: '升级中...',text: '',modal: false});
+
+                          var parms = {
+                              url:"user/uplevel/token/"+usermgr.get_usertoken(),
+                              callback:function(ret){
+                                  api.hideProgress();
+                                  if(ret.flag){
+                                    $api.attr($api.dom('.user-sign'),'src','../image/user/level2.png');
+                                    $api.attr($api.dom('.take-ok-btn'),'display:none');
+                                    toast2('恭喜你 获得团长');
+                                  }else{
+                                    toast2('当前条件不满足')
+                                  }
+                              }
+                          }
+                          JM_GET(parms);
+
+                      }else {
+                          toast2('当前条件不满足')
+                      }
+                });
+
+
+
+              }
+        }
+
+
+</script>

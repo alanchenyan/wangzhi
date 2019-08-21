@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>我的</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../plugins/swiper/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/frame4.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+    <style>
+
+    </style>
+</head>
+<body  >
+    <div class = 'main-head'>
+        <img class = 'head-main-img' src="../image/thum.png" >
+        <div class = 'nick-name-box'>
+            <span class = 'nickname-span'>网值粉X</span>
+            <img class = 'user-sign' src="../image/user/level1.png">
+        </div>
+        <div class = 'code-box'>
+            <span>邀请码：<span class = 'code-span'></span><span class = 'copy-span'>复制</span></span>
+        </div>
+
+
+        <img class = 'mess-img' style="display:none" src="../image/user/messw.png" alt="placeholder+image">
+        <img class = 'set-img' src="../image/user/set.png" alt="placeholder+image">
+<!--
+         <div class = 'fans-box'>
+            <span>粉丝<span style = 'margin-left: 5px;'>0</span></span>
+            <span style = 'margin-left: 15px;'>成长值<span style = 'margin-left: 5px;'>18</span></span>
+        </div> -->
+
+        <div class = 'head-money-box' id="el_div4" >
+            <div class = 'head-money-body'>
+                <div style = 'float:left;'>
+                    <p class = 'head-price-box'>余额 <span>￥<span id="yuee"></span></span></p>
+                    <p style = 'font-size: 12px;color:#7a7a7a;margin-top: 3px;-webkit-transform:scale(0.8);margin-left: -18px;'>每个月25号可提现上月结算收益 ></p>
+                </div>
+
+                <div class = 'head-take-btn' onclick = 'openwin("user/frame_tixian");'>
+                    立即提现
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 预估收益 -->
+    <div class = 'income-box' id="el_div3" >
+
+        <div class = 'now-month-icome-box' onclick = 'openuserwin("frame_shouyi.html");'>
+            <span class = 'now-icome-price-box'><span class = 'now-month-icome-price' id="now-title-p_1">0</span> </span>
+            <p class = 'now-title-p'  >今日预估  </p>
+            <span style = 'position: absolute;top:10px;right: 0px;color:#eee;'>|</span>
+        </div>
+         <div class = 'now-month-icome-box' onclick = 'openuserwin("frame_shouyi.html");'>
+            <span class = 'now-icome-price-box'><span class = 'now-month-icome-price' id="now-title-p_2">0</span> </span>
+            <p class = 'now-title-p'  >昨日预估</p>
+            <span style = 'position: absolute;top:10px;right: 0px;color:#eee;'>|</span>
+            <!-- <p class = 'prev-title-p'>上月结算 <span class = 'prev-dol'>￥</span><span class = 'prev-price'>0</span></p> -->
+        </div>
+         <div class = 'now-month-icome-box' onclick = 'openwin("user/frame_fensi");'>
+            <span class = 'now-icome-price-box'><span class = 'now-month-icome-price' id="now-title-p_3">0</span> </span>
+            <p class = 'now-title-p'  >我的粉丝</p>
+            <span style = 'position: absolute;top:10px;right: 0px;color:#eee;'>|</span>
+            <!-- <p class = 'prev-title-p'>上月结算 <span class = 'prev-dol'>￥</span><span class = 'prev-price'>0</span></p> -->
+        </div>
+         <div class = 'now-month-icome-box'  >
+            <span class = 'now-icome-price-box'><span class = 'now-month-icome-price' id="now-title-p_4">0</span> </span>
+            <p class = 'now-title-p'  >米币</p>
+        </div>
+
+
+    </div>
+
+
+     <!-- 4个小图标 -->
+     <div class = 'icon-four-box' id="el_div2">
+         <div class="aui-row aui-row-padded">
+            <div class="aui-col-xs-3 icon-4-box" onclick = 'openuserwin("frame_shouyi.html");'>
+                <img class = 'icon-4-img' src="../image/user/sy.png"/>
+                <p>收益</p>
+            </div>
+            <div class="aui-col-xs-3 icon-4-box" onclick = 'openwin("user/frame_order");'>
+                <img class = 'icon-4-img' src="../image/user/dd.png"/>
+                <p>订单</p>
+            </div>
+            <div class="aui-col-xs-3 icon-4-box" onclick = 'openwin("user/frame_fensi");'>
+                <img class = 'icon-4-img' src="../image/user/fs.png"/>
+                <p>粉丝</p>
+            </div>
+           <div class="aui-col-xs-3 icon-4-box" onclick = 'openyq()'>
+                <img class = 'icon-4-img' src="../image/user/yq.png"/>
+                <p>邀请</p>
+            </div>
+        </div>
+     </div>
+
+
+     <!-- 小轮播 -->
+     <div style = 'background-color: #fff; width:95%;text-align:center; height:100px; margin-left:2.5%; padding-top:10px; border-radius:15px; margin-top:5px; '  >
+            <div class="swiper-container" id = "swiper-container-thr" style = ' margin-left:2.6%'>
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide" onclick='openBrowser(app.urls.alibao,"红包")' >
+                    <img  src="http://nn.52juanmi.com/2019042922014247baf3668.jpg"   style = 'width: 340px;height: 80px;border-radius: 15px;'>
+                  </div>
+                  <div class="swiper-slide" onclick='openBrowser("https://mos.m.taobao.com/activity_newer?from=pub&pid=mm_10898238_266600236_78469400021","淘宝拉新")' >
+                    <img  src="http://nn.52juanmi.com/201905021348241b6607659.png"   style = 'width: 340px;height: 80px;border-radius: 15px;'>
+                  </div>
+
+                </div>
+
+            </div>
+     </div>
+
+
+     <!-- 会员专享 -->
+     <div class = "vip-auth-box" id="el_div1">
+         <p class = 'class-p-title'>会员福利</p>
+         <p class = 'class-p-title_line'></p>
+         <div class="aui-row aui-row-padded">
+            <div class="aui-col-xs-4 icon-4-box" onclick="openwin('jm_title','低价好货',app.farme_thui)">
+                <img class = 'icon-3-img' src="../image/user/xrzx.png"/>
+                <p class = 'vip-p-title'>新人专享特价</p>
+                <p class = 'vip-f-title'>特价商品</p>
+            </div>
+            <div class="aui-col-xs-4 icon-4-box" onclick="openwin('huodong/frame_signin','签到',0)" >
+                <img class = 'icon-3-img' src="../image/user/qdhb.png"/>
+                <p class = 'vip-p-title'>签到红包</p>
+                 <p class = 'vip-f-title'>每日签到</p>
+            </div>
+            <div class="aui-col-xs-4 icon-4-box"  onclick="openwin('user/frame_kefu','客服',0)">
+                <img class = 'icon-3-img' src="../image/user/kf.png"/>
+                <p class = 'vip-p-title'>专属客服</p>
+                 <p class = 'vip-f-title'>教你如何省钱</p>
+            </div>
+             <div class="aui-col-xs-4 icon-4-box"  onclick="openwin('huodong/frame_yqhy','邀请',0)">
+                <img class = 'icon-3-img' src="../image/user/yqhy.png"/>
+                <p class = 'vip-p-title'>邀好友赚4元</p>
+                <p class = 'vip-f-title'>好友送红包</p>
+            </div>
+
+
+        </div>
+     </div>
+
+        <!-- 隔层 -->
+        <div style = 'background-color: #F6F6F7;height:10px;'></div>
+        <!-- 我的工具 -->
+        <div style = 'background-color: #F6F6F7;'>
+              <div class = "vip-auth-box" style = 'margin-top: 0px;height: 185px; '>
+                 <p class = 'class-p-title'>我的工具</p>
+                 <p class = 'class-p-title_line'></p>
+                 <div class="aui-row aui-row-padded">
+                    <div class="aui-col-xs-3 icon-4-box" id="el_div5">
+                        <img class = 'icon-4-img' src="../image/user/yindao.png"/>
+                        <p class = 's-p-title'>新手指引</p>
+                    </div>
+                    <div class="aui-col-xs-3 icon-4-box" onclick = 'openwin("shoucangwin");'>
+                        <img class = 'icon-4-img' src="../image/user/shouc.png"/>
+                        <p class = 's-p-title'>我的收藏</p>
+                    </div>
+                  <!--  <div class="aui-col-xs-3 icon-4-box" onclick = 'openwin("helpwin");'>
+                        <img class = 'icon-4-img' src="../image/user/wenti.png"/>
+                        <p class = 's-p-title'>常见问题</p>
+                    </div>-->
+                     <div class="aui-col-xs-3 icon-4-box" onclick="openwin('user/frame_kefu','客服',0)">
+                        <img class = 'icon-4-img' src="../image/user/kefu.png" />
+                        <p class = 's-p-title'>专属客服</p>
+                    </div>
+                    <div class="aui-col-xs-3 icon-4-box" onclick='openBrowser(app.urls.gonggao,"公告")'>
+                        <img class = 'icon-4-img' src="../image/user/gomngg.png"/>
+                        <p class = 's-p-title'>公告中心</p>
+                    </div>
+                    <div class="aui-col-xs-3 icon-4-box" onclick = 'openwin("user/frame_fankui");'>
+                        <img class = 'icon-4-img' src="../image/user/yijian.png"/>
+                        <p class = 's-p-title'>意见反馈</p>
+                    </div>
+                     <div class="aui-col-xs-3 icon-4-box" onclick="shezhi()">
+                        <img class = 'icon-4-img' src="../image/user/wmen.png"/>
+                        <p class = 's-p-title'>设置中心</p>
+                    </div>
+                </div>
+             </div>
+        </div>
+
+
+
+</body>
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../plugins/swiper/swiper.min.js"></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/usermgr.js"></script>
+<script type="text/javascript" src="../script/frame4.js"></script>
+<script type="text/javascript">
+
+function updateInfo(){
+  $api.text($api.dom('.nickname-span'), usermgr.get_username());
+  $api.text($api.dom('.code-span'), usermgr.get_userinfo().yqcode);
+   $api.text($api.dom('#yuee'), usermgr.get_umoney());
+  $api.text($api.dom('#now-title-p_4'), usermgr.get_score());
+  if(usermgr.get_userinfo().avatarurl != '')
+    $api.attr($api.dom('.head-main-img'),'src',usermgr.get_userinfo().avatarurl);
+   else{
+      $api.attr($api.dom('.head-main-img'),'src',"../image/thum.png");
+   }
+   //会员等级
+   if(usermgr.get_userinfo().ulevel== 0){
+         $api.attr($api.dom('.user-sign'),'src','../image/user/level1.png');
+    }
+    else if(usermgr.get_userinfo().ulevel== 1){
+       $api.attr($api.dom('.user-sign'),'src','../image/user/level1.png');
+    }
+    else if(usermgr.get_userinfo().ulevel== 2){
+       $api.attr($api.dom('.user-sign'),'src','../image/user/level2.png');
+    }
+    //获取统计基本数据
+    pageMol.get_base_order();
+}
+
+
+apiready = function () {
+    if(istest()){
+       $api.css($api.dom("#el_div1"),"display:none");
+       $api.css($api.dom("#el_div2"),"display:none");
+       $api.css($api.dom("#el_div3"),"display:none");
+       $api.css($api.dom("#el_div4"),"display:none");
+       $api.css($api.dom("#el_div5"),"display:none");
+       $api.text($api.dom(".code-box"),"已为你购物节省: 0 元");
+       $api.css($api.dom(".main-head"),"height: 150px;");
+    }
+
+    //判断用户是否登录
+    if(usermgr.checkLogin()){
+        updateInfo();
+    }
+    $api.addEvt($api.dom('.set-img'), 'click', function(){
+          //打开设置界面
+        shezhi()
+    });
+
+    $api.addEvt($api.dom('.copy-span'), 'click', function(){
+          //复制
+          CopyData(usermgr.get_userinfo().yqcode);
+    });
+
+
+
+    //消息事件；更新用户基本信息
+    api.addEventListener({
+        name: 'base_userdata_event'
+    }, function(ret, err) {
+         updateInfo();
+    });
+
+
+    api.setRefreshHeaderInfo({
+        visible: true,
+        loadingImg: 'widget://image/refresh.png',
+        bgColor: '#fff',
+        textColor: '#ccc',
+        textDown: '下拉刷新...',
+        textUp: '松开试试...',
+        showTime: true
+    }, function(ret, err) {
+
+        pageMol.get_base_order();
+        api.refreshHeaderLoadDone();
+
+    });
+
+
+
+}
+
+function shezhi(){
+  var parms = {
+    name:'frame_setting',
+    url: './user/frame_seting.html'
+  }
+  openFram(parms);
+}
+
+function openuserwin(winname){
+	api.openWin({
+	    name: winname,
+	    url: './user/'+winname,
+	});
+}
+
+function openyq(){
+  api.openWin({
+	    name: "frame_yaoqing",
+	    url: 'widget://html/inviteframe.html',
+	});
+}
+
+</script>

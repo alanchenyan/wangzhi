@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>我的值币</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/frame2.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <script type="text/javascript" src="../script/api.js"></script>
+    <script type="text/javascript" src="../script/common.js"></script>
+
+
+
+    <style>body{background: #f6f6f6;}
+
+    .user-sign{
+      width:70px;
+      height: 18px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+    .head-right1{
+       float: left;
+       margin-top: 10px;
+       margin-left: 20px;
+    }
+    .head-right2{
+    	width: 3.5rem;
+    	height: 1.25rem;
+      margin-top: 25px;
+      margin-right: 30px;
+
+    	border-radius: 1.25rem;
+    	background: #dbb97d;
+    	font-size: 12px;
+      float: right;
+    	line-height: 1.25rem;
+    	overflow: hidden;
+    	color: #fff;
+      text-align: center;
+    }
+    .head-top2{
+          margin-top: 80px;
+          line-height: 50px;
+    }
+
+    </style>
+
+
+</head>
+<body>
+  <div class="wrapper">
+    <div class = 'normal-head-box' id = 'header'>
+         <div class = 'padding-t-10'>
+            <img src="../../image/back.png" class = 'normal-bk-img' onclick="api.closeWin();" >
+            <p class = 'normal-head-title'   >我的值币</p>
+         </div>
+    </div>
+
+  			<div class="head" style="margin-top:20px">
+  				<div class="head-top2 "  >
+            <div class="head-right1  ">
+               <table>
+                 <tr  >
+                    <td style="width:28px; line-height:35px;"><img  style="width:20px;" src="../../image/icon_mibi.png">  </td>
+                    <td id="div_class" style="width:70px; font-size:40px; color:#fff">5640</td>
+                </tr>
+
+               </table>
+
+  					</div>
+
+  					<div class="head-right2  " onclick="openScoreShop();">
+              <span>去兑换</span>
+  					</div>
+  				</div>
+  			</div>
+  			<div class="main">
+
+  				<div class="mod mod2">
+  					<div class="mod2-text"><div class="text-m">￥</div>做任务 赚值币</div>
+  					<!--<div class="mod2-go flex flex-pack-justify flex-align-center">
+  						<div class="left">我的现金收益：<span>0</span> 元</div>
+  						<div class="right">去体现 <i class="iconfont icon-you"></i></div>
+  					</div>-->
+  					<!--<div class="mod2-ts flex flex-align-center">
+  						<div class="left iconfont icon-gantanhao"></div>
+  						<div class="right flex-1">粉丝任务仅限粉丝参与，升级成为会员后，现金方随平台奖励发放</div>
+  					</div> -->
+
+  					<div class="mod2-items"  >
+              <div class="mod2-item flex flex-align-center flex-pack-justify" >
+                <div class="left" style="	background: url(../../image/goods/tb.png);">
+                </div>
+                <div class="center flex-1 oneline">授权淘宝 +50金币</div>
+                <div class="right" id="el_houquan" onclick="onauthor()">授权</div>
+              </div>
+
+  						<div class="mod2-item flex flex-align-center flex-pack-justify">
+  							<div class="left" style="	background: url(../../image/frame2/s1.png);">
+  								<div class="money"> </div>
+  							</div>
+  							<div class="center flex-1 oneline">邀粉新粉丝 +50金币</div>
+  							<div class="right" onclick = 'openwin("invitewin");'>去邀请</div>
+  						</div>
+  						<div class="mod2-item flex flex-align-center flex-pack-justify">
+  							<div class="left" style="	background: url(../../image/frame2/s4.png);">
+  							</div>
+  							<div class="center flex-1 oneline">完成每日签到获得值币</div>
+  							<div class="right"  onclick="openwinframe('huodong/frame_signin')">去签到</div>
+  						</div>
+
+              <div class="mod2-item flex flex-align-center flex-pack-justify">
+  							<div class="left" style="	background: url(../../image/frame2/item-img1.jpg);">
+  							</div>
+  							<div class="center flex-1 oneline">领券购物奖励值币</div>
+  							<div class="right">去购物</div>
+  						</div>
+
+              <div class="mod2-item flex flex-align-center flex-pack-justify" >
+                <div class="left" style="	background: url(../../image/frame2/s5.png);">
+                </div>
+                <div class="center flex-1 oneline">绑定支付信息+20值币</div>
+                <div class="right" onclick="openwinframe('user/frame_alipay')">绑定</div>
+              </div>
+
+
+              <div class="mod2-item flex flex-align-center flex-pack-justify">
+                <div class="left" style="	background: url(../../image/frame2/j6.jpg);">
+                </div>
+                <div class="center flex-1 oneline">分享好货到微信朋友圈</div>
+                <div class="right">去分享</div>
+              </div>
+
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/topsdk/taobao.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+<script type="text/javascript" src="../../plugins/jm/jmdialog.js"></script>
+<script type="text/javascript">
+
+
+
+function openwinframe(winname,titie){
+
+	api.openWin({
+	    name: 'opensocredesc',
+	    url: 'widget://html/'+ winname +'.html',
+	});
+}
+
+
+
+function openScoreShop() {
+    api.closeWin({
+        name: 'frame_score'
+    });
+
+  	api.openWin({
+  	    name: 'frame_scoreshop',
+  	    url: './frame_scoreshop.html',
+        showProgress:true,
+  	});
+}
+
+//授权
+function onauthor(){
+  authoTaobao(0);
+  $api.css($api.dom('#el_houquan'),"display:none");
+}
+
+        apiready = function(){
+              $api.fixStatusBar( $api.dom('#header') );
+              if(usermgr.checkLogin())
+              {
+                  $api.text($api.dom('#div_class'), usermgr.get_score());
+                  //提示渠道授权
+                  if(Number(usermgr.get_rid()) == 0){
+
+                  }
+                  else{
+                      $api.css($api.dom('#el_houquan'),"display:none");
+                  }
+
+              }
+        }
+
+
+</script>

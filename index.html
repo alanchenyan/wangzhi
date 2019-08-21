@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>粉喵</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css"/>
+    <style>
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript" src="script/api.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script type="text/javascript" src="script/usermgr.js"></script>
+<script type="text/javascript" src="script/topsdk/taobao.js"></script>
+
+<script type="text/javascript">
+    apiready = function () {
+
+      //获取APP全局数据
+      loadSystemData(function(info){
+          if(!info){
+            alert("系统参数初始化失败");
+            return;
+          }
+
+          usermgr.authoruser(true);
+
+          var sysinfo = getSysInfo();
+          var topkey = sysinfo.bckey;
+          api.setGlobalData({key: 'istest',  value: sysinfo.istest});
+
+          var zone_s  = sysinfo.mmpid.split('_');
+          var zoneId = zone_s[3]
+          //初始化淘宝接口
+          Taobao.initTaobao(sysinfo.mmpid,topkey,zoneId);
+          //权限判断；
+          if(!isPermission(["storage"],"存储权限")){
+              return;
+          }
+
+          //初始化分类数据
+          loadCateList(function(list){
+               //进入主界面
+               api.openWin({
+                   name: 'main',
+                   url: 'widget://html/main.html',
+                   bounces: false,
+                   vScrollBarEnabled: false,
+                   hScrollBarEnabled: false,
+                   slidBackEnabled: false
+               });
+          });
+        /*  //校验用户token 登录信息
+
+        api.hideProgress();
+        */
+
+      })
+
+    }
+
+
+</script>

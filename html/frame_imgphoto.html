@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <style>
+      html,body{margin: 0;padding: 0;  background-color: transparent !important;}
+      #ToolBar {
+
+
+ width:100%;
+ height:50px;
+ text-align:center;
+
+ z-index:0;
+
+
+ }
+      </style>
+  </head>
+  <body>
+  <div id="ToolBar">
+    <div style="width:100%; color:#fff;text-align:center;padding:14px; height:30px;">
+      <div style="float:left" id="saveimg">
+        <img src="../image/fs2.png" width=20px; />
+      </div>
+      <span id="totalnum">3</span>/<span id="cullnum">3</span>
+
+     </div>
+   </div>
+
+  </body>
+  <script type="text/javascript" src="../script/api.js"></script>
+    <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+          var pageParam = api.pageParam;
+          currindex= pageParam.currindex;
+          var sumnum= pageParam.sunnum;
+          var currurl= pageParam.currurl;
+
+          //获得当前高度
+          var frameHeight = api.winHeight-30;
+
+        //  $api.css($api.dom("#ToolBar"),"margin-top:"+frameHeight+"px");
+
+          $api.text($api.dom("#totalnum"),sumnum);
+          $api.text($api.dom("#cullnum"),currindex+1);
+
+
+
+
+          api.addEventListener({
+              name: 'photo_currindex'
+          }, function(ret, err) {
+              currindex = ret.value.index;
+              currurl = ret.value.currurl;
+              $api.text($api.dom("#cullnum"),currindex+1);
+          });
+
+          //监听事件
+        $api.addEvt($api.dom('#saveimg'), 'click', function(){
+              if(currurl.indexOf("fs://") == -1){
+                //网络图
+                api.download({
+                    url:currurl,
+                    report: true,
+                    cache: true,
+                    allowResume: true
+                }, function(ret, err) {
+                    if (ret.state == 1) {
+                        //下载成功
+                        api.saveMediaToAlbum({
+                            path: ret.savePath
+                        }, function(ret, err) {
+                            if (ret && ret.status) {
+                                toast2("保存成功");
+                            } else {
+                                toast2("保存图片失败");
+                            }
+                        });
+                    } else {
+                            toast2("远程图片地址错误");
+                    }
+                });
+
+              }
+              else {
+                api.saveMediaToAlbum({
+                    path: currurl
+                }, function(ret, err) {
+                    if (ret && ret.status) {
+                        toast2("保存成功");
+                    } else {
+                        toast2("保存图片失败");
+                    }
+                });
+
+              }
+
+        });
+
+
+
+      };
+  </script>
+  </html>

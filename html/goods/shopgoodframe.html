@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <title>网值商品</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" href="../../css/shopgood/style.css" />
+  <script src="../../script/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../css/loaders.min.css" />
+
+  <style>
+      .myfancy{
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  overflow: hidden;}
+.headpus{
+  height: 90px;
+  border: 2px solid #eee;
+  width: 300px;
+}
+.m-menu{
+  margin-top: 130px;
+}
+.openloading{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  text-align: center;
+  padding-top: 70%;
+}
+      </style>
+ </head>
+ <body class="body">
+<div class="openloading">
+  <!-- loading 界面 -->
+  <section class="list-wrapper" style="background-color:#fff; " id="list-wrapper">
+   <div class="list-item-loading">
+    <div class="loader-inner ball-pulse">
+     <div></div>
+     <div></div>
+     <div></div>
+    </div>
+   </div>
+  </section>
+</div>
+
+  <div class="main" style="display:none">
+   <div class="g-return" onclick = "api.closeWin();">
+    <img src="../../image/goods/zys_img19.png"   onclick = "api.closeWin();" />
+   </div>
+   <div class="g-btn">
+    <span  onclick="btnevent(1)" ><img src="../../image/goods/ico-g1-1.png" alt="" /> </span>
+    <div onclick="btnevent(3)" class="myfancy" id="open_fullimg_btn">
+     <img src="../../image/share/share_friend_icon.png" alt="" />
+    </div>
+    <span class="a1"  > <img src="../../image/goods/ico-g1-3.png" alt="" /> </span>
+   </div>
+   <div class="box-list">
+    <ul class="ul-tab-g1 TAB_CLICK2" id=".tab-con1">
+    </ul>
+    <div class="tab-con1 ok">
+     <div class="m-money">
+                    <div class="m-t">
+
+                    </div>
+                    <div class="m-b">
+
+                    </div>
+                </div>
+
+      <!--顶部图片幻灯-->
+     <div class="slider-pic1">
+      <div class="swiper-wrapper">
+
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+     </div>
+    </div>
+   </div>
+   <!--幻灯提示工具条-->
+   <div class="m-price1">
+    <div class="date">
+     <h3>距结束仅剩</h3>
+     <div class="timer" id="countdown">
+      <div class="dash days_dash">
+       <div class="digit">
+        0
+       </div>
+       <div class="digit">
+        0
+       </div>
+      </div>
+      <span class="sp1">:</span>
+      <div class="dash hours_dash">
+       <div class="digit">
+        0
+       </div>
+       <div class="digit">
+        0
+       </div>
+      </div>
+      <span class="sp1">:</span>
+      <div class="dash minutes_dash">
+       <div class="digit">
+        0
+       </div>
+       <div class="digit">
+        0
+       </div>
+      </div>
+      <span class="sp1">:</span>
+      <div class="dash seconds_dash">
+       <div class="digit">
+        0
+       </div>
+       <div class="digit">
+        0
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="num">
+     <span class="sp1" id="el_newprice"><em>&yen;</em>29.9</span>
+     <div class="con">
+      <span class="sp2" id="old_newprice"><em>&yen;</em>229.9</span>
+      <div class="sp3">
+       <span><em id="rrr">2382</em>件已售</span>
+      </div>
+     </div>
+    </div>
+   </div>
+    <!--幻灯提示工具条结束-->
+   <div class="m-info1 louti" id="louti1">
+    <div class="tit">
+     <span   onclick="btnevent(2)" class="heart"><i></i>收藏</span>
+     <h3>
+        <div class="icon">
+         <img id="imgtype" src="../../image/goods/tb.png" alt="" />
+         </div>
+       <p id="good_title"  onclick="copytitle()">XX</p>
+       </h3>
+    </div>
+    <div class="t1">
+                <span onclick="openwin('jm_title','升级团长',app.frame_userlevel)"   class="a1">立即升级&gt;&gt;</span>
+                <p class="p1">升级团长，预计可得佣金<span>¥<em id="el_tz">2.24</em></span></p>
+            </div>
+   </div>
+   <div class="m-coupon1"  onclick="open_tk_item()">
+     <span  class="sp1">立即领券</span>
+     <div class="con">
+      <span class="sp2" style="width:60px;"><i>&yen;</i><em id="youhuiquan">200</em></span>
+      <div class="inner">
+       <h3>优惠券有效期至:</h3>
+       <p id="youhuitie">2019-07-10 23:59:59</p>
+      </div>
+     </div>
+   </div>
+   <div class="m-txt1" style="display:none">
+    <h3>推荐理由:</h3>
+    <p><span id="p-text">XXXXXXXX</span> <a href="javascript:;" class="btn copy-p" data-clipboard-action="copy" data-clipboard-target="#p-text">复制</a></p>
+   </div>
+    <div class="m-txt2">
+
+                <div class="top">
+                    <span class="btn">店铺所有优惠</span>
+                    <div class="imgtxt">
+                        <div class="pic" >
+                            <img class="store_logo" src="../../image/jm_logo.png" alt="" />
+                        </div>
+                        <div class="txt">
+                            <h3 id="shoptitle">X</h3>
+                            <div class="icon" id="aui-list-item-right">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+
+   <div class="g-tit1 louti" id="louti2">
+    宝贝详情
+   </div>
+   <div class="pic-info" id="imgs">  <!-- loading 界面 -->
+     <section class="list-wrapper" style="background-color:#fff; margin-top:70px" id="list-wrapper">
+      <div class="list-item-loading">
+       <div class="loader-inner ball-pulse">
+        <div></div>
+        <div></div>
+        <div></div>
+       </div>
+      </div>
+     </section></div>
+
+    <div class="g-tit1 louti" id="louti3" style="display:none">
+    推荐商品
+   </div><!--
+   <ul class="ul-listy3">
+    <li>
+     <div class="con">
+      <div class="pic">
+       <a href="./index.php?i=2&amp;c=entry&amp;itemid=595276672394&amp;lm=2&amp;pid=mm_75148416_585350217_109104850029&amp;do=view&amp;m=tiger_newhu"><img src="https://img.alicdn.com/bao/uploaded/O1CN01wAaWnI246E3Hh6NHJ_!!2-item_pic.png" alt="" /></a>
+      </div>
+      <div class="txt">
+       <h5><a href="./index.php?i=2&amp;c=entry&amp;itemid=595276672394&amp;lm=2&amp;pid=mm_75148416_585350217_109104850029&amp;do=view&amp;m=tiger_newhu">北极绒袜子男士短袜夏季薄款船袜短筒隐形浅口棉袜防臭吸汗夏天潮</a></h5>
+       <div class="sp-con">
+        <span class="l">原价 &yen;7.50</span>
+        <span class="r">已售578699件</span>
+       </div>
+       <div class="price">
+        <div class="quan">
+         <em>5元券</em>
+        </div> 券后价
+        <span><i>&yen;</i>2.50</span>
+       </div>
+      </div>
+     </div> </li>
+    <li>
+     <div class="con">
+      <div class="pic">
+       <a href="./index.php?i=2&amp;c=entry&amp;itemid=588498649953&amp;lm=2&amp;pid=mm_75148416_585350217_109104850029&amp;do=view&amp;m=tiger_newhu"><img src="https://img.alicdn.com/imgextra/i3/2434411923/O1CN01PS64y51Q4mAxOe88a_!!2434411923.jpg" alt="" /></a>
+      </div>
+      <div class="txt">
+       <h5><a href="./index.php?i=2&amp;c=entry&amp;itemid=588498649953&amp;lm=2&amp;pid=mm_75148416_585350217_109104850029&amp;do=view&amp;m=tiger_newhu">婴儿硅胶奶瓶刷360度旋转吸管刷奶嘴刷海绵洗奶瓶刷子清洁刷套装</a></h5>
+       <div class="sp-con">
+        <span class="l">原价 &yen;19.80</span>
+        <span class="r">已售1802件</span>
+       </div>
+       <div class="price">
+        <div class="quan">
+         <em>5元券</em>
+        </div> 券后价
+        <span><i>&yen;</i>14.80</span>
+       </div>
+      </div>
+     </div> </li>
+    <li>
+     <div class="con">
+      <div class="pic">
+       <a href="./index.php?i=2&amp;c=entry&amp;itemid=592629963173&amp;lm=2&amp;pid=mm_75148416_585350217_109104850029&amp;do=view&amp;m=tiger_newhu"><img src="http://img.alicdn.com/imgextra/i1/2139476530/O1CN01DG08EP1y6mpS07SAg_!!2139476530.png" alt="" /></a>
+      </div>
+      <div class="txt">
+       <h5><a href="./index.php?i=2&amp;c=entry&amp;itemid=592629963173&amp;lm=2&amp;pid=mm_75148416_585350217_109104850029&amp;do=view&amp;m=tiger_newhu">防辐射手机袋信号屏蔽孕妇专用睡觉手机包手机套手机袋非金属探测</a></h5>
+       <div class="sp-con">
+        <span class="l">原价 &yen;35.00</span>
+        <span class="r">已售220件</span>
+       </div>
+       <div class="price">
+        <div class="quan">
+         <em>5元券</em>
+        </div> 券后价
+        <span><i>&yen;</i>30.00</span>
+       </div>
+      </div>
+     </div> </li>
+    <li>
+     <div class="con">
+      <div class="pic">
+       <a href="./index.php?i=2&amp;c=entry&amp;itemid=552782060832&amp;lm=2&amp;pid=mm_75148416_585350217_109104850029&amp;do=view&amp;m=tiger_newhu"><img src="http://img.alicdn.com/imgextra/i1/826718035/O1CN019yAZn229E4tJMc8XL_!!826718035.jpg" alt="" /></a>
+      </div>
+      <div class="txt">
+       <h5><a href="./index.php?i=2&amp;c=entry&amp;itemid=552782060832&amp;lm=2&amp;pid=mm_75148416_585350217_109104850029&amp;do=view&amp;m=tiger_newhu">2019新款时尚女妈咪包双肩多功能大容量母婴包妈妈包宝妈外出背包</a></h5>
+       <div class="sp-con">
+        <span class="l">原价 &yen;109.00</span>
+        <span class="r">已售82件</span>
+       </div>
+       <div class="price">
+        <div class="quan">
+         <em>40元券</em>
+        </div> 券后价
+        <span><i>&yen;</i>69.00</span>
+       </div>
+      </div>
+     </div> </li>
+    <li>
+     <div class="con">
+      <div class="pic">
+       <a href="./index.php?i=2&amp;c=entry&amp;itemid=594894092375&amp;lm=2&amp;pid=mm_75148416_585350217_109104850029&amp;do=view&amp;m=tiger_newhu"><img src="http://img.alicdn.com/imgextra/i4/662374676/O1CN01ZpTtdP1kPeXAXBQUw_!!662374676.jpg" alt="" /></a>
+      </div>
+      <div class="txt">
+       <h5><a href="./index.php?i=2&amp;c=entry&amp;itemid=594894092375&amp;lm=2&amp;pid=mm_75148416_585350217_109104850029&amp;do=view&amp;m=tiger_newhu">孕妇雪纺连衣裙中长款夏装遮肚夏季仙女超仙过膝潮妈时尚款夏天</a></h5>
+       <div class="sp-con">
+        <span class="l">原价 &yen;89.00</span>
+        <span class="r">已售286件</span>
+       </div>
+       <div class="price">
+        <div class="quan">
+         <em>40元券</em>
+        </div> 券后价
+        <span><i>&yen;</i>49.00</span>
+       </div>
+      </div>
+     </div> </li>
+    <li>
+     <div class="con">
+      <div class="pic">
+       <a href="./index.php?i=2&amp;c=entry&amp;itemid=589221128824&amp;lm=2&amp;pid=mm_75148416_585350217_109104850029&amp;do=view&amp;m=tiger_newhu"><img src="http://img.alicdn.com/imgextra/i2/2243125034/O1CN018jt9hT1n3cJ1EC92S_!!2243125034.jpg" alt="" /></a>
+      </div>
+      <div class="txt">
+       <h5><a href="./index.php?i=2&amp;c=entry&amp;itemid=589221128824&amp;lm=2&amp;pid=mm_75148416_585350217_109104850029&amp;do=view&amp;m=tiger_newhu">经典花露水清凉舒爽祛痱止痒防蚊驱蚊水驱蚊液家用清香型儿童专用</a></h5>
+       <div class="sp-con">
+        <span class="l">原价 &yen;29.90</span>
+        <span class="r">已售93件</span>
+       </div>
+       <div class="price">
+        <div class="quan">
+         <em>10元券</em>
+        </div> 券后价
+        <span><i>&yen;</i>19.90</span>
+       </div>
+      </div>
+     </div> </li>
+   </ul>
+ </div>-->
+  <!-- 弹窗 -->
+
+ <!--<div class="m-pop2" id="win2">
+   <div class="pop-bg"></div>
+   <div class="con">
+    <div class="m-pic1">
+     <a class="g-close" href="javascript:;"></a>
+     <div class="pic" id="scpic"></div>
+     <div id="js-text2">
+      商品名称：意大利吃鸡求生喷雾！补水清凉保湿防水防汗200毫升防护喷雾
+      <br /> 推荐理由：【大吉大利，今晚吃鸡】意大利大牌合作款，袁珊珊推荐，防晒补水素颜冰爽喷雾，全身一抹白，国际最高防晒级别！
+      <br /> 商品原价：229.9元
+      <br /> 券后价：29.9元
+      <br /> 优惠券：200元
+      <br /> 淘口令：￥uvpoY6VrV8J￥
+      <br />
+     </div>
+     <div class="a-grop">
+      <a href="javascript:;" class="a-1 copy" data-clipboard-action="copy" data-clipboard-target="#js-text2">复制文案</a>
+
+     </div>
+  -->
+
+
+  </div>
+
+  <div class="footer" style="display:none">
+   <div class="div-a" onclick="btnevent(1)">
+    <span><em class="ico" id="shouye" style="background-image: url(../../image/home.png)"></em><span>首页</span></span>
+   </div>
+   <div class="div-a" onclick="btnevent(2)">
+    <span  class="js-collect " ><em class="ico"  id="shoucang" style="background-image: url(../../image/sz.png)"></em><span>收藏</span></span>
+   </div>
+   <div class="btn">
+    <span onclick = 'opensharewin();'   class="a1">分享商品</span>
+    <span  onclick="open_tk_item()" class="js-pop a2">前往购买</span>
+   </div>
+  </div>
+  <script src="../../plugins/swiper/swiper.min.js"></script>
+  <link rel="stylesheet" href="../../plugins/swiper/swiper.min.css" />
+  <script src="../../script/lwtcountdown.js"></script>
+
+  <!-- 结束 -->
+  <script type="text/javascript">
+        // 图片轮播
+
+
+        // 顶部
+        $(window).scroll(function() {
+            if ($(window).scrollTop() >= 45) {
+                $(".ul-listz1").addClass('on');
+                $(".g-btn").addClass('on');
+
+            } else {
+                $(".ul-listz1").removeClass('on');
+                $(".g-btn").removeClass('on');
+            }
+
+        })
+        $(".ul-listz1 li").on('click', function() {
+            $(this).addClass('on').siblings().removeClass('on');
+        })
+
+
+
+
+    </script>
+  <script>
+        $(window).on('scroll', function() {
+            var $scroll = $(this).scrollTop();
+            var top1 = $("#louti1").offset().top;
+            var top2 = $("#louti2").offset().top;
+            var top3 = $("#louti3").offset().top - 200;
+
+            if ($scroll < top1 && $scroll < top2 && $scroll < top3) {
+                $('#loutinav li').removeClass('on');
+                $('#loutinav li').eq(0).addClass('on').siblings('li').removeClass('on');
+            }
+            if (top2 < $scroll < top3 && $scroll > top1) {
+                $('#loutinav li').removeClass('on');
+                $('#loutinav li').eq(1).addClass('on').siblings('li').removeClass('on');
+            }
+            if (top3 < $scroll && $scroll > top1 && $scroll > top2) {
+                $('#loutinav li').removeClass('on');
+                $('#loutinav li').eq(2).addClass('on').siblings('li').removeClass('on');
+            }
+        });
+        var $loutili = $('#loutinav li');
+        $loutili.on('click', function() {
+            $(this).addClass('on').siblings('li').removeClass('on');
+            var $loutitop = $('.louti').eq($(this).index()).offset().top - 45;
+            // console.log($lou);
+            $('html,body').animate({
+                scrollTop: $loutitop
+            })
+        });
+    </script>
+
+
+
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/common.js"></script>
+  <script type="text/javascript" src="../../script/topsdk/taobao.js"></script>
+  <script type="text/javascript" src="../../script/shopgood.js"></script>
+  <script type="text/javascript" src="../../script/usermgr.js"></script>
+  <script type="text/javascript" src="../../plugins/jm/jmdialog.js"></script>
+  <script type="text/javascript" src="../../plugins/jm/canvasImg.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        $api.fixStatusBar( $api.dom('.pic') );
+        pageMol.goodItem = api.pageParam.item;
+        pageMol.itemID = pageMol.goodItem.itemid;
+        if(!pageMol.goodItem ){
+            //ID不存在
+            toast("商品不存在:"+pageMol.itemID);
+            return;
+        }
+
+        //获取收藏数据
+        api.getPrefs({
+            key: pageMol.KEYSHOU
+        }, function(ret, err) {
+              pageMol.shoucdata = ret.value;
+              if(pageMol.shoucdata!=null && pageMol.shoucdata!='')
+              {
+                var shouobj = $api.strToJson(pageMol.shoucdata);
+                if(shouobj){
+                   //收藏数据
+                   for (var i = 0; i < shouobj.length; i++) {
+                       var info = shouobj[i];
+                       if(info.itemid == pageMol.itemID){
+                            var el = $api.dom("#shoucang");
+                            $api.css(el,'background-image: url(../../image/szac.png)');
+                            pageMol.issc = true;
+                            break;
+                       }
+                   }
+                }
+              }
+
+        });
+
+        pageMol.initlize();
+        if(pageMol.datatype ==2){
+            //京东详情
+              pageMol.bindItemJd();
+        }
+        else if(pageMol.datatype ==3){
+            //拼多多详情
+            pageMol.bindItemPdd();
+        }
+        else {
+            pageMol.bindItems();
+        }
+
+      };
+
+
+      function copytitle(){
+        var str = $api.text($api.dom("#good_title"));
+        CopyData(str);
+      }
+
+      function openimg(index){
+           CanvasImg.openBrowserImg(pageMol.topimags,index);
+      }
+
+      //按钮事件
+      function btnevent(event_id){
+          if(event_id == 1){
+              //回到首页
+              api.closeWin();
+          }
+          else if(event_id == 2){
+              //收藏
+              fnszbtn();
+          }
+          else if(event_id == 3){
+              opensharewin();
+          }
+          else if(event_id == 4){
+              open_tk_item();
+          }
+      }
+
+
+      //用户请求分享
+      function opensharewin(){
+        if(!usermgr.checkLogin()){
+          return ;
+        }
+        if(pageMol.datatype ==2){
+            //京东
+            pageMol.getlinkurlJd(true);
+        }
+        else if(pageMol.datatype ==3){
+            //拼多多
+            pageMol.getlinkurlpdd(true);
+        }else {
+          //提示渠道授权
+          if(Number(usermgr.get_rid()) == 0){
+             authoTaobao(0);
+            return;
+          }
+          pageMol.sharegood();
+        }
+    }
+
+    //用户购买接口
+    function open_tk_item(){
+      if(!usermgr.checkLogin()){
+        return ;
+      }
+      if(pageMol.datatype == 0 || pageMol.datatype == 1){
+        if(!istest()){
+          //提示渠道授权
+          if(Number(usermgr.get_rid()) == 0){
+            authoTaobao(0);
+            return;
+          }
+        }
+        openLoadin();
+        pageMol.getlinkurl();
+      }
+      else if(pageMol.datatype == 2){
+        //openLoadin();
+        pageMol.getlinkurlJd();
+      }
+      else if(pageMol.datatype == 3){
+        //openLoadin();
+        pageMol.getlinkurlpdd();
+      }
+    }
+
+     function openLoadin(){
+         coverDiv();
+         var frameWidth = (api.frameWidth-250)/2;
+         var frameHeight = api.frameHeight/2-100;
+         $api.css($api.dom(".loading_open")," left: "+frameWidth+"px;top:"+frameHeight+"px;display:block")
+         var loadingdiv=document.getElementById("loading_bg");
+         loadingdiv.addEventListener("touchstart",function(e){
+                       e.stopPropagation();
+                       e.preventDefault();
+         },false);
+
+     }
+     function closeLoading(){
+        hideZhe();
+        $api.css($api.dom(".loading_open"),"display:none")
+     }
+     //显示遮罩
+     function coverDiv(){
+         var procbg = document.createElement("div"); //首先创建一个div
+         procbg.setAttribute("id","mybg"); //定义该div的id
+         procbg.style.background = "#000000";
+         procbg.style.width = "100%";
+         procbg.style.height = "100%";
+         procbg.style.position = "fixed";
+         procbg.style.top = "0";
+         procbg.style.left = "0";
+         procbg.style.zIndex = "500";
+         procbg.style.opacity = "0.6";
+         procbg.style.filter = "Alpha(opacity=70)";
+         document.body.appendChild(procbg);
+
+         procbg.addEventListener("touchstart",function(e){
+                       e.stopPropagation();
+                       e.preventDefault();
+         },false);
+
+         procbg.addEventListener("touchstart",function(e){
+                       e.stopPropagation();
+                       e.preventDefault();
+         },false);
+
+
+
+     }
+     //取消遮罩
+     function hideZhe() {
+         var body = document.getElementsByTagName("body");
+         var mybg = document.getElementById("mybg");
+         body[0].removeChild(mybg);
+     }
+
+     //收藏按钮
+     function fnszbtn(){
+        var el = $api.dom("#shoucang");
+        if(pageMol.issc){
+            $api.css(el,'background-image: url(../../image/sz.png)');
+            pageMol.issc = false;
+        }else {
+            $api.css(el,'background-image: url(../../image/szac.png)');
+
+            pageMol.issc = true;
+            toast2("收藏成功!");
+        }
+
+       //pageMol.goodItem
+       //设置收藏文件
+       var newjson = '';
+       if(pageMol.shoucdata!=null && pageMol.shoucdata !=''){
+           var shouobj = $api.strToJson(pageMol.shoucdata);
+           //删除
+           for (var i = 0; i < shouobj.length; i++) {
+               var info = shouobj[i];
+               if(info.itemid == pageMol.itemID){
+                    shouobj.splice(i,1)
+                    break;
+               }
+           }
+           if(pageMol.issc){
+               shouobj.unshift(pageMol.goodItem);
+           }
+           //最大收藏50个；删除最后一个
+           if(shouobj.length > 50){
+               shouobj.splice(50,1);
+           }
+           newjson = $api.jsonToStr(shouobj);
+       }else {
+         var arr=[];
+         arr.unshift(pageMol.goodItem);
+         newjson = $api.jsonToStr(arr);
+       }
+
+       api.setPrefs({
+           key: pageMol.KEYSHOU,
+           value: newjson
+       });
+
+     }
+
+
+  </script>
+
+  <canvas id="sharecanvas" style="background-color:white; width:80%;display: none;" class="am-text-center am-center"></canvas>
+  <!--弹出层-->
+  <div id="loading_bg">
+      <div class="loading_open"> <img src="../../image/opentao.gif"  /> <div>
+  </div>
+ </body>
+</html>

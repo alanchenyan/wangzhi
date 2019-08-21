@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/user.css"/>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = '' id = 'header'>
+             <div class = 'padding-t-10' style = 'height: 35px;'>
+                <img src="../../image/back.png"   class = 'normal-bk-img'>
+                <!-- <p class = 'normal-head-title'>登陆</p>   -->
+             </div>
+        </div>
+
+
+        <div class= 'login-body'>
+            <img src="../../image/banner/loginbanner.png" class = 'login-banner'>
+
+            <div class = 'btn bg-btn-red weixin-btn' id="btn_wx" style = 'margin-top: 45px;'>
+                <img src="../../image/banner/wei-w.png" class = 'wei-img'>
+                <span>微信登录</span>
+            </div>
+
+          <!--  <div class = 'btn bg-w-btn' id="btn_phone" style = 'margin-top: 19px;'  >
+                手机号登录
+            </div>-->
+        </div>
+
+        <div class = 'footer'>
+            <span style = 'color:#ccc;'>登录即代表你同意</span><span style = 'color:red;' onclick='openBrowser(app.urls.yinsi,"隐私声明")'>《本APP隐私政策》</span>
+        </div>
+
+    </div>
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery.min.js"></script>
+<script type="text/javascript" src="../../script/md5.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+<script type="text/javascript">
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+
+     //微信登录
+     $api.addEvt($api.dom('#btn_wx'), 'click', function(){
+         var wx = api.require('wx');
+         wx.isInstalled(function(ret, err) {
+           if (ret.installed) {
+             /* 微信授权登录 */
+             wx.auth({
+               apiKey: 'wx3c5b955069a3c187'
+              }, function(ret, err) {
+               if (ret.status) {
+                   //登录成功；
+                   var wxcode = ret.code;
+                   loginWx(wxcode);
+               } else {
+                   alert(JSON.stringify(err));
+               }
+              });
+
+
+           } else {
+               alert('当前没有安装微信,请选择其他方式登录');
+           }
+          });
+      });
+
+      //手机号码登录
+       $api.addEvt($api.dom('#btn_phone'), 'click', function(){
+
+               var param = Array();
+               param.name="login_phone";
+               param.url = "../user/login_phone.html";
+               param.reload = false;
+               param.pageParam = {soure:1}; //1:手机账号 2;微信绑定
+               usermgr.set_isreg(0);
+               openFram(param);
+
+
+       });
+
+       //退出事件
+       $api.addEvt($api.dom('.normal-bk-img'), 'click', function(){
+              api.closeWin();
+       });
+
+
+}
+
+
+function loginWx(wxcode)
+{
+  api.showProgress({title: '努力加载中...',text: '正在打开微信...',modal: false});
+  var divcerid = getDeviceValue();
+
+  var parms = {
+      url:"user/loginwx",
+      values:{
+         code:wxcode,
+         deviceid:divcerid
+      },
+      callback:function(ret){
+          if(ret.flag)
+          {
+              api.hideProgress();
+              var user_obj = ret.data.user;
+              var user_token = ret.data.token;
+              if(user_obj.agentid == 0 || !user_obj.agentid) {
+                  //没绑定邀请码；跳转邀请码绑定
+                  var param = Array();
+                  param.name="login_invite";
+                  param.url = "../user/login_invite_code.html";
+                  param.reload = false;
+                  param.pageParam = {soure:2};
+                  usermgr.set_userid(user_obj.userid);
+                  usermgr.set_openid(user_obj.openid);
+                  usermgr.set_isreg(0);
+                  openFram(param);
+              }
+              else if(Number(user_obj.phone) == 0 || !user_obj.phone){
+                   //手机号码 未当绑定；跳转 手机号码
+                   var param = Array();
+                   param.name="login_phone";
+                   param.url = "../user/login_phone.html";
+                   param.reload = false;
+                   param.pageParam = {soure:2}; //1:手机账号 2;微信绑定
+                   usermgr.set_userid(user_obj.userid);
+                   usermgr.set_openid(user_obj.openid);
+                   usermgr.set_agentid(user_obj.agentid);
+                   //usermgr.set_isreg(0);
+                   openFram(param);
+              }
+
+              else {
+                  usermgr.loginsucces(user_obj,user_token);
+              }
+
+          }
+          else {
+            //  pageMol.complate();
+          }
+      }
+  }
+  JM_POST(parms);
+
+}
+
+
+
+
+</script>

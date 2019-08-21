@@ -1,0 +1,353 @@
+.main-title .menu-cat,.main-title .menu-detail  {
+    font-family: Simhei;
+    font-size: 17px;
+    height: 28px;
+    line-height: 28px;
+    color: white;
+    text-align: center;
+}
+
+
+body {
+    font-size: 17px;
+    margin:  0 auto;
+    background: #faf5f6;
+    top:0;
+    left:0;
+    overflow:hidden;
+    -webkit-scrollbar{display: none;}
+}
+.main-title .main-logo {
+    font-family: Simhei;
+    max-width: 117px;
+    font-weight: bold;
+    font-size: 19px;
+    height: 28px;
+    line-height: 28px;
+    color: white;
+    overflow: hidden;
+}
+
+
+
+
+.main-title {
+    height: 64px;
+    background: #fe4a65;
+    padding: 8px 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 12;
+    display: block;
+    box-sizing: border-box;
+}
+element.style {
+    margin: 15px 0px 5px 0px;
+    padding: 5px 0px;
+}
+
+
+
+.swiper-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.swiper-slide{
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+    color: #fff!important;
+    font-family:Arial;
+}
+.swiper-slide p{
+    font-size: 12px;
+    color: #fff;
+    font-family: "Microsoft yahei";
+    margin-top: -1px;
+}
+.swiper-slide label{
+    color: #fff;
+}
+@media screen and (min-width: 321px) and (max-width : 375px) {
+    .wap-banner{
+        width: 100%;/*height: 110px;*/margin-top: 44px;
+    }
+    .wap-navTime {
+        width: 100%;  height: 50px;  background-color: #fe4a65;  color: #fff;
+    }
+    .swiper-slide{
+        font-size: 1.1em;padding-top: 7px;
+    }
+
+}
+
+
+html, body, div, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+     margin: 0;
+     padding: 0;
+
+   }
+
+   body {
+     font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+     font-weight: normal;
+     line-height: 1.6;
+     color: #5E5E5E;
+     font-size: 14px;
+     background: none repeat scroll 0 0 rgba(236, 236, 236, 1);
+   }
+
+   *, *:before, *:after {
+     -webkit-box-sizing: border-box;
+     box-sizing: border-box;
+   }
+
+   ul, ol {
+     list-style: none;
+   }
+
+   #goods-list {
+     width: 98%;
+     margin: 0 auto;
+   }
+
+   #goods {
+     height: 100%;
+     width: 100%;
+     margin: 0 0 10px 0;
+     position: relative;
+   }
+
+   .goods-line {
+     width: 65%;
+     height: 124px;
+   }
+
+   .goods-line .line-left {
+     border-right: .1rem dashed #eeeeee;
+     width: 60%
+   }
+
+   .goods-line .price {
+     font-size: 1.2rem;
+   }
+
+   .goods-line .real-price {
+     text-decoration: line-through
+   }
+
+   .goods-line .coupon {
+     color: #ccc
+   }
+
+   .outer-box {
+     margin: 15px 0 5px 0;
+     padding: 5px 0;
+     background-color: white;
+     border-radius:10px;
+
+   }
+
+   .am-padding-xs {
+     padding: 0.5rem;
+   }
+
+   .am-inline-block {
+     display: inline-block !important;
+   }
+
+   .abuy {
+     color: #f54d23;
+     text-decoration: none;
+     font-size: 14px;
+     cursor: pointer;
+   }
+
+   .fq-image {
+     width: 124px;
+     height: 124px;
+   }
+
+   .am-fr {
+     float: right;
+   }
+
+   [class*="am-avg-"] {
+
+     display: block;
+     padding: 0;
+     margin: 0;
+     list-style: none;
+   }
+
+   .am-avg-sm-2 > li:nth-of-type(2n+1) {
+     clear: both;
+   }
+
+   .am-avg-sm-2 > li:nth-of-type(n) {
+     clear: none;
+   }
+
+   .am-avg-sm-2 > li {
+     width: 50%;
+   }
+
+   [class*="am-avg-"] > li {
+     display: block;
+     height: auto;
+     float: left;
+   }
+
+   .am-padding-horizontal-xs {
+     padding-left: 0.5rem;
+     padding-right: 0.5rem;
+   }
+
+   .line-clamp {
+     overflow: hidden;
+     text-overflow: ellipsis;
+     display: -webkit-box;
+     height: 38px;
+     -webkit-box-orient: vertical;
+     line-height: 1.4;
+     max-height: 38px;
+     min-height: 38px;
+   }
+
+   .line-clamp a {
+     color: #5e5e5e;
+     text-decoration: none;
+   }
+    .line-clamp   {
+     outline: 0;
+     color: #f8285c;
+     text-decoration: underline;
+   }
+
+   .am-text-sm {
+     font-size: 13px;
+     overflow:hidden;
+ text-overflow:ellipsis;
+ display:-webkit-box;
+ -webkit-box-orient:vertical;
+ -webkit-line-clamp:2;
+   }
+
+   .fq-color-gray {
+     color: #8f8f8f;
+   }
+
+   .fq-color-danger {
+     color: #f54d23;
+   }
+
+   .fq-background-white {
+     background-color: #FFF;
+   }
+
+   .am-vertical-align-middle, .am-vertical-align-bottom {
+     display: inline-block;
+     font-size: 1.6rem;
+     max-width: 100%;
+   }
+
+   .first-found {
+     position: relative;
+     top: -25px;
+     width: 22px;
+     height: 22px;
+     background: #eeeeee;
+     text-align: center !important;
+     display: inline-block !important;
+   }
+   .second-found {
+     position: relative;
+     top: 10px;
+     width: 22px;
+     height: 22px;
+     background: #eeeeee;
+   }
+
+   .am-round {
+     border-radius: 1000px;
+   }
+
+   .math-bar {
+     width: 100%;
+     height: 20px;
+     background: #FEB1C5;
+     margin-top: 5px;
+     border-radius: 50px;
+     display: inline-block;
+     z-index: 5;
+     line-height: 20px;
+   }
+
+   .math-bar .topdh5 {
+     position: absolute;
+     width: 19%;
+     height: 20px;
+     background-image: linear-gradient(to right, #fc386a, #FD7194);
+     border-radius: 50px;
+     display: inline-block;
+     z-index: 6;
+     line-height: 20px;
+     animation: clipAni5 1.5s;
+     -webkit-animation: clipAni5 1.5s;
+   }
+
+   @keyframes clipAni5
+   {
+     0% {
+       opacity: 1;
+       width:35%
+     }
+     30% {
+       opacity: 1;
+       width:35%
+     }
+     100% {
+       opacity: 1;
+       -webkit-transform: translateX(0);
+     }
+   }
+
+
+   .math-bar .last {
+     position: absolute;
+     width: 32%;
+     vertical-align: middle;
+     color: #fff;
+     line-height: 20px;
+     height: 20px;
+     margin-left: 5px;
+     z-index: 7;
+     font-size: 11px;
+   }
+
+   .math-bar .last span.bought {
+     float: right;
+     margin-left: 0;
+     font-size: 11px;
+   }
+
+   .coupon-panel {
+     line-height: 1.2
+   }
+
+   .coupon-panel .coupon-value {
+     color: #fc386a
+   }
+
+   .coupon-panel .coupon-type {
+     color: rgba(0, 0, 0, 0.5);
+   }
+
+   .coupon-panel .tobuy {
+     background: #ff9c0a;
+     padding: 5px 12px;
+     border-radius: 5px;
+     color: #FFF;}

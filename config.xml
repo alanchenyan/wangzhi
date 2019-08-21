@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget id="A6019580454753"  version="1.0.0">
+  <name>juanmi</name>
+    <description>
+        卷米淘宝客三合一返利APP
+    </description>
+    <author email="978839585@QQ.com" href="http://www.52juanmi.com">
+        漫步开发者 QQ：978839585
+    </author>
+  <content src="index.html" />
+	<preference name="appBackground" value="rgba(0,0,0,0)"/>
+	<preference name="windowBackground" value="rgba(0,0,0,0)"/>
+	<preference name="frameBackgroundColor" value="rgba(0,0,0,0)"/>
+	<preference name="autoLaunch" value="true"/>
+	<preference name="autoUpdate" value="true"/>
+	<preference name="smartUpdate" value="true"/>
+	<preference name="debug" value="false"/>
+	<preference name="statusBarAppearance" value="true"/>
+	<permission name="location"/>
+	<permission name="internet"/>
+	<access origin="*"/>
+  <feature name="push"/>
+  <!-- 配置aliBC模块
+<preference name="querySchemes" value="tbopen,tmall"/>
+<feature name="aliBC">
+  <param name="urlScheme" value="tbopen25339544"/>
+</feature>-->
+<feature name="TalkingData">
+        <param name="logEnable" value="true" />
+        <param name="exceptionReportEnabled" value="true" />
+        <!-- 渠道名称 -->
+        <param name="channel" value="android" />
+</feature>
+
+<feature name="alibaichuan">
+    <param name="urlScheme" value="tbopen25339544"/>
+</feature>
+<preference name="querySchemes" value="tmall,tbopen" />
+
+
+<!-- 微信登录模块配置 -->
+<feature name="wx">
+   <param name="urlScheme" value="wxf70f7ee85e71e48d"/>
+   <param name="apiKey" value="wxf70f7ee85e71e48d"/>
+   <param name="apiSecret" value="e69b86ce5b11cd824dfdb34a62d498e0"/>
+</feature>
+<!--Q模块-->
+<feature name="QQPlus">
+   <param name="urlScheme" value="tencent1108025456" />
+   <param name="apiKey" value="1108025456" />
+</feature>
+
+ <preference name="userAgent" value="juanmi" />
+<preference name="forbiddenSchemes" value="*" />
+
+<!--腾讯个推 -->
+<feature name="tencentPush">
+        <param name="android_accessId" value="2100339770" />
+        <param name="android_accessKey" value="APNYP63W752S" />
+</feature>
+<!--腾讯个推 IOS-->
+<feature name="tencentPush">
+        <param name="ios_accessId" value="2200338116" />
+        <param name="ios_accessKey" value="IU4J717UN9SU" />
+</feature>
+</widget>

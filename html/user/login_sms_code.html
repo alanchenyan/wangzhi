@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>输入短信验证码</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/user.css"/>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = '' id = 'header'>
+             <div class = 'padding-t-10' style = 'height: 35px;'>
+                <img src="../../image/back.png" class = 'normal-bk-img'>
+                <!-- <p class = 'normal-head-title'>登陆</p>   -->
+             </div>
+        </div>
+
+
+        <div class= 'login-body'>
+            <img src="../../image/banner/codebanner.png" class = 'login-banner'>
+
+            <p class = 'send-msg'>短信已发送至 +86 <span id="txtphone" >18998787751</span></p>
+
+            <div class ='code-box'>
+                <input id="put1" type="tel" name="" placeholder="" class = 'code-input' data-index = '0'>
+                <input id="put2" type="tel" name="" placeholder="" class = 'code-input' data-index = '1' readonly>
+                <input id="put3" type="tel" name="" placeholder="" class = 'code-input' data-index = '2' readonly>
+                <input id="put4" type="tel" name="" placeholder="" class = 'code-input' data-index = '3' >
+            </div>
+
+
+            <p  class = 'send-msg' id="cfaaa" style = 'margin-top: 30px;'></p>
+
+            <div  class = 'btn bg-btn-red weixin-btn' id="btnok" style = 'margin-top: 30px;' >
+                <span>下一步</span>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery.min.js"></script>
+<script type="text/javascript" src="../../script/md5.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+
+<script type="text/javascript">
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+     var soure =  api.pageParam.soure;
+    //获取手机号
+    var currphone = usermgr.get_phone();
+    //currphone ='18602731740';
+    //alert($currphone);
+    $('#txtphone').text(currphone);
+
+     $('#put4').bind('input propertychange', function() {
+           if($('#put4').val().length == 0)
+           {
+                $('#put3').val('');
+                $('#put2').val('');
+                $('#put1').val('');
+                $('#put1').focus();
+           }
+     });
+    //倒计时
+    mixfun(currphone);
+    //发送短信
+    ressend(currphone);
+
+
+    $api.addEvt($api.dom('#btnok'), 'click', function(){
+          if( $('#put1').val()=='' || $('#put2').val()=='' ||$('#put3').val()=='' ||$('#put4').val()=='' )
+          {
+              toast2("请输入正确的验证码");
+              return;
+          }
+
+          var smscode= $('#put1').val()+$('#put2').val()+$('#put3').val()+$('#put4').val();
+          smscode = Number(smscode);
+          api.showProgress({title: '努力加载中...',text: '验证短信...',modal: false});
+          var divcerid = getDeviceValue();
+          var parms = {
+              url:"user/checksmscode",
+              values:{
+                 phone:currphone,
+                 pcode:smscode,
+                 ptype:soure ,//1：手机号码登录注册 2-微信绑定手机号
+                 deviceid:divcerid,
+                 userid:usermgr.get_userid(),
+                 openid:usermgr.get_openid(),
+                 agentid:usermgr.get_agentid()
+              },
+              callback:function(ret){
+                  if(ret.flag)
+                  {
+                      api.hideProgress();
+                      usermgr.loginsucces(ret.data.userinfo,ret.data.token);
+                     
+                  }
+                  else {
+                    api.hideProgress();
+                    toast2("短信验证码错误或已超时");
+                  }
+              }
+        }
+        JM_POST(parms);
+
+   });
+
+   //退出事件
+   $api.addEvt($api.dom('.normal-bk-img'), 'click', function(){
+          api.closeWin();
+   });
+
+}
+
+//发送短信验证码
+function ressend(currphone)
+{
+  // alert("aaaa");
+   $('#cfaaa').html("<span id='mis'>60</span>s后可重新获取");
+   mixfun(currphone);
+   var pkey = hex_md5(currphone+app.SMS_KEY);
+   var parms = {
+       url:"user/getsmscode/phone/"+currphone+"/pkey/"+pkey+"/ptype/1",
+       callback:function(ret){
+           if(ret.flag)
+           {
+                if(Number(ret.data) == 1){
+                    toast2("验证短信已发送");
+                }
+           }
+           else {
+              toast2("短信发送失败");
+           }
+       }
+   }
+   JM_GET(parms);
+}
+
+
+//开启倒计时
+function mixfun(currphone)
+{
+    var num=60;
+  var timer=setInterval(function(){
+          num--;
+           $('#mis').text(num);
+          if(num==0){
+              clearInterval(timer);   //定时器清除；\
+              //重新发送
+               $('#cfaaa').html("<span style='color:#2840e2;' onclick='ressend("+currphone+")' > 重新发送短信 </span>");
+          }
+      },1000);
+}
+
+$('.code-input').eq(0).focus();
+
+var txts = $(".code-input");
+for(var i = 0; i<txts.length;i++){
+    var t = txts[i];
+    t.index = i;
+    // t.setAttribute("readonly", true);
+    t.onkeyup=function(){
+        // alert(this.value);
+        if (true) {}
+        var next = this.index + 1;
+
+        if (this.value.length == 2) {
+            this.value = this.value.substr(1,this.value.length);
+        }
+
+        if(next > txts.length - 1) return;
+
+        if (this.value.length == 1 ) {
+            txts[next].removeAttribute("readonly");
+            txts[next].focus();
+        }
+    }
+}
+// txts[0].removeAttribute("readonly");
+
+
+
+</script>

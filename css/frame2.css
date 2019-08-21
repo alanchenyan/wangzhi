@@ -1,0 +1,289 @@
+.wrapper{
+	background: #f6f6f6;
+	min-height: 100vh;
+}
+.head{
+	height: 10rem;
+	background: linear-gradient(to bottom,	#FF6A6A,#CD5555) no-repeat;
+	background: -webkit-linear-gradient(to bottom,#FF6A6A,#CD5555) no-repeat;
+	border-radius: 0 0 1.5rem 1.5rem;
+}
+.head .head-top{
+	padding: 0.5rem 0.75rem;
+}
+.head .head-user-img{
+	width: 2.75rem;
+	height: 2.75rem;
+	border-radius: 50%;
+}
+.head .head-right{
+	width: 8.5rem;
+	height: 1.25rem;
+	border-radius: 1.25rem;
+	background: #fff;
+	font-size: 12px;
+	text-align: center;
+	line-height: 1.25rem;
+	overflow: hidden;
+	color: #dbb97d;
+}
+.head .head-right .head-btn{
+	width: 2rem;
+	height: 1.25rem;
+	background: #e6ab37;
+	color: #fff;
+}
+.head .head-user-main{
+	overflow: hidden;
+}
+.head .head-user-info{
+	margin-left: 0.5rem;
+	overflow: hidden;
+}
+.head .head-user-info .name{
+	font-size: 0.75rem;
+	color: #fff;
+	font-weight: bold;
+}
+.head .head-user-info .fs{
+
+	text-align: left;;
+}
+.main{
+	margin: -5.25rem 0.75rem 0;
+}
+.main .mod1{text-align: center;}
+.main .mod{
+	background: #fff;
+	border-radius: 0.45rem;
+	padding: 0 0.45rem 0.7rem;
+	margin-bottom: 0.875rem;
+}
+.main .mod-title{
+	text-align: center;
+	margin-top: 1.2rem;
+	display: inline-block;
+	background: linear-gradient(to bottom,#fff 0%,#fff 40%,#fdfddb 100%) no-repeat;
+	background: -webkit-linear-gradient(to bottom,#fff 0%,#fff 40%,#fdfddb 100%) no-repeat;
+}
+.main .mod-title h3{
+	font-size: 0.75rem;
+	color: #d57300;
+	display: inline-block;
+	vertical-align: middle;
+}
+.main .mod-title::after,
+.main .mod-title::before{
+	content: "";
+	display: inline-block;
+	width: 1.65rem;
+	height: 2px;
+	vertical-align: middle;
+	background: #f8dfb3;
+}
+.main .mod-title::before{
+	margin-right: 0.5rem;
+}
+.main .mod-title::after{
+	margin-left: 0.5rem;
+}
+.main .mod-spa{
+	width: 10.5rem;
+	height: 1rem;
+	line-height: 1rem;
+	text-align: center;
+	margin: 0.5rem auto;
+	background: linear-gradient(to right,#ecbc4e 0%,#d78809 100%) no-repeat;
+	background: -webkit-linear-gradient(to right,#ecbc4e 0%,#d78809 100%) no-repeat;
+	color: #fff;
+	border-radius: 1rem;
+	font-size: 0.6rem;
+}
+.main .mod-items{
+	margin:0 1.25rem;
+	overflow: hidden;
+}
+.main .mod-items .item{
+	overflow: hidden;
+}
+.main .mod-items .item-img{
+	width: 2rem;
+	height: 2rem;
+}
+.main .mod-items .item-img2{
+	width: 2.3rem;
+	height: 2.3rem;
+}
+
+.main .mod-items .item-info{
+	font-size: 0.6rem;
+	margin-top: 0.25rem;
+	color: 	#4F4F4F;
+	white-space: nowrap;
+}
+.main .mod-items .item-info1{
+
+	font-size: 0.5rem;
+
+	color: 	#9C9C9C;
+	white-space: nowrap;
+}
+
+.main .hr{
+	height: 1px;
+	background: #f4f4f4;
+	margin: 1.25rem 0.6rem 0.75rem;
+}
+.mod-set-text{
+	text-align: center;
+	font-size: 0.7rem;
+	color: #333;
+	font-weight: bold;
+}
+.mod-set-text .iconfont{
+	font-size: 0.7rem;
+}
+.mod-set-text span{
+	color: #fbb545;
+}
+.main .mod1-btn{
+	width: 14.25rem;
+	height: 3rem;
+	background: url(../image/frame2/btn.jpg) no-repeat;
+	background-size: 100% 100%;
+  margin-left: 15px;
+	margin-top: 40px;
+}
+.main .mod1-pro{
+	width: 15rem;
+	text-align: center;
+	color: #848484;
+	font-size: 0.7rem;
+	margin: 0 auto 0.7rem;
+}
+.main .mod1-pro .pro{
+	width: 13rem;
+	height: 0.35rem;
+
+	display: inline-block;
+
+}
+.main .mod1-pro .pro .iconfont{
+	font-size: 0.75rem;
+	color: #ecc27f;
+	position: absolute;
+	top: -0.4rem;
+	right: 0;
+	border: 1px solid #eee;
+}
+.main .mod2 {
+	padding-top: 0.5rem;
+}
+.main .mod:last-child{
+	margin-bottom: 0;
+}
+.mod2 .mod2-text{
+	font-size: 0.9rem;
+	color: #cb8b18;
+	text-align: center;
+	font-weight: bold;
+	margin: 0.5rem 1rem 0;
+	background: linear-gradient(to bottom,#fff 0%,#fff 20%,#fdfddb 100%) no-repeat;
+	background: -webkit-linear-gradient(to bottom,#fff 0%,#fff 20%,#fdfddb 100%) no-repeat;
+}
+.mod2 .mod2-text .text-m{
+	width:1.1rem;
+	height: 1.1rem;
+	background: linear-gradient(to bottom,#fbcf76,#d97804) no-repeat;
+	background: -webkit-linear-gradient(to bottom,#fbcf76,#d97804) no-repeat;
+	border-radius: 50%;
+	display: inline-block;
+	font-size: 0.7rem;
+	color: #fff;
+	line-height: 1.1rem;
+	text-align: center;
+	vertical-align: middle;
+	position: relative;
+	top: -0.1rem;
+	margin-right: 0.1rem;
+
+}
+.mod2-go{
+	width: 14rem;
+	height: 1.7rem;
+	padding: 0 0.875rem;
+	border-radius: 1.7rem;
+	background: #fffce3;
+	margin: 1.15rem auto 0.45rem;
+}
+.mod2-go .left{
+	font-size: 0.65rem;
+	color: #b7b2ac;
+}
+.mod2-go .left span{
+	font-size: 0.75rem;
+	color: #302f2e;
+	font-weight: bold;
+}
+.mod2-go .right{
+	font-size: 0.65rem;
+	color: #cba125;
+}
+.mod2-go .right i{
+	font-size: 0.65rem;
+}
+.mod2-ts{
+	font-size: 0.7rem;
+	margin: 0 0.75rem;
+	color: #dbcdb3;
+}
+.mod2-ts .iconfont{
+	font-size: 0.7rem;
+	margin-right: 0.25rem;
+}
+.mod2-ts  .right{
+	font-size: 0.65rem;
+	line-height: 0.8rem;
+}
+.mod2-items{
+	width: 16rem;
+	margin: 1.25rem auto 0;
+}
+.mod2-items .mod2-item{
+	margin-bottom: 1rem;
+}
+.mod2-items .mod2-item .left{
+	width: 2.25rem;
+	height: 2.25rem;
+	background-size: 100% 100%!important;
+	position: relative;
+	background: url(../image/huodong/rp.png);
+
+}
+.mod2-items .mod2-item .left .money{
+	position: absolute;
+	font-size: 0.7rem;
+	color: #fefbdf;
+	top: 1.02rem;
+	left: 0;
+	text-align: center;
+	width: 100%;
+}
+.mod2-items .mod2-item .left .money span{
+	font-size: 0.5rem;
+}
+.mod2-items .mod2-item .center{
+	font-size: 0.65rem;
+	color: #b5b5b5;
+	margin: 0 0.5rem;
+}
+.mod2-items .mod2-item .right{
+	width: 3.25rem;
+	height: 1.4rem;
+	text-align: center;
+	line-height: 1.4rem;
+	font-size: 0.7rem;
+	color: #fff;
+	background: #ebb85c;
+	border-radius: 1.4rem;
+}

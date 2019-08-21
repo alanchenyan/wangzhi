@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <title>标题窗体</title>
+  <link rel="stylesheet" type="text/css" href="../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../css/loaders.min.css" />
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <style>
+          body{
+            text-align:center
+          }
+      </style>
+ </head>
+ <body>
+   <div class = 'normal-head-box' id = 'header'>
+        <div class = 'padding-t-10'>
+           <img src="../image/back.png" onclick="back()"  class = 'normal-bk-img'>
+          <!--  <img src="../image/bride_search.png" class = 'normal-r-img'> -->
+           <p class = 'normal-head-title' id="titlevale"></p>
+        </div>
+   </div>
+   <div class="" style=" background:#fff;  "  >
+              <!-- loading 界面 -->
+              <section class="list-wrapper" id="list-wrapper">
+               <div class="list-item-loading">
+                <div class="loader-inner ball-pulse">
+                 <div></div>
+                 <div></div>
+                 <div></div>
+                </div>
+               </div>
+              </section>
+          </div>
+
+
+ </body>
+ <script type="text/javascript">
+   var curr_frame_name = "";
+   apiready = function(){
+      $api.fixStatusBar( $api.dom('#header') );
+      var pagedata = api.pageParam.pagedata;
+      var pagetype = api.pageParam.pagetype;
+      var title_obj = document.getElementById("titlevale");
+      var win_height = $api.dom('#header').offsetHeight;
+      if(pagetype == "cate"){
+          //分类窗体
+          var curr_cate_data = $api.strToJson(pagedata);
+          if(!curr_cate_data)
+          {
+              toast("分类数据获取失败");
+              return;
+          }
+          title_obj.innerHTML= curr_cate_data.name;
+          curr_frame_name = "frame_cate_filter";
+          api.openFrame({
+            name: curr_frame_name,
+            url: './frame_item_list_cate_filter.html',
+            rect: {
+                x: 0,
+                y: win_height+20,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                cateid: curr_cate_data.id
+            }
+         });
+
+      }
+   
+   };
+
+   function back()
+   {
+    api.closeWin();
+     api.closeFrame({
+        name: curr_frame_name
+      });
+
+   }
+</script>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-dns-prefetch-control" content="on" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta content="telephone=no" name="format-detection" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>整点限时抢</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../plugins/swiper/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/animate.min.css" />
+
+
+  <link rel="stylesheet" type="text/css" href="../../css/framq.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+
+    <script type="text/javascript" src="../../script/common.js"></script>
+   <script type="text/javascript" src="../../script/vue/vue.js"></script>
+  <script type="text/javascript" src="../../script/jquery.min.js"></script>
+  <script type="text/javascript" src="../../plugins/swiper/swiper.min.js"></script>
+  <script type="text/javascript" src="../../script/api.js"></script>
+
+  <script type="text/javascript" src="../../script/qanggou/index.js"></script>
+
+ </head>
+ <body>
+  <div id="toptitle" class="main-title clearfix theme-bg-color-1">
+   <img src="../../image/backw.png" class="normal-bk-img" />
+   <div class="menu-detail">
+    <span>限时抢购</span>
+   </div>
+
+
+  </div>
+  <div class="wap-banner">
+  </div>
+  <div class="wap-navTime " style="position: fixed;  margin-top:-40px; height:60px; z-index: 12; ">
+   <!--    <span class="perple"><i></i></span>-->
+   <div class="swiper-container">
+    <div class="swiper-wrapper" id="timenav_str" style="width: 50%;">
+
+    </div>
+
+
+   </div>
+  </div>
+  <div class="goods-block" style="margin-top:100px" id="table">
+   <p class="jiaz" style="width: 100%;text-align: center; line-height: 5px; ">
+     加载中！请稍后
+   </p>
+
+  </div>
+
+  <div id="goods-list"  >
+    <div id="goods">
+      <section id="pageCon">
+        <ul id="list_box">
+
+          <div class="outer-box"  v-for="item in dataitem" >
+            <div class="am-padding-xs">
+              <div class="am-inline-block " style="width:35%">
+                <a href="#" class="tobuy abuy">
+                  <img class="fq-image" src="http://img.alicdn.com/bao/uploaded/i4/3854649701/O1CN01EEzVnt2LX6jE9ykkL_!!0-item_pic.jpg_300x300.jpg" />
+                </a>
+              </div>
+              <ul class="am-avg-sm-2 am-fr goods-line">
+                <li class="am-padding-horizontal-xs line-left">
+                  <strong class="line-clamp am-text-sm" id="item_details_1">
+                  <a href="#" id="5866598430329">{{item.title}}</a>
+                </strong>
+
+                  <div class="am-text-xs fq-color-gray real-price">在售价 ￥{{item.reserve_price}}</div>
+                  <div class="fq-color-danger ">
+                    <span class="am-text-xs">活动价  ￥</span>
+                    <strong class="am-text-lg price">{{item.zk_final_price}} </strong></div>
+
+
+                  <div class="math-bar">
+                    <div class="topdh5" style="width: 25%"></div>
+                    <div class="last">余量{{item.yliang}}%<span class="bought">已抢{{item.sold_num}}件</span></div>
+                  </div>
+                </li>
+                <li class="am-text-center" style="width:40%;  text-align:center">
+                  <div class="am-vertical-align-middle coupon-panel">
+                    <div class="am-round first-found am-inline-block am-text-center"></div>
+                    <div><span class="am-text-sm fq-color-danger coupon-value"></span><span class="am-text-xl fq-color-danger coupon-value">{{item.zk}}折</span></div>
+                    <span class="am-text-xs coupon-type"> </span><br><a class="tobuy am-text-sm fq-text-white fq-background-red am-radius am-block am-padding-xs am-margin-top-sm fq-a-focus abuy " name="undefined&amp;maxw=375" id="586659843029" data-id="586659843029" data-bk="http://img.alicdn.com/bao/uploaded/i4/3854649701/O1CN01EEzVnt2LX6jE9ykkL_!!0-item_pic.jpg_300x300.jpg" href="#" style="">马上抢</a>
+                    <div class="am-round second-found am-inline-block am-text-center"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    apiready = function () {
+        var header = $api.byId('toptitle');
+        $api.fixStatusBar(header);
+        pageMol.initlize();
+        pageMol.dvv = new Vue({el:'#list_box',data:pageMol});
+
+        pageMol.BindData();
+    }
+
+</script>
+  <script language="javascript">
+
+ </script>
+ </body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>手机号 密码登陆</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/user.css"/>
+
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = '' id = 'header'>
+             <div class = 'padding-t-10' style = 'height: 35px;'>
+                <img src="../../image/back.png" class = 'normal-bk-img'>
+                <!-- <p class = 'normal-head-title'>登陆</p>   -->
+             </div>
+        </div>
+
+
+        <div class= 'login-body'>
+            <img src="../../image/banner/shushouji.png" class = 'login-banner'>
+
+            <div style="width:80%; height:45px;margin-left:10%;margin-top:25px; line-height:45px;  border:1px solid #eee">
+               <span style="float:left; font-size:19px; margin-left:15px;  ">账号:</span>
+               <input id="telphone" type="tel"
+                style="height:35px;font-size:20px; width:60%;
+                float:left; border:1px;margin-left:15px;margin-top:3px;"
+                  autofocus="autofocus"  placeholder="输入手机号"  >
+            </div>
+            <div style="width:80%; height:45px;margin-left:10%;margin-top:25px; line-height:45px;  border:1px solid #eee">
+               <span style="float:left; font-size:19px; margin-left:15px;  ">密码:</span>
+               <input id="telpwd"  type="password"
+                style="height:35px;font-size:20px; width:60%;
+                float:left; border:1px;margin-left:15px;margin-top:3px;"
+                 laceholder="请输入密码"  >
+            </div>
+
+            <div class = 'btn bg-btn-red weixin-btn' id="xiayibu" style = 'margin-top: 50px;box-shadow: 5px 5px 5px #efb7a9; margin-bottom:10px' >
+                <span>登陆账号</span>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/aui-dialog.js"></script>
+<script type="text/javascript" src="../../script/md5.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+<script type="text/javascript">
+function isPoneAvailable(phone) {
+            var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+            if (!myreg.test(phone)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+
+     $api.addEvt($api.dom('#xiayibu'), 'click', function(){
+            var phone = $api.val($api.dom("#telphone"));
+            if(!isPoneAvailable(phone)){
+                toast2("手机号码无效");
+                return;
+            }
+            else {
+                isPhone(phone);
+            }
+            //alert(phone);
+
+     });
+
+     //退出事件
+     $api.addEvt($api.dom('.normal-bk-img'), 'click', function(){
+            api.closeWin();
+     });
+
+}
+
+
+//打开短信页面；发送短信
+function openSMSFrame()
+{
+
+  var phone = $api.val($api.dom("#telphone"));
+  usermgr.set_phone(phone);
+  var souretype =  api.pageParam.soure;
+  var param = Array();
+  param.name="login_sms";
+  param.url = "../user/login_sms_code.html";
+  param.reload = false;
+  param.pageParam = {soure:souretype};
+  openFram(param);
+}
+
+//打开邀请码界面
+function openInviteCode()
+{
+  var souretype =  api.pageParam.soure;
+  var param = Array();
+  param.name="login_invite";
+  param.url = "../user/login_invite_code.html";
+  param.reload = false;
+  param.pageParam = {soure:souretype};
+  openFram(param);
+}
+
+//检查手机号是否存在。。。
+/*  2-微信登录绑手机   1-手机号登录用户 */
+function isPhone(phone){
+  api.showProgress({title: '努力加载中...',text: '',modal: false});
+  var soure =  api.pageParam.soure;
+  var dialog = new auiDialog({});
+    var currphone = $api.val($api.dom("#telphone"));
+  if(!isPoneAvailable(currphone)){
+      toast2("手机号码无效");
+      return;
+  }
+  var divcerid = getDeviceValue();
+  var telpwd = $api.val($api.dom("#telpwd"));
+  var parms = {
+      url:"user/loginpw/",
+      values:{
+         phone:currphone,
+         pwd:telpwd,
+         deviceid:divcerid,
+      },
+      callback:function(ret){
+          api.hideProgress();
+          if(ret.flag)
+          {
+            usermgr.loginsucces(ret.data.user,ret.data.token);
+          }
+          else {
+              toast2(ret.msg);
+          }
+      }
+  }
+  JM_POST(parms);
+
+}
+
+
+
+</script>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>绑定支付宝</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+     <link rel="stylesheet" type="text/css" href="../../css/takecash.css"/>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = 'normal-head-box' id = 'header'  >
+             <div class = 'padding-t-10'>
+                <img src="../../image/back.png"    class = 'normal-bk-img'>
+                <p class = 'normal-head-title'>绑定支付宝</p>
+             </div>
+        </div>
+
+
+        <div class="aui-content aui-margin-b-15 mg-t-5" style="margin-top:90px;">
+             <ul class="aui-list aui-form-list">
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label fz-12">
+                            姓名
+                        </div>
+                        <div class="aui-list-item-input">
+                            <input type="text" id="el_name" placeholder="请输入支付宝认证的真实名字">
+                        </div>
+                    </div>
+                </li>
+
+                 <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label fz-12">
+                            支付宝号
+                        </div>
+                        <div class="aui-list-item-input">
+                            <input id="el_aplipay"  type="text" placeholder="请输入支付宝号">
+                        </div>
+                    </div>
+                </li>
+
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label fz-12">
+                            手机号码
+                        </div>
+                        <div class="aui-list-item-input">
+                            <input type="text" id="el_phone" placeholder="请输入手机号" value = ' ' readonly="">
+                        </div>
+                    </div>
+                </li>
+
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label fz-12">
+                            验证码
+                        </div>
+                        <div class="aui-list-item-input" style = 'position: relative;'>
+                            <input type="number" id="el_sms" placeholder="请输入验证码" class = 'fz-12'>
+                            <div id="smsdiv"><span onclick='ressend()' class = 'bd-zfb'>获取验证码</span></div>
+                        </div>
+                    </div>
+                </li>
+
+
+             </ul>
+        </div>
+
+        <div class = 'take-btn' onclick="BindAlipay()">
+          立即绑定
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+<script type="text/javascript" src="../../script/jquery.min.js"></script>
+<script type="text/javascript" src="../../script/md5.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript">
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+
+     if(usermgr.checkLogin()){
+       api.showProgress({title: '',  text: '支付信息',  modal: true});
+        document.getElementById("el_phone").value = usermgr.get_phone();;
+        var parms = {
+            url:"user/getalipay/token/"+usermgr.get_usertoken(),
+            callback:function(ret){
+                api.hideProgress();
+                if(ret.flag)
+                {
+                  if(ret.data){
+                    document.getElementById("el_aplipay").value = ret.data.alipay;
+                    document.getElementById("el_name").value= ret.data.username;
+                  }
+
+                }
+                else {
+                   toast2(ret.msg);
+                }
+            }
+        }
+        JM_GET(parms);
+
+     }
+}
+
+$api.addEvt($api.dom('.normal-bk-img'), 'click', function(){
+  api.closeWin();
+});
+
+
+//绑定
+function BindAlipay(){
+  var currphone = usermgr.get_phone();
+  var alipay = document.getElementById("el_aplipay").value;
+  var elname = document.getElementById("el_name").value;
+  var smscode =document.getElementById("el_sms").value;
+  api.showProgress({title: '',  text: '绑定中',  modal: true});
+  var parms = {
+      url:"user/bindalipay/smscode/"+smscode+"/alipay/"+alipay+"/name/"+elname+"/token/"+usermgr.get_usertoken(),
+      callback:function(ret){
+        api.hideProgress();
+          if(ret.flag)
+          {
+               toast2(ret.data);
+               usermgr.authoruser(true);
+          }
+          else {
+             toast2(ret.msg);
+          }
+      }
+  }
+  JM_GET(parms);
+}
+
+
+//发送短信验证码
+function ressend()
+{
+  // alert("aaaa");
+  var currphone = usermgr.get_phone();
+   $('#smsdiv').html("<span id='mis' class = 'bd-zfb'>60</span>");
+   mixfun(currphone);
+   var pkey = hex_md5(currphone+app.SMS_KEY);
+   var parms = {
+       url:"user/getsmscode/phone/"+currphone+"/pkey/"+pkey+"/ptype/2",
+       callback:function(ret){
+           if(ret.flag)
+           {
+                if(Number(ret.data) == 1){
+                    toast2("验证短信已发送");
+                }
+           }
+           else {
+              toast2("短信发送失败");
+           }
+       }
+   }
+   JM_GET(parms);
+}
+
+//开启倒计时
+function mixfun(currphone)
+{
+    var num=60;
+  var timer=setInterval(function(){
+          num--;
+          $('#mis').text(num);
+          if(num==0){
+              clearInterval(timer);   //定时器清除；\
+              //重新发送
+               $('#smsdiv').html("<span onclick='ressend()' class = 'bd-zfb'>重新发短信</span>");
+          }
+      },1000);
+}
+
+
+
+</script>

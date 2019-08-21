@@ -1,0 +1,267 @@
+/*html,body {  font-size:14px; height:100%;  }*/
+
+
+.flex-wrap{ display: -webkit-box;	display: -webkit-flex;	display: flex; }
+.flex-con{     -webkit-box-flex: 1;     -webkit-flex: 1;    flex: 1;}
+.flex-vertical{ -webkit-box-orient: vertical;-webkit-flex-flow: column;flex-flow: column;}
+
+.border-t,
+.border-b{ position:relative;  }
+.border-t:before,
+.border-b:after{     content: '';     position: absolute;     left: 0;  top:0;     background: #ddd;   right:0;    height: 1px;     -webkit-transform: scaleY(0.5);             transform: scaleY(0.5);     -webkit-transform-origin: 0 0;             transform-origin: 0 0; }
+.border-b:after{ top:auto; bottom:0;  }
+[v-cloak] {
+    display: none !important;
+}
+
+
+/* 导航栏样式 */
+.jd_nav {
+width: 100%;
+border: 0px solid #eee;
+padding-bottom: 0px;
+position: relative;
+
+border-radius:20px;
+margin-bottom: 10px;
+background-color: #fff;
+
+}
+
+.jd_nav ul {
+width: 100%;
+padding-bottom: 10px;
+}
+
+.jd_nav ul li {
+float: left;
+width: 20%;
+padding-top: 12px;
+}
+
+.jd_nav ul li span {
+display: block;
+width: 100%;
+}
+
+.jd_nav ul li span img {
+margin: 0 auto;
+width: 53%;
+display: block;
+}
+
+.jd_nav ul li span p {
+color: #666;
+text-align: center;
+padding-top: 6px;
+font-size: 12px
+}
+
+/*排序条的样式 */
+/* 排序样式 */
+.sort_boxs {
+margin-top: 5px;
+text-align: left;
+font-size: 12px;
+}
+
+.sort_boxs>.aui-row {
+border-top: 1px solid #eee;
+border-bottom: 1px solid #eee;
+}
+
+.sort_boxs>.aui-row>.aui-col-xs-3 {
+padding: 10px !important;
+}
+
+.sort_act {
+color: red;
+}
+
+
+.sort_img_s {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 5px;
+  right: 7%;
+}
+.sort_img_x {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 15px;
+  right: 7%;
+}
+
+
+
+/* 物品列表样式 */
+.sell-good-all-box>.aui-col-xs-6{
+  padding-bottom: 10px !important;
+}
+#good_list_panel{
+  background-color:#f2f2f2;
+  padding-top: 1px;
+  margin-bottom: 1px;
+}
+.good_list_d1{
+  background-color: #fff;
+  padding: 4px;
+  margin-bottom: -8px;
+  border-radius:5px;
+
+}
+.sell-good-name-box{
+  text-align: left;
+height:40px !important;
+}
+.good_list_d1 img{
+    width:165px !important;
+    height:165px !important;
+    border-radius:5px 5px 5px 10px;
+    margin-left: 2px;
+}
+.goods-bottom{
+  margin-top:5px;
+  width: 100%;
+  padding-right:2px;
+  padding-left:2px;
+
+}
+
+.span-red-bg{
+  font-size: 12px !important;
+  padding: 1px 3px 1px 3px;
+  background-color: red;
+  color: #fff;
+  /* -webkit-transform:scale(0.9) !important; */
+  border-radius: 2px;
+  float:left;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.span-cc-bg{
+  font-size: 12px !important;
+  background-color: #dff0d8;
+  padding: 1px 5px 1px 5px;
+  border-radius: 2px;
+  color: #28a745;
+  display:inline-block;
+  float: right;
+}
+.sell-good-name{
+  background-image:url(../image/frame0/tianmao.png);
+  background-size: 15px 10px;
+  background-repeat: no-repeat;
+  background-position: 0 3px;
+  font-size: 12px;
+  color: #2c2c2c;
+  display: inline-block !important;
+  padding-left: 19px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.sell-good-namet{
+  background-image:url(../image/frame0/taobao.png);
+  background-size: 15px 10px;
+  background-repeat: no-repeat;
+  background-position: 0 3px;
+  font-size: 12px;
+  color: #2c2c2c;
+  display: inline-block !important;
+  padding-left: 19px;
+  margin-top: 5px;
+  text-align: left;
+
+}
+/* 2行省略 */
+  .my_sv{
+    width: 100%;
+    height:35px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    word-break:break-all;
+  }
+  .goods-price{
+    margin-left: 0px;
+    margin-top: 5px;
+    width: 100%;
+    text-align: left;
+
+  }
+  .new_price{
+    font-size: 16px !important;
+    color: red;
+
+  }
+  .old_price
+  {
+    margin-left: 7px;
+    font-size: 12px !important;
+    -webkit-transform:scale(0.9) !important;
+     text-decoration:line-through;
+     color: #B5B5B5;
+  }
+  .pay_people_box{
+    margin-top: 5px;
+    float:right;
+    font-size: 12px !important;
+    color: #B5B5B5;
+    /* -webkit-transform:scale(0.9) !important; */
+  }
+.pay_people_num{
+  font-size: 11px !important;
+  color: #B5B5B5;
+}
+
+  /* 列表样式 */
+  #swiper-container-head-3 {
+  	width: 100%;
+        	 /* height: 100%; */
+  	height: 150px;
+  	position: relative;
+  	top: -20px;
+  	z-index: 9999;
+  }
+
+  .aui-list-item-media {
+  	width: 8.0em !important;
+  	padding-right: 10px !important;
+  }
+
+  .aui-list {
+  	background-image: none !important;
+  }
+
+  .good-chose>.aui-list-item {
+  	background-image: none !important;
+  	padding-left: 10px !important;
+  }
+
+  .aui-list-item-title {
+  	font-size: 14px !important;
+
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+  }
+
+  .goods-text {
+  	font-size: 12px !important;
+  		/* -webkit-transform:scale(0.9) !important;	 */
+  	color: #2c2c2c;
+  	text-align: left !important;
+  }
+
+
+#wrap{ height: 100%; }

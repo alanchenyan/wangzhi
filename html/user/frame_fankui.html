@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>意见反馈</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <style>
+      body{
+        font-size: 12px;
+      }
+      .head-help{
+        font-size: 14px;
+        background-color: #fff;
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 3px;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 10px;
+        color:red;
+      }
+      .input-box{
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 5px;
+      }
+      .text-boxs{
+         background-color:#fff;
+         height: 150px;
+         border-radius: 3px;
+         font-size: 14px;
+      }
+      .adimg-box{
+        background-color: #fff;padding:10px;
+      }
+      .adimg{
+         width: 60px;height: 60px;
+      }
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = 'normal-head-box' id = 'header'>
+             <div class = 'padding-t-10'>
+                <img src="../../image/back.png" class = 'normal-bk-img'>
+                <p class = 'normal-head-title'>意见反馈</p>
+             </div>
+        </div>
+
+        <div  class = 'head-help' style="margin-top:70px">
+            如有疑问需要帮助,请联系专属客服快速解决
+        </div>
+
+        <div class = 'input-box'>
+            <textarea rows="3" cols="20" id="el_txt" class = 'text-boxs' placeholder="请在此输入您的宝贵意见"></textarea>
+        </div>
+
+
+
+        <div class = 'take-ok-btn' onclick="tijiao()">
+            提交
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../plugins/swiper/swiper.min.js"></script>
+
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+<script type="text/javascript">
+
+function tijiao(){
+  var msgvalue = document.getElementById("el_txt").value;
+  if(msgvalue ==''){
+     toast2('请填写你的意见');
+     return;
+  }
+  if(msgvalue.length > 400){
+    toast2('意见内容太长! 请简单描述');
+    return;
+  }
+  if(msgvalue.length <5){
+    toast2('意见过短');
+    return;
+  }
+  var parms = {
+      url:"user/yijian/token/"+usermgr.get_usertoken(),
+      values:{
+         msg:msgvalue,
+      },
+      callback:function(ret){
+           toast2('感谢你的意见!');
+           document.getElementById("el_txt").value="";
+      }
+  }
+  JM_POST(parms);
+}
+
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+
+}
+
+
+
+</script>

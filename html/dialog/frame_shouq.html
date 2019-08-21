@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>智能搜索窗体</title>
+
+      <style>
+      body{
+             background-color: transparent !important;
+             background: rgba(0,0,0,0.5);
+        }
+        .headtip{
+            background-image:url(../../image/shouquan.png);
+            background-repeat:no-repeat;
+            width:270px; height:97px;
+            background-size:100% 100%;
+        }
+        .maindiv{
+            width: :50%;
+            margin-left: 12%;
+
+        }
+        .titlen{
+          width:237px;
+          height:80px;
+          background-color: #fff;
+          padding: 10px;
+
+          margin-left: 2.3%;
+        }
+        .clipstr{
+          margin-top: 13px;
+          text-overflow:-o-ellipsis-lastline;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          font-size: 14px;
+          height: 55px;
+          width: 238px;
+
+        }
+        .btn{
+          border-top: 1px solid #eee;
+          width:257px;
+          height:40px;
+          background-color: #fff;
+          border-top-left-radius:0em;
+          border-top-right-radius:0em;
+          border-bottom-right-radius:0.5em;
+          border-bottom-left-radius:0.5em;
+          text-align: center;
+          margin-left: 2.3%;
+
+        }
+        .btntt{
+          width:49%;
+          float:left;
+          text-align: center;
+          height: 40px;
+          line-height: 40px;
+        }
+      </style>
+  </head>
+  <body>
+    <div class="maindiv">
+          <div>
+              <div class="headtip" style=" "></div>
+              <div class="titlen" style=" ">
+                <div class="clipstr">  </div>
+
+
+              </div>
+              <div class="btn" style=" ">
+                  <div class="btntt" id="btn1" style="color:#9C9C9C;border-right:1px solid #eee" > 稍后在说 </div>
+                <div class="btntt" id="btn2" style="color:#FF3030" > 淘宝授权 </div>
+              </div>
+        </div>
+    </div>
+
+
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/common.js"></script>
+  <script type="text/javascript" src="../../script/usermgr.js"></script>
+  <script type="text/javascript" src="../../script/topsdk/taobao.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+            $api.css($api.dom(".maindiv"),'margin-top:'+api.winHeight/3+"px");
+            //获取剪切版内容参数
+            var code = api.pageParam.code;
+
+            var itemstr =api.pageParam.itemstr;
+            if(code == 0){
+                itemstr = "尊敬的会员:淘宝官方要求授权后购买或者分享物品才能获得收益佣金!!"
+            }
+            $api.text($api.dom(".clipstr"),itemstr);
+            //取消
+            $api.addEvt($api.dom('#btn1'), 'click', function(){
+                 api.closeFrame();
+            });
+
+            //确定
+            $api.addEvt($api.dom('#btn2'), 'click', function(){
+                  //授权
+                  Taobao.AuthorAlimamRid(1);
+            });
+
+            api.addEventListener({
+                name: 'close_frame_author'
+            }, function(ret, err) {
+                 api.closeFrame();
+            });
+
+      };
+  </script>
+  </html>

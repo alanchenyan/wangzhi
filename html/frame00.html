@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no,email=no,date=no,address=no" />
+  <title>首页</title>
+  <link rel="stylesheet" type="text/css" href="../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  <link rel="stylesheet" type="text/css" href="../plugins/swiper/swiper.min.css" />
+  <link rel="stylesheet" type="text/css" href="../css/frame0.css" />
+  <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+  <link rel="stylesheet" type="text/css" href="../css/loaders.min.css" />
+
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/md5.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript" src="../script/vue/vue.js"></script>
+  <script type="text/javascript" src="../plugins/swiper/swiper.min.js"></script>
+
+  <script type="text/javascript" src="../script/frame0.js"></script>
+  <script>
+        apiready = function(){
+            api.parseTapmode();
+            pageMol.initlize();
+            //渲染数据
+            pageMol.tvv = new Vue({
+                              el:'#el_tj_list',
+                              data:pageMol,
+                              methods:{
+                                      openitem:function(item){
+                                        openGoodDetails(item);
+                                      }
+                                    }
+                              });
+            //pageMol.xvv = new Vue({el:'#swiper-container-four',data:pageMol});
+            //pageMol.lvv = new Vue({el:'#el_like_list',data:pageMol});
+            //渲染顶部分类
+          //  pageMol.BindCateList();
+          //  pageMol.bindLoveData();
+
+
+        };
+
+
+    </script>
+    <style>
+
+    </style>
+ </head>
+ <body>
+  <!--顶部搜索框 -->
+<!--  <header  id="header" >
+        <div class="header-item head_act" id="home">
+            <img src="../image/serviece_phone.png" class="qrcode"  >
+
+            <div class = "home-search-dom" onclick = "openwin();">
+                <span>黏贴宝贝标题，先领劵再购买</span>
+            </div>
+            <img class = "search_img" src="../image/bride_search.png">
+            <img class = "boon_img"    src="../image/boon.png">
+
+        </div>
+
+    </header>-->
+
+  <div class=" " id="swiper-container-one">
+    <!-- 顶部广告轮播 -->
+    <div class="swiper-container" id="swiper-container-two">
+     <div class="swiper-wrapper">
+      <div class="swiper-slide">
+       <img src="../image/frame0/head_bn1.jpg" alt="placeholder+image" style="width: 100%;height: 100%;" />
+      </div>
+      <div class="swiper-slide">
+       <img src="../image/frame0/head_bn2.jpg" alt="placeholder+image" style="width: 100%;height: 100%;" />
+      </div>
+      <div class="swiper-slide">
+       <img src="../image/frame0/head_bn1.jpg" alt="placeholder+image" style="width: 100%;height: 100%;" />
+      </div>
+      <div class="swiper-slide">
+       <img src="../image/frame0/head_bn4.jpg" alt="placeholder+image" style="width: 100%;height: 100%;" />
+      </div>
+     </div>
+     <div class="swiper-pagination-two"></div>
+    </div>
+    <!-- 导航栏 -->
+          <div class="index_nav">
+           <ul class="clearfix">
+            <li> <span onclick="openwin('jm_title_cate2_frame','9.9包邮',app.farme_you9)" > <img src="../image/frame0/nav0.png" alt="" /> <p>9.9包邮</p> </span> </li>
+            <li> <span onclick="openwin('./rank/frame_rank_title','爆款排行',app.farme_rank)"> <img src="../image/frame0/nav1.png" alt="" /> <p>爆款排行</p> </span> </li>
+            <li> <span onclick ="openwin('jm_title_cate2_frame','品牌精选',app.farme_band)" > <img src="../image/frame0/nav2.png" alt="" /> <p>品牌精选</p> </span> </li>
+            <li> <span onclick ="openBrowser('https://mos.m.taobao.com/union/supercoupon?pid=mm_10898238_266600236_78469400021','大额优惠')" > <img src="../image/frame0/nav3.png" alt="" /> <p>大额优惠</p> </span> </li>
+            <li> <span onclick ="openwin('jm_title','今日新品',app.farme_newday)"  > <img src="../image/frame0/nav4.png" alt="" /> <p>今日新品</p> </span> </li>
+            <li> <span> <img src="../image/frame0/nav5.png" alt="" /> <p>0元夺宝</p> </span> </li>
+            <li> <span> <img src="../image/frame0/nav6.png" alt="" /> <p>签到奖励</p> </span> </li>
+            <li> <span> <img src="../image/frame0/nav7.png" alt="" /> <p>早起红包</p> </span> </li>
+            <li> <span> <img src="../image/frame0/nav8.png" alt="" /> <p>积分兑换</p> </span> </li>
+            <li> <span> <img src="../image/frame0/nav9.png" alt="" /> <p>新手引导</p> </span> </li>
+
+           </ul>
+
+           <!-- 头条 -->
+           <div style="position: relative; margin-left:10px; ">
+            <p style="text-align: left;padding-left: 10px;">
+              <span style="color:#2c2c2c;font-weight: bolder; font-size:15px">粉喵</span>
+              <span style="color:red;font-weight: bolder;font-size:15px">头条</span>
+            </p>
+            <!-- 这里可用js获取ul里面的内容 -->
+            <div id="hot_news_box">
+             <ul class="holder" id="holder">
+              <li>饭后梨不开美酒，速抢,饭后梨不开美酒，速抢饭后</li>
+              <li>全场9.9元包邮</li>
+              <li>儿童补钙小能手</li>
+              <li>原肉正切小牛排，好吃又大份</li>
+              <li>第二件半价！俄罗斯进口...</li>
+             </ul>
+            </div>
+            <img class="hot_news_icom" src="../image/frame0/hotball.png" alt="hotball" />
+           </div>
+          </div>
+
+          <!-- 小轮播 -->
+          <div class="swiper-container" id="swiper-container-thr" style="margin-top: 10px;padding-bottom: 0px;">
+           <div class="swiper-wrapper">
+            <div class="swiper-slide" style="padding-left: 10px;padding-right: 10px;">
+             <img src="../image/frame0/head2_s1.jpg" alt="placeholder+image" style="width: 100%;height: 100%;border-radius: 15px;" />
+            </div>
+            <div class="swiper-slide" style="padding-left: 10px;padding-right: 10px;">
+             <img src="../image/frame0/head2_s2.jpg" alt="placeholder+image" style="width: 100%;height: 100%;border-radius: 15px;" />
+            </div>
+            <div class="swiper-slide" style="padding-left: 10px;padding-right: 10px;">
+             <img src="../image/frame0/head2_s3.jpg" alt="placeholder+image" style="width: 100%;height: 100%;border-radius: 15px;" />
+            </div>
+           </div>
+
+          </div>
+          <!-- 中间图片导航 -->
+          <div class="ad_CC">
+                    <div class="row1" onclick="openwin('jm_title','特惠宝贝',app.farme_thui)" >
+                      <div class="title">
+                        <img src="../image/frame0/gg1.png" style="display:inline-block;  vertical-align:middle "  width=15px; height=15px; />
+                        <span  style="color: #1C1C1C;font-size: 15px;font-weight: bold;"  >特惠宝贝</span>
+                        <span  style=" margin-left:-80px; margin-top:20px; font-size:11px; color:#828282; position:absolute; "  >低价让利促销</span>
+                      </div>
+                      <div class="goodimg1" >
+                            <img src="http://r0hgk.cn/addons/tiger_newhu/template/mobile/tbgoods/style88/images/hf3.jpg"  >
+                      </div>
+                      <div class="goodimg2" >
+                            <img src="http://r0hgk.cn/addons/tiger_newhu/template/mobile/tbgoods/style88/images/hf4.jpg" >
+                      </div>
+                    </div>
+                      <div class="row2" >
+                        <div class="title" style="margin-left:10px;">
+                          <img src="../image/frame0/hot.png" style="display:inline-block;  vertical-align:middle "  width=15px; height=15px; />
+                          <span  style="color: #1C1C1C;font-size: 15px;font-weight: bold;"  >有好货</span>
+                          <span  style=" margin-left:-68px; margin-top:20px; font-size:11px; color:#828282; position:absolute; "  >好品味从挑剔开始</span>
+                        </div>
+                        <div class="goodimg1" style="margin-left:10px;">
+                              <img src="http://r0hgk.cn/addons/tiger_newhu/template/mobile/tbgoods/style88/images/hf5.jpg" >
+                        </div>
+                        <div class="goodimg2" >
+                              <img src="http://r0hgk.cn/addons/tiger_newhu/template/mobile/tbgoods/style88/images/hf6.jpg">
+                        </div>
+
+                      </div>
+                      <div class="row1" >
+                        <div class="title"  style="  margin-top:10px;">
+                          <img src="../image/frame0/hot.png" style="display:inline-block;  vertical-align:middle "  width=15px; height=15px; />
+                          <span  style="color: #1C1C1C;font-size: 15px;font-weight: bold;"  >每日精选</span>
+                          <span  style=" margin-left:-80px; margin-top:20px; font-size:11px; color:#828282; position:absolute; "  >限时限量限半价</span>
+                        </div>
+                        <div class="goodimg1" style="margin-left:10px;">
+                              <img src="http://r0hgk.cn/addons/tiger_newhu/template/mobile/tbgoods/style88/images/hf1.jpg" >
+                        </div>
+                        <div class="goodimg2"  >
+                              <img src="http://r0hgk.cn/addons/tiger_newhu/template/mobile/tbgoods/style88/images/hf2.jpg" >
+                        </div>
+
+                      </div>
+
+                      <div class="row2"  onclick="openwin('jm_title_cate2_frame','9.9包邮',0)">
+                        <div class="title" style="margin-left:12px; margin-top:5px;">
+                          <img src="../image/frame0/hot.png" style="display:inline-block;  vertical-align:middle "  width=15px; height=15px; />
+                          <span  style="color: #1C1C1C;font-size: 15px;font-weight: bold;"  >9.9包邮</span>
+                          <span  style=" margin-left:-75px; margin-top:20px; font-size:11px; color:#828282; position:absolute; "  >省钱不只是一点点</span>
+                        </div>
+                        <div class="goodimg1" style="margin-left:10px;">
+                              <img src="http://r0hgk.cn/addons/tiger_newhu/template/mobile/tbgoods/style88/images/hf6.jpg"  >
+                        </div>
+                        <div class="goodimg2" >
+                              <img src="http://r0hgk.cn/addons/tiger_newhu/template/mobile/tbgoods/style88/images/hf7.jpg"  >
+                        </div>
+
+                      </div>
+
+
+          </div>
+
+          <div style="background:center center no-repeat;width:95%; margin-left:2.5%;	border-radius:15px; margin-top:5px; ">
+               <img src="https://img.tigertaoke.com/images/14/2019/02/BXCG5mX6ZF5mXt56Rkmzb56M5r365F.jpg" />
+             </div>
+<!-- 底部推荐导航-->
+<div class="tab_nav">
+    <ul >
+        <li onclick="getindexitem(0)">全部 <div class="miaoshu sel"  >为你推荐</div></li>
+          <li onclick="getindexitem(1)">潮流 <div class="miaoshu " >最新潮流</div></li>
+          <li onclick="getindexitem(2)">母婴 <div class="miaoshu " >宝妈精选</div></li>
+          <li onclick="getindexitem(3)">网红 <div class="miaoshu " >网红抖音</div></li>
+          <li style="border-right: 0px" onclick="getindexitem(4)">学生 <div class="miaoshu " onclick="getindexitem(0)">学生时代</div> </li>
+    </ul>
+</div>
+
+          <!-- 为您推荐 -->
+      <div class="aui-content" style="background-color:#fff; height:30%; width:98%; margin-left:1%">
+       <div class="aui-content slide-box" id="good_list_panel"   >
+        <div class="aui-list-item-inner" id="el_tj_list"  >
+         <div class="aui-row aui-row-padded sell-good-all-box"  >
+
+          <div v-cloak="" class="aui-col-xs-6" v-for="item in Titemlist"  v-on:click="openitem(item)"  >
+           <div class="good_list_d1"  >
+            <img src="../image/thum.png" v-bind:data-url="item.itempic" data-cache="no"  />
+            <div class="sell-good-name-box">
+             <span v-if="item.usertype == 1" class="sell-good-name my_sv">{{item.itemtitle}}</span>
+             <span v-else="item.usertype == 0" class="sell-good-namet my_sv ">{{item.itemtitle}}</span>
+            </div>
+            <div class="goods-bottom"  >
+             <span class="span-red-bg" >卷</span>
+             <span class="span-red-bg" >￥<span>{{item.couponprice}}</span></span>
+             <span class="span-cc-bg"  >预估收益 ￥<span>{{item.commissionrate}}</span> </span>
+            </div>
+            <div style="clear: both;"></div>
+            <div class="aui-list-item-text">
+             <div class="goods-price">
+              <span class="new_price">￥ {{item.newprice}}</span>
+              <span class="old_price">￥{{item.itemprice}}</span>
+              <span class="pay_people_box"> 已售<span class="pay_people_num">{{item.sellnum}}</span> </span>
+             </div>
+            </div>
+           </div>
+          </div>
+
+         </div>
+        </div>
+        <section class="list-wrapper" id="list-wrapper">
+         <div class="list-item-loading" v-show="loading" style="display:none">
+          <div class="loader-inner ball-pulse">
+           <div></div>
+           <div></div>
+           <div></div>
+          </div>
+         </div>
+        </section>
+        <!--底线提示 -->
+        <div class="databootom" >
+            <span>~我是有底线的哦！~</span>
+        </div>
+
+       </div>
+      </div>
+  </div>
+ </body>
+ <script>
+ //首页banner轮播
+ var swiper_two = new Swiper('#swiper-container-two', {
+     spaceBetween: 30,
+     centeredSlides: true,
+     autoplay: {
+       delay: 3000,
+       disableOnInteraction: false,
+     },
+     pagination: {
+       el: '.swiper-pagination-two',
+       clickable: true,
+     },
+   observer:true,
+     observeParents:true,
+   });
+
+
+   //中间广告banner轮播
+ var swiper_thr = new Swiper('#swiper-container-thr', {
+     spaceBetween: 30,
+     centeredSlides: true,
+     autoplay: {
+       delay: 2500,
+       disableOnInteraction: false,
+     },
+     pagination: {
+       el: '.swiper-pagination-thr',
+       clickable: true,
+     },
+   observer:true,
+     observeParents:true,
+     // navigation: {
+     //   nextEl: '.swiper-button-next',
+     //   prevEl: '.swiper-button-prev',
+     // },
+   });
+
+
+/*
+ //点击展开分类
+ $('.js-btn').click(function() {
+
+     $(this).toggleClass('on')
+     $('.show-box').toggleClass('on')
+     $('.chc-box').toggleClass('on')
+     $('body').toggleClass('ovh')
+     $('.main').toggleClass('ovh')
+     if(pageMol.opzhezhang){
+         hideOverlay();
+     }
+ })
+*/
+
+ </script>
+</html>

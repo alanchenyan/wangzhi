@@ -1,0 +1,99 @@
+/*公共样式*/
+@charset "UTF-8";
+
+/* 重置样式 */
+*{-webkit-tap-highlight-color:rgba(0,0,0,0);outline:0;}
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;vertical-align:baseline;}
+img{border:0 none;vertical-align:top;}
+i,em{font-style:normal;}
+ol,ul{list-style:none;}
+input,select,button,h1,h2,h3,h4,h5,h6{font-size:100%;font-family:inherit;}
+table{border-collapse:collapse;border-spacing:0;}
+a { text-decoration: none;color:#666;}
+
+body {
+    margin: 0 auto;
+    min-width: 320px;
+    max-width: 540px;
+    font-size: 14px;
+    font-family: -apple-system,Helvetica,sans-serif;
+    line-height: 1.5;
+    color: #666;
+    -webkit-user-select: none;
+            user-select: none;  
+    -webkit-text-size-adjust: 100%!important;
+    -webkit-touch-callout: none;  
+    /*background: #000;*/
+    width: 100%;
+    overflow-x:hidden;
+}
+
+input[type=text],textarea {
+    -webkit-appearance: none;
+    appearance: none
+}
+template {
+    display: none;
+}
+
+
+html {
+  font-size: 20px;
+  font-size: 5.33333vw;
+}
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 17.06667px;
+  }
+}
+@media screen and (min-width: 540px) {
+  html {
+    font-size: 28.8px;
+  }
+}
+/* ============================================================
+   flex：定义布局为盒模型
+   flex-v：盒模型垂直布局
+   flex-1：子元素占据剩余的空间
+   flex-align-center：子元素垂直居中
+   flex-pack-center：子元素水平居中
+   flex-pack-justify：子元素两端对齐
+   兼容性：ios 4+、android 2.3+、winphone8+
+   ============================================================ */
+.flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+.flex-v{-webkit-box-orient:vertical;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}
+.flex-1{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;}
+.flex-align-center{-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;}
+.flex-pack-center{-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}
+.flex-pack-justify{-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}
+.oneline{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+
+
+@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_1099843_n5u1yrtvnzk.eot?t=1555849888470'); /* IE9 */
+  src: url('//at.alicdn.com/t/font_1099843_n5u1yrtvnzk.eot?t=1555849888470#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAOgAAsAAAAAB7AAAANTAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqCbIJCATYCJAMQCwoABCAFhG0HRhuyBlGUzckm2R8gG7KB+iISIaiWCQ3CJJZubj14AMCj0EkCX1P8o7HyhTJug4MDEA/fj3079737VdtuckmITSeRVBMhQSRBo3RCodQNCS2B/13TFOg6hq8HyAodHfxcU8q9XK7gRuDE/IRu3SwpQDe7Dt2sRWtbFAUcUbZFu9MLxwRZQOv/QR6b5HVFR6/4/AcdyN6hDtiAA6aolBf//511YiI9z+gfFrUNdKglPDrpAuloZet9fj7P5fSu4QHOb2c5jTVpbz7qBRgHFNBYmwIJuEAKjHuMTbD72U+ga1UH152ljW0SlIxhgXjPTJUEUwEpuXRbaJbMTfFVQ7t8LjnEF//z8U9fBCkalTH27stFg8z81N519P/Ifdfu03hucIuo2EMk8brU+5QnTOzx6Cq/8bpAtLUVfnrtnQJIDW3Uyvbxxysq0YSlfXAGycpPNkXwM4rC75Wo8EIGt9HCc8Q3ZM9fLYUyLioqh2qKJJu+yVVVFAxzW+Hkcek+VDgaXoPPvp4fXT8fL+5PRBv4pD/4DW4NnqBNJcqBhgVQwc8pGM9O7cW9Ou91LlJj6eCIrNSC6DuEbY/OhRpDf4WalEa7auT+sgFgb9MM4CjjKpfNH+qdAs7nTbUBs7PeZpar+Uq+WkQQuf2Q3/OTuE7Qc81qnFERtmljkhsA85hmAEeJGxi03vvf8futF7vQVtLaeAS0Yw55jNB+YJL6EcoH9+lP+o7vjqKD0om/IJPg8u4rUfqmZYrsl8ha1qSqMGyZstKWar50nBimoKuLH5Fh6mkM+Z1LXX/bIkbRsoKqbY1M9h4aes7Q1HYdXbuWF/fMCB6RHew4JwhjdyiGfqAay5PJfkTD0g+axuFB172oXLNnI5gyL1CVaICWBabzJLUcUgnKN9F04qpIKnzuLgqbhaG3qyebXsYkijEm2CmzT0oKVPAELJHDMB7nYAkeRV12RaS0xrq7admTunSeIIrbBKSSkAFosgCj45Ko21hScu/fhEyOOJWooVVEdyHBxloHvbr0tCCXtclWtGt5xJZi6iNJFKAELgEsETeKmwkOWOW9opBO6hLpEbOM6cZ6tK22a3594gk3QZcxLqNEjYyGzis1Ka22EZV7stxRDIeZXl6GqZwQAA==') format('woff2'),
+  url('//at.alicdn.com/t/font_1099843_n5u1yrtvnzk.woff?t=1555849888470') format('woff'),
+  url('//at.alicdn.com/t/font_1099843_n5u1yrtvnzk.ttf?t=1555849888470') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1099843_n5u1yrtvnzk.svg?t=1555849888470#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-gantanhao:before {
+  content: "\e615";
+}
+
+.icon-you:before {
+  content: "\e61d";
+}
+
+.icon-duigouxiao:before {
+  content: "\e8bd";
+}

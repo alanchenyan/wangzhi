@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>商品直播文字</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/radiogood.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../plugins/swiper/swiper.min.css" />
+    <script type="text/javascript" src="../script/nicklist.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.3.0/video-js.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.3.0/video.min.js"></script>
+    <script type="text/javascript" src="../plugins/swiper/swiper.min.js"></script>
+    <style>
+
+      body{
+
+         background: #fff;
+        }
+    </style>
+</head>
+<body>
+  <div class = 'prev-img-bg'   onclick = "api.closeWin();">
+    <img src="../image/backw.png" alt="placeholder+image">
+  </div>
+  <div class="swiper-container" style="margin-top:-25px">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <video id="example_video_0" class="video-js voidcls" >
+       </video>
+
+     </div>
+
+    </div>
+  </div>
+
+
+
+	<div class="scrollbox" onclick="toch1()">
+		    <div id="scrollDiv">
+
+		    </div>
+	</div>
+ <div class="videotitle">
+
+
+ </div>
+
+
+	<div class = 'radio-footer'>
+		<img class = 'footer-img' src="">
+		<div class = 'footer-info'>
+			<p style = 'margin-top: 5px;color:#2c2c2c;font-size: 14px;font-weight: bolder;'>￥ <span id="el_1">29.9</span> </p>
+			  <span class ="span-red-bg" style ="float:left;">卷</span><span class ="span-red-bg" style ="float:left;padding-left: 5px;padding-right: 5px;">￥<span id="el_2">10</span></span>
+		</div>
+		<div class = 'footer-old-info'>
+			<p class = 'footer-old-price'>￥109.9</p>
+		 	<span class ="span-cc-bg">收益
+                ￥<span id="el_3">5.39</span>
+            </span>
+		</div>
+
+		<div class = 'footer-btn'>
+			<span class = 'footer-goshare-btn' onclick="onbuy()">去分享</span>
+			<span class = 'footer-gobuy-btn'  onclick="onbuy()">去购买</span>
+		</div>
+	</div>
+
+	<div class="persent-box">
+		<p class = 'persent-btn'></p>
+		<img class = 'persent-img' src="../image/auto/1.png">
+		<img class = 'persent-img' src="../image/auto/1.png">
+     <span class="zans"> </span>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/usermgr.js"></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../plugins/autoscroll/jq_scroll.js"></script>
+<script type="text/javascript" src="../script/radiogood.js"></script>

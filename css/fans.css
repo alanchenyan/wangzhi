@@ -1,0 +1,70 @@
+/*滑动样式*/
+.swiper-container {
+    width: 100%;
+}
+
+.head_classify{
+	 width: 100%;
+	 background-color: #fff !important;
+   height: 20px;
+   border: 1px solid #eee;
+   margin-top: 60px;
+}
+
+.head_classify>.swiper-pagination>.swiper-pagination-bullet , .head_classify>.swiper-pagination-two>.swiper-pagination-bullet
+, .head_classify>.swiper-pagination-thr>.swiper-pagination-bullet
+{
+
+  width: 50%;
+  height: 40px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 14px;
+  color:#757575;
+  opacity: 1;
+  background-color: #fff;
+  border-radius: 0px !important;
+  border-color: #fff !important;
+}
+.aui-list-item-right{
+
+  margin-right: 70px;
+}
+
+ .head_classify>.swiper-pagination-two>.swiper-pagination-bullet,.head_classify>.swiper-pagination-thr>.swiper-pagination-bullet{
+    width: 20%;
+    font-size:12px;
+
+ }
+.swiper-pagination-two , .swiper-pagination-thr{
+    margin-left: -30px;
+}
+
+.head_classify>.swiper-pagination>.swiper-pagination-bullet-active , .head_classify>.swiper-pagination-two>.swiper-pagination-bullet-active
+, .head_classify>.swiper-pagination-thr>.swiper-pagination-bullet-active
+{
+  color:red;
+  border-bottom: 2px solid red !important;
+}
+
+.swiper-pagination{
+   padding-bottom: 2px;
+   width: 99%;
+}
+
+.nofansi{
+  height: 600px;
+  padding-top: 300px;
+  text-align: center;
+}
+.yaoqingbtn{
+  height: 40px;
+  background-color: red;
+  width: 100px;
+  margin-left: 38%;
+  margin-top: 20px;
+  color: #fff;
+  line-height: 40px;
+  font-size: 17px;
+  border-radius: 6%;
+}

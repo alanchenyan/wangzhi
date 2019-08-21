@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>输入邀请口令</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <style>
+        /*@charset "utf-8" */
+
+        .aui-list-item-title{
+            font-size: 12px !important;
+        }
+
+        .box-warp{
+            background-image: url('../../image/banner/bg_login.png');
+        }
+
+        .login-title{
+            font-size: 24px;
+            /*font-family:宋体;*/
+            font-family:NSimSun !important;
+            font-weight: bolder;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .login-banner{
+            width: 40%;
+            height: auto;
+            margin:0 auto;
+        }
+
+        .login-body{
+            margin-top: 40px;
+        }
+        .bg-btn-red{
+            background-color: #e06666 ;
+            background:linear-gradient(to right,#e06666 , #f93535 , #f93535);
+            color:#fff;
+        }
+        .bg-btn-red1{
+            background-color: #eee;
+            background:linear-gradient(to right,#eee , #eee , #eee);
+            color:#000;
+        }
+        .btn
+        {
+            text-align: center;
+            width: 80%;
+            margin:0 auto;
+            border-radius: 25px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .weixin-btn{
+            font-size: 14px;
+        }
+
+
+        .bg-w-btn{
+            border:1px solid #2c2c2c;
+            font-size: 14px;
+        }
+
+        .input-box{
+            position: relative;width:80%;
+             margin:0 auto !important;
+            margin-top: 30px !important;
+        }
+
+        .login-input{
+            border-bottom:1px solid #eee !important;
+            font-size: 14px !important;
+
+        }
+        .center-p{
+            text-align: center;font-size: 12px;margin-top: 15px;width: 80%;margin:0 auto;margin-top: 10px;
+        }
+        .scan-img{
+            width: 20px;height: 20px;position: absolute;
+            right: 0px;top:10px;
+        }
+        .lt-kl
+        {
+            text-align: center;
+            color:#f93535;
+            margin-top: 20px;
+        }
+
+        .b-copy-box{
+            width: 100%;
+            position: absolute;
+            top:50%;
+            margin-top: -115px;
+            display: none;
+        }
+
+        .copy-box{
+            width: 80%;
+            height: 230px;
+            /*background-color: red;*/
+            margin:10px auto;
+
+            background-image: url("../../image/banner/ic_copy_dialog_top.png");
+            background-size: 100% 100px;
+            background-repeat: no-repeat;
+
+            position: relative;
+
+            /*top:18%;*/
+
+            z-index: 999;
+
+            background-color: #fff;
+
+            border-radius: 18px;
+
+            /*display: none;*/
+        }
+
+        .copy-logo{
+            width: 60px;height: 60px;border-radius: 50%;position:absolute;
+            left:50%;margin-left: -25px;top:60px;
+        }
+
+        .cope-name{
+            /*margin:0 auto;*/
+            text-align: center;
+            position: absolute;
+            top:130px;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bolder;
+        }
+        .copy-yao{
+            text-align: center;
+            position: absolute;
+            top:160px;
+            width: 100%;
+            font-size: 14px;
+
+        }
+        .copy-footer{
+            font-size: 14px;
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border-top:1px solid #ccc;
+        }
+        .copy-btn{
+            display: inline-block;
+            text-align: center;
+            width: 49%;
+        }
+
+        .btn-l{
+            color:#757575;
+            border-right: 1px solid #ccc;
+        }
+        .btn-r{
+            color:#f93535;
+        }
+
+        .overlay {
+            background-color:rgba(0,0,0,0.5);
+            opacity: 0.5;  /* 透明度 */
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 100; /* 此处的图层要大于页面 */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+        <div class = 'overlay'></div>
+
+        <div class = '' id = 'header'>
+             <div class = 'padding-t-10' style = 'height: 35px;'>
+                <img src="../../image/back.png" onclick="javascript:api.closeWin()" class = 'normal-bk-img'>
+                <span  style="float:right; margin-right:10px;color:red" id="titlevale">没有邀请码,暂时不填></span>
+             </div>
+        </div>
+
+
+        <div class= 'login-body'>
+            <img src="../../image/banner/koubanner.png" class = 'login-banner'>
+
+            <p class = 'center-p'>可向您的推荐人/好友询问,或者扫描邀请注册页的二维码以绑定邀请码</p>
+
+            <div class = 'input-box'>
+                <input type="text" id="koulinginput"  name="" placeholder="邀请码 或者 邀请人的手机号" class = 'login-input'>
+                <img src="../../image/banner/scanr.png"  class = 'scan-img'>
+            </div>
+
+              <div class = 'img-box' style="border:1px solid #eee; width:80%; height:50px; margin-left:10%; margin-top:5px;">
+                       <img src="../../image/thum1.png" style="width:35px;margin:7px 0px 0px 10px">
+                       <div style="position: absolute; margin-left:60px; margin-top:-38px ">
+                          <div> <span id="titlename">我是漫步 </span> </div>
+                          <div>  <span style="font-size:11px; color:#D3D3D3">邀请您加入粉喵 </span></div>
+                       </div>
+                  </div>
+
+            <p class = 'lt-kl'>粘贴邀请码</p>
+
+            <div class = 'btn bg-btn-red weixin-btn' id="btnok"  style = 'margin-top: 50px;box-shadow: 5px 5px 5px #efb7a9;  '>
+                <span>确定</span>
+            </div>
+            <div class = 'btn bg-btn-red1  weixin-btn' id="btnok1" onclick="tgya();"  style = 'margin-top: 10px;box-shadow: 5px 5px 5px #efb7a9; margin-bottom:10px; '>
+                <span>稍后填写</span>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery.min.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+<script type="text/javascript">
+apiready = function () {
+     var flag = false;
+     $api.fixStatusBar( $api.dom('#header') );
+     $(".img-box").hide();
+     $('#koulinginput').bind('input propertychange', function() {
+            flag = false;
+            var koustr = $api.val(  $api.dom('.login-input'));
+            if(koustr.length == 6 || koustr.length == 11)
+            {
+                //请求获取验证码
+                api.showProgress({title: '',text: '',modal: false});
+                var parms = {
+                    url:"user/isvalidcode/code/"+koustr,
+                    callback:function(ret){
+                        if(ret.flag && ret.data)
+                        {
+                            $(".img-box img").attr("src",ret.data.img);
+                            $("#titlename").text(ret.data.nickname);
+                            $(".img-box").show();
+                            flag = true;
+                            usermgr.set_agentid(ret.data.userid);
+                            api.hideProgress();
+                        }
+                        else {
+                          //  pageMol.complate();
+                          api.hideProgress();
+                        }
+                    }
+                }
+                JM_GET(parms);
+
+            }
+            else {
+              $(".img-box").hide();
+            }
+      });
+
+
+
+     //黏贴口令
+     $api.addEvt($api.dom('.lt-kl'), 'click', function(){
+            var clipBoard = api.require('clipBoard');
+            clipBoard.get(function(ret, err) {
+                  flag = false;
+                if (ret) {
+                     $api.val(  $api.dom('.login-input'),ret.value);
+                } else {
+
+                }
+            });
+     });
+
+     //跳过验证码
+     $api.addEvt($api.dom('#titlevale'), 'click', function(){
+            tgya();
+     });
+
+
+    //确定邀请码
+    $api.addEvt($api.dom('#btnok'), 'click', function(){
+          if(!flag)
+          {
+              toast2("请输入正确的邀请码");
+              return;
+          }
+          flag = false;
+          //跳转到用户手机注册界面
+          var souretype =  api.pageParam.soure;
+           var param = Array();
+           param.name="login_phone";
+           param.url = "../user/login_phone.html";
+           param.reload = false;
+           param.pageParam = {soure:souretype}; //1:手机账号 2;微信绑定
+           openFram(param);
+           api.closeWin({
+              name: 'login_invite'
+           });
+
+    });
+
+
+    //确定邀请码
+    $api.addEvt($api.dom('.scan-img'), 'click', function(){
+        var FNScanner = api.require('FNScanner');
+        FNScanner.open({
+            autorotation: true
+        }, function(ret, err) {
+              flag = false;
+            if (ret) {
+                alert(JSON.stringify(ret));
+            } else {
+                alert(JSON.stringify(err));
+            }
+        });
+    });
+
+    //退出事件
+    $api.addEvt($api.dom('.normal-bk-img'), 'click', function(){
+           api.closeWin();
+    });
+
+}
+
+function tgya(){
+  flag = false;
+  //跳转到用户手机注册界面
+  var souretype =  api.pageParam.soure;
+   var param = Array();
+   param.name="login_phone";
+   param.url = "../user/login_phone.html";
+   param.reload = false;
+   param.pageParam = {soure:souretype}; //1:手机账号 2;微信绑定
+   openFram(param);
+   api.closeWin({
+      name: 'login_invite'
+   });
+
+}
+
+function opencopy()
+{
+    $('.overlay').css('display' , 'block');
+    $('.b-copy-box').css('display' , 'block');
+}
+
+function closemodal()
+{
+    $('.overlay').css('display' , 'none');
+    $('.b-copy-box').css('display' , 'none');
+}
+
+function sure()
+{
+    api.closeToWin({
+        name: 'root'
+    });
+}
+</script>

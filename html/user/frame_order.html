@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no,email=no,date=no,address=no" />
+  <title>我的订单</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../plugins/swiper/swiper.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/orderdetail.css" />
+  <style>
+
+    </style>
+ </head>
+ <body style="background-color:#fff ">
+  <div class="box-warp">
+   <div class="normal-head-box" id="header">
+    <div class="padding-t-10">
+     <img src="../../image/back.png" class="normal-bk-img" />
+     <p class="normal-head-title">订单列表</p>
+    </div>
+   </div>
+
+   <div class="head_classify" style="background-color: #fff;margin-top:50px">
+    <div class="swiper-pagination"></div>
+   </div>
+   <div class="swiper-container hg-100" id="swiper-container-one" style="margin-top:50px">
+    <div class="swiper-wrapper">
+     <div class="swiper-slide">
+     </div>
+     <div class="swiper-slide">
+     </div>
+     <div class="swiper-slide">
+     </div>
+
+    </div>
+   </div>
+  </div>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../plugins/swiper/swiper.min.js"></script>
+
+  <script type="text/javascript">
+
+  var classify_data =new Array()
+  classify_data[0]="全部";
+  classify_data[1]="有效订单";
+  classify_data[2]="失效订单";
+
+  var swiper = new Swiper('#swiper-container-one', {
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          renderBullet: function (index, className) {
+              return '<span class="' + className + '">' + (classify_data[index]) + '</span>';
+          },
+        },
+        on: {
+          slideChangeTransitionStart: function(){
+                api.setFrameGroupIndex({
+                 name: 'frame_order_group',
+                 index: this.activeIndex
+               });
+          },
+        },
+
+        autoHeight: true,
+        observer:true,
+        observeParents:true,
+  });
+
+
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+    $api.fixStatusBar( $api.dom('.head_classify') );
+
+     var frame_s = Array();
+     for (var i = 0; i < 3; i++) {
+         frame_s[i] ={name:'frame_order_item'+i,
+         url:'./frame_order_item.html',
+         bgColor: '#fff',
+         vScrollBarEnabled: false,
+         hScrollBarEnabled: false,
+         pageParam:{typeid:i},
+       };
+     }
+     api.openFrameGroup({
+          name: 'frame_order_group',
+          rect: {
+              x: 0,
+              y: $api.offset($api.dom('#header')).h +47,
+              w: 'auto',
+              h: 'auto'
+          },
+          frames: frame_s
+      }, function(ret, err) {
+          var index = ret.index;
+ 
+           swiper.slideTo(index, 1000, false);
+
+      });
+
+      //关闭
+     $api.addEvt($api.dom('.normal-bk-img'), 'click', function(){
+       api.closeFrameGroup({
+          name: 'frame_order_group'
+      });
+          api.closeWin();
+     });
+
+}
+
+
+</script>
+ </body>
+</html>

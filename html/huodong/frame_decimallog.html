@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>用户设置</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/loaders.min.css" />
+
+    <script type="text/javascript" src="../../script/vue/vue.js"></script>
+    <style>
+        .aui-list-item-title{
+            font-size: 15px !important;
+
+        }
+        .rebtn{
+          float: right;
+          margin-right: 10px;
+         background-color: #fa758c;
+          border-radius:20px;
+          width: 60px;
+          text-align: center;
+          color: #fff
+        }
+
+        .bg-btn-red{
+            background-color: #e06666 ;
+            background:linear-gradient(to right,#e06666 , #f93535 , #f93535);
+            color:#fff;
+        }
+
+        .btn
+        {
+            text-align: center;
+            width: 80%;
+            margin:0 auto;
+            border-radius: 25px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .weixin-btn{
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = 'normal-head-box' id = 'header'>
+             <div class = 'padding-t-10'>
+                <img src="../../image/back.png" class = 'normal-bk-img'>
+                <p class = 'normal-head-title'> </p>
+             </div>
+        </div>
+
+        <div class="aui-content aui-margin-b-25" style="margin-top:80px;">
+            <ul class="aui-list aui-list-in" id='el_list'>
+              <li class="aui-list-item" v-for="item in dataitem">
+                  <div class="aui-list-item-inner  aui-list-item-arrow">
+                      <div class="aui-list-item-title">{{item.title}}</div>
+                      <span class="cnick" style="color:red; font-size:12px"> {{item.dtime}} </span>
+                  </div>
+              </li>
+
+
+            </ul>
+
+
+        </div>
+        <!-- loading 界面 -->
+        <section class="list-wrapper" style=" margin-left:40%" id="list-wrapper">
+         <div class="list-item-loading">
+          <div class="loader-inner ball-pulse">
+           <div></div>
+           <div></div>
+           <div></div>
+          </div>
+         </div>
+        </section>
+    </div>
+
+
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+
+<script type="text/javascript">
+var pageMol = {
+  dvv:null,     //vue数据渲染
+  dataitem:[],   //数据列表
+  loadcomplate: false, //数据是否加载完成
+  pagesize:1,    //当前加载的页面
+  datatype:1,
+
+  initlize:function() {
+    //滚动刷新
+    api.addEventListener({
+        name: 'scrolltobottom',
+        extra: {threshold: 50}
+     }, function(ret, err){
+          if(!pageMol.loadcomplate){
+            pageMol.pagesize++;
+            pageMol.bind();
+          }
+
+     })
+  },
+
+  bind:function(){
+    var parms = {
+        url:"activec/getdlog/token/"+usermgr.get_usertoken()+"/typeid/"+pageMol.datatype+"/pageindex/"+pageMol.pagesize,
+        callback:function(ret){
+            if(ret.flag )
+            {
+                var datalist =  ret.data.data;
+                for (var i = 0; i < datalist.length; i++) {
+                    pageMol.dataitem.push(datalist[i]);
+                }
+                pageMol.dvv.data = pageMol;
+                if(ret.data.next_item == null){
+                  $api.css($api.dom(".list-item-loading"),'display:none');
+                }
+
+            }
+            else {
+                pageMol.loadcomplate = true;
+                $api.css($api.dom(".list-item-loading"),'display:none');
+            }
+        }
+    }
+    JM_GET(parms);
+  }
+
+}
+
+
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+     if(usermgr.checkLogin())
+     {
+          pageMol.datatype = api.pageParam.frametype;
+          if(pageMol.datatype == 1){
+              //金币 日志
+            $api.text($api.dom('.normal-head-title'), '金币记录');
+          }else if(pageMol.datatype == 2) {
+              //红包 日志
+              $api.text($api.dom('.normal-head-title'), '收益记录');
+          }
+
+          pageMol.dvv = new Vue({el:'#el_list',data:pageMol});
+
+          pageMol.initlize();
+          pageMol.bind();
+
+     }
+
+      //关闭
+     $api.addEvt($api.dom('.normal-bk-img'), 'click', function(){
+            api.closeWin();
+
+     });
+
+}
+
+
+</script>

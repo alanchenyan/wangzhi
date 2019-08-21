@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <title>网值首页</title>
+  <link rel="stylesheet" type="text/css" href="../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="../css/home.css" />
+  <link rel="stylesheet" type="text/css" href="../css/loaders.min.css" />
+  <link rel="stylesheet" type="text/css" href="../plugins/swiper/swiper.min.css" />
+  <link rel="stylesheet" type="text/css" href="../css/common.css" />
+  <script type="text/javascript" src="../script/api.js"></script>
+  <script type="text/javascript" src="../script/md5.js"></script>
+  <script type="text/javascript" src="../script/common.js"></script>
+  <script type="text/javascript" src="../script/vue/vue.js"></script>
+  <script type="text/javascript" src="../script/nicklist.js"></script>
+
+  <script type="text/javascript" src="../script/frame0.js"></script>
+  <style>
+          body{
+
+          }
+      </style>
+ </head>
+ <body>
+  <div id="cover"></div>
+  <div class="wrapper">
+   <div class="borlin_top" style=" background-color:#fff; height:165px;  ">
+    <div class="head" id="head">
+     <div class="swiper-container head-swiper">
+      <div class="swiper-wrapper">
+
+
+      </div>
+      <div class="swiper-bg"></div>
+      <div class="swiper-pagination"></div>
+     </div>
+     <!-- Add Pagination -->
+    </div>
+   </div>
+   <div class="swiper-container reserveType">
+    <div class="swiper-wrapper" id="swiper-daohang">
+
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination" id="el_yc5"></div>
+   </div>
+   <div  onclick="openBrowser('http://www.modoua.com/h5/help_super_search.html','省钱教程',0)"  style="">
+    <img src="../image/yingdao.png" style="width:100%" />
+   </div>
+   <div>
+     <!--活动效果块-->
+    <div class="fashion">
+
+    </div>
+     <!--活动模块结束 -->
+
+    <!--热点头条信息 Start-->
+    <div class="goodsHot">
+     <div class="goodsHot_title">
+      <div class="goodsHot_title_text">
+       <span style="color:red;font-weight: bolder; font-size:15px">省钱播报</span>
+      </div>
+      <div class="swiper-container scroll"  >
+       <div class="swiper-wrapper">
+
+
+       </div>
+      </div>
+     </div>
+     <div class="goodsHot_main">
+      <div class="goodsHot_item">
+       <div class="goodsHot_item_top">
+        <img src="../image/frame0/radio.png" class="goodsHot_icon_dy" />抖音好货
+       </div>
+
+       <div class="goodsHot_item_btm" onclick="openvoide()">
+        <div class="goodsHot_item_left_dy">
+          <div class="goodsHot_text_dy">
+           <img src="../image/wave.gif" width="11px" style="line-height:19px;"  /><span>20.2万</span>
+          </div>
+         <img src="https://img.alicdn.com/imgextra/i2/687999099/O1CN012H5OGTp8VKLLztU_!!687999099.jpg_100x100.jpg" class="goodsHot_item_img" />
+          <div class="dy_video"><img src="../image/bg_goods_video_play.png" style="width:30px;height:30px" /> </div>
+        </div>
+
+        <div class="goodsHot_item_left_dy" onclick="openvoide()">
+          <div class="goodsHot_text_dy">
+           <img src="../image/wave.gif" width="11px" style="line-height:19px;"  /><span>13.2万</span>
+          </div>
+         <img src="https://img.alicdn.com/imgextra/i4/2175881970/O1CN01OKRgPH1QQIlNfGUOK_!!2175881970.jpg_160x160q90.jpg" class="goodsHot_item_img" />
+          <div class="dy_video2"><img src="../image/bg_goods_video_play.png" style="width:30px;height:30px" /> </div>
+        </div>
+      </div>
+
+      </div>
+      <div onclick="" class="goodsHot_item">
+       <div class="goodsHot_item_top"  >
+         <div class="titlekk">
+             <img src="../image/qian.png" class="goodsHot_icon" />每日线报
+         </div>
+         <div class="titlekk" style="  margin-left:14px;">
+               早起红包
+         </div>
+       </div>
+       <div class="goodsHot_item_btm">
+            <!--线报直播-->
+            <div class="goodsHot_item_left_dy" onclick="openxb()">
+              <div class="goodsHot_text_dy1">
+                 <span>今日线报:344条</span>
+              </div>
+             <img src="../image/yfl.gif" class="goodsHot_item_img" />
+            </div>
+
+            <div class="goodsHot_item_left_zb" onclick="openzaoqi()">
+             <img src="../image/huodong/zaoqihong.png" class="goodsHot_item_img" />
+            </div>
+
+          <!--线报直播结束-->
+
+       </div>
+      </div>
+      <div class="goodsHot_item" onclick="openwin('jmgoods/frame_mother_head','母婴',app.frame_muyin)" >
+       <div class="goodsHot_item_top">
+        <img src="../image/t3.png" class="goodsHot_icon" />母婴专场
+       </div>
+       <div class="goodsHot_item_btm">
+        <div class="goodsHot_item_left">
+         <div class="goodsHot_text">
+           品牌母婴优选
+         </div>
+         <img src="https://img.alicdn.com/tps/TB1jeaQKXXXXXcAXpXXXXXXXXXX-250-250.jpg" class="goodsHot_item_img" />
+        </div>
+        <div class="goodsHot_item_right">
+         <img src="https://img.alicdn.com/imgextra/i3/120182494/O1CN01XdzQBN1UIIHJEiLwM_!!0-saturn_solar.jpg_220x220.jpg" class="goodsHot_item_img" />
+        </div>
+       </div>
+      </div>
+      <div class="goodsHot_item" onclick="openBrowser('https://jupage.taobao.com/wow/tqg/act/webhome','淘抢购')">
+       <div class="goodsHot_item_top">
+        <img src="../image/sq.png" class="goodsHot_icon" />淘抢购
+       </div>
+       <div class="goodsHot_item_btm" >
+        <div class="goodsHot_item_left">
+         <div class="goodsHot_text">
+           限时每日必抢
+         </div>
+         <img src="https://img.alicdn.com/imgextra/i4/120183675/O1CN01j0QgDI1d1C3I2YRVh_!!0-saturn_solar.jpg_220x220.jpg" class="goodsHot_item_img" />
+        </div>
+        <div class="goodsHot_item_right">
+         <img src="https://img.alicdn.com/imgextra/i2/57391376/O1CN01LT1Qu31M2FUYTJ4ny_!!0-saturn_solar.jpg_220x220.jpg" class="goodsHot_item_img" />
+        </div>
+       </div>
+     </div>
+    </div>
+    <!--热点头条信息 End-->
+  <!--广告Banner-->
+
+  <!-- 广告Banner 结束-->
+<img  onclick="openBrowser('https://mo.m.taobao.com/union/chaojidanpin20181201?pid=mm_10898238_266600236_78469400021','每日活动')" src="http://nn.52juanmi.com/20190502162018885c88359.jpg" width="95%;" height="80px" style="margin-left:2.5%;margin-top:3px" />
+<!--粉喵情报局 -->
+  <!--  <div style="width:100%; height:3px; background-color:#eee"></div>
+    <div class="jd_goods">
+     <div class="jd_goods_title">
+      <div class="jd_goods_title_text">
+        粉喵情报局
+      </div>
+      <span class="jd_goods_title_more">更多<i class="iconfont icon-gengduo"></i></span>
+     </div>
+     <div style="border-top:1px solid #eee; height:80px; width:93%; padding:10px">
+      <div class="swiper-container goodqbao">
+       <div class="swiper-wrapper">
+        <div class="swiper-slide" onclick='openBrowser(app.urls.mao1,"天猫一元购")'>
+         <div>
+          <img class="qbimg" src="http://nn.52juanmi.com/20190403115828b91128714.png" />
+         </div>
+        </div>
+        <div class="swiper-slide" onclick="openwin('jm_title','每日漏洞',app.frame_xuanpin,19252176)">
+         <div>
+          <img class="qbimg" src="http://nn.52juanmi.com/201904031159119da552910.png" />
+         </div>
+        </div>
+        <div class="swiper-slide"  onclick="openwin('jm_title','第二件半价',app.frame_xuanpin,19369398)">
+         <div>
+          <img class="qbimg" src="http://nn.52juanmi.com/201904031159536af6b1417.png" />
+         </div>
+        </div>
+        <div class="swiper-slide">
+         <div>
+          <img class="qbimg" src="http://nn.52juanmi.com/20190403120022f5f163748.png" />
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+-->
+
+
+   <div style="width:100%; height:5px; background-color:#eee"></div>
+   <!-- 底部推荐导航-->
+   <div class="tab_nav">
+    <ul>
+     <li onclick="getindexitem(0)">全部
+      <div class="miaoshu sel">
+       为你推荐
+      </div></li>
+     <li onclick="getindexitem(1)">潮流
+      <div class="miaoshu ">
+       最新潮流
+      </div></li>
+     <li onclick="getindexitem(2)">母婴
+      <div class="miaoshu ">
+       宝妈精选
+      </div></li>
+     <li onclick="getindexitem(3)">网红
+      <div class="miaoshu ">
+       网红抖音
+      </div></li>
+     <li style="border-right: 0px" onclick="getindexitem(4)">学生
+      <div class="miaoshu "  >
+       学生时代
+      </div> </li>
+    </ul>
+   </div>
+   <!-- 为您推荐 -->
+   <div class="good_main_kj" id="el_tj_list">
+    <div class="good_row_item" v-for="item in Titemlist" v-on:click="openitem(item)">
+     <div class="good_item_img">
+      <img src="../image/thum.png" v-bind:data-url="item.itempic" data-cache="no" />
+     </div>
+     <div class="good_item-name-box">
+      <span v-if="item.usertype == 1" class="good_item-name my_sv">{{item.itemtitle}}</span>
+      <span v-else="item.usertype == 0" class="good_item-name2 my_sv ">{{item.itemtitle}}</span>
+     </div>
+     <div class="good_item_price">
+      <span class="good_item_price_old">原价￥{{item.itemprice}}</span>
+      <span class="good_item_price_sell">{{item.sellnum}}人购买</span>
+     </div>
+     <div class="good_item_price2">
+      <span class="good_item_price_new">￥ {{item.newprice}}</span>
+      <span class="good_item_price_coupon">{{item.couponprice}}元券</span>
+     </div>
+     <div class="good_item_zhuan">
+      <div class="sr">
+       <div style="margin-left:5px">
+        分享赚
+       </div>
+       <div>
+        ￥{{item.commissionrate1}}
+       </div>
+      </div>
+      <div class="upz" onclick="openwin('jm_title','升级团长',app.frame_userlevel)">
+       <div>
+        升级赚
+       </div>
+       <div>
+        ￥{{item.commissionrate2}}
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!--loading -->
+   <section class="list-wrapper" style="width:100%; text-align:center; margin-top:10px" id="list-wrapper">
+    <div class="list-item-loading" v-show="loading">
+     <div class="loader-inner ball-pulse">
+      <div></div>
+      <div></div>
+      <div></div>
+     </div>
+    </div>
+    <!--底线提示 -->
+    <div class="databootom">
+     <span>~我是有底线的哦！~</span>
+    </div>
+   </section>
+  </div>
+  <!--导航下拉 Start-->
+
+ </body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../plugins/swiper/swiper.min.js"></script>
+<script type="text/javascript" src="../script/usermgr.js"></script>
+
+ <script type="text/javascript">
+
+   apiready = function(){
+            //$api.fixStatusBar( $api.dom('#head') );
+            pageMol.initlize();
+
+            if(istest()){
+                $api.css($api.dom("#el_yc1"),"display:none");
+                $api.css($api.dom("#el_yc2"),"display:none");
+                $api.css($api.dom("#el_yc3"),"display:none");
+                $api.css($api.dom("#el_yc4"),"display:none");
+                $api.css($api.dom("#el_yc5"),"display:none");
+            }
+
+            //渲染数据
+            pageMol.tvv = new Vue({
+                              el:'#el_tj_list',
+                              data:pageMol,
+                              methods:{
+                                      openitem:function(item){
+                                        openGoodDetails(item);
+                                      }
+                                    }
+                              });
+
+              //初始化首页幻灯
+              for (var i = 0; i < pageMol.flashdata.length; i++) {
+                   var info = pageMol.flashdata[i];
+                  swiperHead.addSlide(i,'<div class="swiper-slide" onclick="CommoneClick('+info.linktype+',\''+info.title+'\','+info.dataid+',\''+info.linkurl+'\'   )" > <img src="'+info.imgurl+'"  class="swiper-item-img" />   </div>');
+              }
+              pageMol.inittitlecolor(0);
+
+              //初始化省钱播报
+
+              for (var i = 0; i < 20; i++) {
+                   var rdindex = randomNum(0,names.length);
+                   var nicknames = names[rdindex];
+                   var bbstr = "VIP会员:"+nicknames+"*** 刚刚购物省了"+randomNum(5,100)+"."+randomNum(1,99)+"元";
+                   if(istest()){
+                     bbstr="欢迎来到粉喵商城！！~~";
+                   }
+                   swiperIcon3.addSlide(i,'<div class="swiper-slide" style="font-size:12px; "  > '+bbstr+'</div>');
+              }
+
+
+              //导航栏横向滑动
+             var swiperIcon1 = new Swiper('.reserveType', {
+                   paginationClickable: true,
+                   pagination: {
+                       el: '.swiper-pagination',
+                   },
+                   //frameGropu 与 swiper 左右滑动冲突；增加事件来控制
+                   on: {
+                     touchStart: function(event){
+                         api.setFrameGroupAttr({name : 'frame_home_index',scrollEnabled : false});
+                     },
+                     touchEnd: function(event){
+                         api.setFrameGroupAttr({name : 'frame_home_index',scrollEnabled : true});
+                     }
+                   }
+               });
+
+            pageMol.isRedpack();
+      };
+
+        //情报栏目
+        var swiperIcon2 = new Swiper('.goodqbao', {
+              slidesPerView:3,
+              spaceBetween :23,
+              //frameGropu 与 swiper 左右滑动冲突；增加事件来控制
+              on: {
+                touchStart: function(event){
+                    api.setFrameGroupAttr({name : 'frame_home_index',scrollEnabled : false});
+                },
+                touchEnd: function(event){
+                    api.setFrameGroupAttr({name : 'frame_home_index',scrollEnabled : true});
+                }
+              }
+          });
+
+        var swiperIcon3 = new Swiper('.scroll', {
+             autoplay:true,
+             direction : 'vertical',
+
+         });
+
+
+        //首页幻灯片swiper
+        var swiperHead = new Swiper('.head-swiper',{
+          autoplay:true,
+          pagination: {
+              el: '.swiper-pagination',
+            },
+          on: {
+                slideChangeTransitionStart: function(){
+                     pageMol.inittitlecolor(this.realIndex);
+                },
+
+                //frameGropu 与 swiper 左右滑动冲突；增加事件来控制
+                touchStart: function(event){
+                    api.setFrameGroupAttr({
+                               name : 'frame_home_index',
+                               scrollEnabled : false
+                       });
+                },
+                touchEnd: function(event){
+                    api.setFrameGroupAttr({
+                               name : 'frame_home_index',
+                               scrollEnabled : true
+                       });
+                },
+          },
+        })
+
+   </script>
+</html>

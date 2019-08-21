@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <title>销量爆款</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/loaders.min.css" />
+  <script type="text/javascript" src="../../script/api.js"></script>
+   
+  <style>
+          body{
+            text-align:center
+          }
+      </style>
+ </head>
+ <body>
+   <div class = 'normal-head-box' id = 'header'>
+        <div class = 'padding-t-10'>
+           <img src="../../image/back.png" onclick="back()"  class = 'normal-bk-img'>
+          <!--  <img src="../image/bride_search.png" class = 'normal-r-img'> -->
+           <p class = 'normal-head-title' id="titlevale">爆款排行榜</p>
+        </div>
+   </div>
+
+
+ </body>
+ <script type="text/javascript">
+   var curr_frame_name = "";
+   apiready = function(){
+      $api.fixStatusBar( $api.dom('#header') );
+      var win_height = $api.dom('#header').offsetHeight;
+
+      curr_frame_name = "frame_rank";
+      api.openFrame({
+          name: curr_frame_name,
+          url: './frame_rank_list.html',
+          rect: {
+              x: 0,
+              y: win_height,
+              w: 'auto',
+              h: 'auto'
+          }
+
+       });
+
+
+   };
+
+   function back()
+   {
+    api.closeWin();
+     api.closeFrame({
+        name: curr_frame_name
+      });
+
+   }
+</script>
+</html>

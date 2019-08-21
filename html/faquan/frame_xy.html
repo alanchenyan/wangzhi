@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+  <title>学院</title>
+  <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/loaders.min.css" />
+  <style>
+      html, body{
+      	background-color: #fff;
+    	margin:0;
+    padding:0;
+      }
+        *{margin:0;padding:0;}
+
+    	.banners
+    	{
+    		width:100%;
+    		text-align:center;
+    		margin-top:10px;
+
+    	}
+    	.linee
+    	{
+    		width:100%;
+    		height:5px;
+    		background:#eee;
+    		margin-top:15px;
+    	}
+    	.xydh{
+    		margin-top:0px;
+    		background-color:#FFFFFF;
+    		width:95%;
+    		height:65px;
+       text-align:center;
+       margin-left:2%;
+       line-height: 60px;
+
+
+
+    	}
+    	.navv{
+    		float:left;
+    		width:31%;
+    		margin-top:3.5%;
+
+    	}
+    	.navv img{
+
+    		width:100%;
+
+    	}
+    	.listdiv{
+
+    	}
+
+    	.listdiv li{
+    	width:100%;
+
+    	height:130px;
+
+    	}
+
+    	.wz{
+
+    	border-radius:5px;
+    	height:100px;
+
+
+    	}
+
+    	.wz img{
+    		border-radius:5px;
+    		margin-left:10px;
+    		height:100px;
+
+    	}
+    	  .title
+    	{
+
+    		float:left;
+    		width:60%;
+    		margin-left:20px;
+
+
+    	}
+
+    	 .miaoshu
+    	{
+
+
+    		width:65%;
+    		margin-left:32%;
+
+    		height:20px;
+    		position:absolute;
+    		margin-top:75px;
+
+    	}
+
+    </style>
+ </head>
+ <body>
+  <div class="content">
+   <div class="banners">
+    <img src="../../image/xueyuan/xybanner.png" width="95%" />
+   </div>
+
+   <div class="xydh">
+    <div class="navv">
+     <img src="../../image/xueyuan/n1.jpg" onclick="sel(1)" />
+    </div>
+    <div class="navv" style="margin-left:3.4%;">
+     <img src="../../image/xueyuan/n2.jpg" onclick="sel(2)"/>
+    </div>
+    <div class="navv" style="margin-left:3.4%;">
+     <img src="../../image/xueyuan/n3.jpg" onclick="sel(3)"/>
+    </div>
+   </div>
+
+   <div style="margin-top:10px;width:100px; margin-left:15px; margin-bottom:10px;">
+     推荐内容
+   </div>
+   <div class="listdiv">
+    <ul id ="el_list">
+     <li v-for="item in dataitem" v-on:click="openarticle(item)" v-cloak="">
+      <div class="wz">
+       <div style="float:left; width:30%;   ">
+        <img v-bind:src="item.imgurl" width="100%;" height="100%" />
+       </div>
+       <div class="title">
+        <span style="font-size:14px; color:#363636">{{item.title}} </span>
+       </div>
+       <div class="miaoshu">
+        <span style="font-size:12px; color:#9C9C9C; margin-left:15px;">{{item.createtime}} </span>
+
+       </div>
+      </div>
+    </li>
+
+   </div>
+
+
+  </div>
+  <!-- loading 界面 -->
+  <section class="list-wrapper" style="background-color:#fff; margin-top:20px; margin-left:45%  " id="list-wrapper">
+   <div class="list-item-loading">
+    <div class="loader-inner ball-pulse">
+     <div></div>
+     <div></div>
+     <div></div>
+    </div>
+   </div>
+  </section>
+
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/common.js"></script>
+  <script type="text/javascript" src="../../script/vue/vue.js"></script>
+  <script type="text/javascript" src="../../script/goodshare/xueyuan.js"></script>
+  <script type="text/javascript" src="../../script/usermgr.js"></script>
+  <script type="text/javascript">
+
+
+      apiready = function(){
+
+            pageMol.initlize();
+            pageMol.dvv = new Vue({el:'#el_list',data:pageMol,methods:{
+                      openarticle:function(item){
+                           var title = "其他";
+                           if(item.atype == 1){
+                             title="新手入门";
+                           }
+                           if(item.atype == 2){
+                             title="高级学院";
+                           }
+                           if(item.atype == 3){
+                             title="经验分享";
+                           }
+                          openBrowser(item.url,title);
+                    },
+                  }});
+            pageMol.types = 1;
+            pageMol.bindData();
+
+      };
+
+      function sel(typeid){
+        $api.css($api.dom(".list-item-loading"),"display:block")
+        pageMol.types = typeid;
+        pageMol.pagesize = 1;
+        pageMol.dataitem = Array();
+        pageMol.bindData();
+      }
+  </script>
+ </body>
+</html>

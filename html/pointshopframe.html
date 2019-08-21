@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>积分商城</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css"/>  
+    <link rel="stylesheet" type="text/css" href="../css/common.css"/>  
+    <link rel="stylesheet" type="text/css" href="../css/incom.css"/>  
+    <style>
+      .main-head{
+        height: 205px;
+      }
+      .head-main-img{
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        top:75px;left:30px;
+      }
+      .user-name-box{
+        color:#fff;
+        position: absolute;
+        top:90px;left:110px;
+
+      }
+      .point-box{
+        position: absolute;
+        right: 50px;
+        top:80px;
+      }
+      .color-w{
+        font-size:22px;
+        text-align: center;
+      }
+
+      .nav-box{
+        position: relative;
+        top:-30px;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .aui-grid{
+        border-radius: 15px 15px 0 0;
+      }
+
+      .nav-img{
+        width: 25px;height: 25px;margin: 0 auto;
+      }
+      .aui-grid-label{
+        font-size: 12px !important;
+        color:#757575 !important;
+      }
+      .aui-col-xs-4{
+         padding:10px !important;
+         padding-right: 0px !important;
+      }
+      .border-r{
+        border-right: 1px solid #eee;
+      }
+      .border-r-none{
+        border-right: none !important;
+      }
+
+      .aui-conten{
+        margin-bottom: 8px !important;
+      }
+
+      .aui-list-item-media{
+         width: 75px !important;
+      }
+
+      .goods-img{
+         width: 60px;
+         height: 60px;
+      }
+
+      .aui-list-item-inner{
+        padding-top:10px !important;
+        /*margin-top: -10px;*/
+      }
+
+      .line-two{
+        /*margin-top: 10px;*/
+      }
+
+      .xiao-num{
+        color:red;
+        font-size: 30px;
+        font-weight: bolder;
+      }
+
+      .color-red{
+        color:red;
+        font-size: 12px; font-weight: bolder;
+      }
+
+      .posi-relative{
+        position: relative !important;
+      }
+
+      .posi-ab{
+        position: absolute !important;
+        right: 30px !important;
+        top:20px;
+      }
+
+      .dui-btn{
+        width: 50px;
+        background-color: red;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+        border-radius: 25px;
+        margin-top: 5px;
+      }
+
+      .dui-good-box{
+        width: 100%;
+        height: 450px;
+        background-color: #fff;
+        /*margin-top: 30px;*/
+        border:1px solid #ccc;
+        display: none;z-index: 999;
+        position: absolute;
+        bottom:0px;
+        
+      }
+      .goods-posi-box{
+        height: 450px;
+      }
+      .posi-box{
+        position: relative;
+        width: 100%;
+      }
+      .good-img-box{
+        width: 110px;
+        height: 110px;
+        padding:3px;
+        border:1px solid  #ccc;
+        border-radius: 5px;
+        position: absolute;
+        top:-15px;
+        left:10px;
+        background-color: #fff;
+      }
+      .good-img{
+        border-radius: 5px;
+      }
+
+      .goods-info-box{
+        padding-top: 5px;
+        margin-left: 135px;
+      }
+      .good-line-two{
+        margin-top: 10px;
+      }
+      .color-b{
+        color:#2c2c2c;
+      }
+      .goods-nums{
+        color:red;
+        font-size: 14px;
+      }
+
+      .address-box{
+        margin-top: 20px;
+        margin-left:15px;
+        position: relative;
+      }
+      .font-weight{
+        font-weight: bolder;
+      }
+      .adress-img{
+        width: 20px;height: 20px;position: absolute;top:45px;
+      }
+       .aui-list-item-title{
+            font-size: 12px !important;
+        }
+
+        .aui-content{
+          margin-top: 15px;
+        }
+        .aui-list-item-inner{
+          padding-top: 0px !important;
+        }
+        .item-title{
+          font-size: 14px;
+          font-weight: bolder;
+        }
+        .item-btn{
+          position: absolute;
+          right: 10px;
+          top:-2px;
+          color:#ccc;
+        }
+        .xu-span{
+          margin-right: 30px;
+        }
+        .item-span-active{
+          width: 60px;
+          border-radius: 25px;
+          color:#fff;
+          background-color: red;
+          height: 25px;
+          line-height: 25px;
+          text-align: center;
+        }
+        .right-num{
+            position: absolute;
+            right: 13px;
+            top:-2px;
+            color:#ccc;
+        }
+        .right-num>input{
+          width: 20px;
+          height: 20px;
+          text-align: center;
+          /*border:1px solid #eee;*/
+          font-size: 12px;display: inline-block;
+          vertical-align: middle;
+        }
+        .jian-img{
+          width: 18px;height: 18px;display: inline-block;vertical-align: middle;
+        }
+        .zhuan-span{
+          color:#757575;
+          margin-left: 20px;
+        }
+        .point-div-box{
+          margin-top:10px;margin-left: 15px;font-size: 14px;
+        }
+        .point-num{
+          color:red;
+          font-size: 16px
+        }
+        .goods-dui-footer{
+          position: absolute;
+          bottom:0px;
+          width: 100%;
+          text-align: center;
+          /*height: 50px;*/
+          /*line-height: 50px;*/
+          padding-bottom: 15px;
+        }
+        .goods-footer-btn{
+           border:1px solid #ccc;
+           width: 40%;
+           height: 40px;
+           line-height: 40px;
+           margin-right: 15px;
+           border-radius: 25px;
+           color:#fff;
+        }
+        .qu-f-btn{
+           background-color: #d55858;
+        }
+        .dui-f-btn{
+           background-color: #e65d42;
+        }
+
+        .overlay {
+            background-color:rgba(0,0,0,0.5);
+            opacity: 0.5;  /* 透明度 */
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 50; /* 此处的图层要大于页面 */
+            display: none;
+        }
+
+         .aui-dialog-btn:nth-child(1) {
+            background-color: #eee !important;
+            color:#e65d42 !important;
+        }
+        
+
+        .aui-dialog-btn:nth-child(2) {
+            background-color: #e65d42 !important;
+            color:#fff !important;
+        }
+    </style>
+</head>
+<body>
+
+  <div class = 'box-warp'>
+        <div class = 'overlay'></div>
+
+        <div class = 'main-head'>
+            <div class = 'title-head-box'>
+                <img src="../image/backw.png" class = 'bk-img'>    
+                <p class = 'head-title'>积分商城</p>    
+            </div>
+
+            <img class = 'head-main-img' src="../image/t2.jpg" onclick = 'openwin("loginwin");'>     
+            <div class = 'user-name-box'>漫步</div>
+
+            <div class = 'point-box'>
+                <p class = 'color-w'>146</p>
+                <p class = 'fz-14 color-w'>可用积分</p>
+            </div>
+        </div>
+
+         <div class = 'nav-box'>
+            <section class="aui-grid">
+              <div class="aui-row">
+                  <div class="aui-col-xs-4">
+                      <div class = 'border-r'>
+                           <img src="../image/szac.png" class = 'nav-img'>
+                           <div class="aui-grid-label">积分明细</div>
+                      </div>
+                  </div>
+                  <div class="aui-col-xs-4">
+                      <div class = 'border-r'>
+                           <img src="../image/szac.png" class = 'nav-img'>
+                           <div class="aui-grid-label">兑换明细</div>
+                      </div>
+                  </div>
+                   <div class="aui-col-xs-4" onclick = 'openwin("mineadresswin");'>
+                      <div class = 'border-r border-r-none'>
+                           <img src="../image/szac.png" class = 'nav-img'>
+                           <div class="aui-grid-label">地址管理</div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+        </div>
+
+        <div style = 'margin-top: -20px;'>
+           <div class="aui-conten">
+              <ul class="aui-list aui-media-list">
+                  <li class="aui-list-item aui-list-item-middle">
+                      <div class="aui-media-list-item-inner">
+                          <div class="aui-list-item-media" style="width: 3rem;">
+                              <img src="../image/goods/t3.png" class="goods-img">
+                          </div>
+                          <div class="aui-list-item-inner posi-relative">
+                              <div class="aui-list-item-text">
+                                  <div class="aui-list-item-title aui-font-size-14">积分兑换红包</div>
+                              </div>
+                              <div class="aui-list-item-text line-two">
+                                 <div class="aui-list-item-title aui-font-size-14"><span class = 'xiao-num'>100</span> <span class = 'color-red'>需要消耗积分</span></div>
+                              </div>
+
+                               <div class="aui-list-item-text posi-ab">
+                                  <div>
+                                    <p class = 'fz-12'>已领 <span class = 'color-red'>112</span></p>
+                                    <p class = 'dui-btn' onclick = 'openduigoods();'>兑换</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+            </div>
+
+             <div class="aui-conten">
+              <ul class="aui-list aui-media-list">
+                  <li class="aui-list-item aui-list-item-middle">
+                      <div class="aui-media-list-item-inner">
+                          <div class="aui-list-item-media" style="width: 3rem;">
+                              <img src="../image/goods/t3.png" class="goods-img">
+                          </div>
+                          <div class="aui-list-item-inner posi-relative">
+                              <div class="aui-list-item-text">
+                                  <div class="aui-list-item-title aui-font-size-14">积分兑换红包</div>
+                              </div>
+                              <div class="aui-list-item-text line-two">
+                                 <div class="aui-list-item-title aui-font-size-14"><span class = 'xiao-num'>100</span> <span class = 'color-red'>需要消耗积分</span></div>
+                              </div>
+
+                               <div class="aui-list-item-text posi-ab">
+                                  <div>
+                                    <p class = 'fz-12'>已领 <span class = 'color-red'>112</span></p>
+                                    <p class = 'dui-btn'>兑换</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+            </div>
+
+             <div class="aui-conten">
+              <ul class="aui-list aui-media-list">
+                  <li class="aui-list-item aui-list-item-middle">
+                      <div class="aui-media-list-item-inner">
+                          <div class="aui-list-item-media" style="width: 3rem;">
+                              <img src="../image/goods/t3.png" class="goods-img">
+                          </div>
+                          <div class="aui-list-item-inner posi-relative">
+                              <div class="aui-list-item-text">
+                                  <div class="aui-list-item-title aui-font-size-14">积分兑换红包</div>
+                              </div>
+                              <div class="aui-list-item-text line-two">
+                                 <div class="aui-list-item-title aui-font-size-14"><span class = 'xiao-num'>100</span> <span class = 'color-red'>需要消耗积分</span></div>
+                              </div>
+
+                               <div class="aui-list-item-text posi-ab">
+                                  <div>
+                                    <p class = 'fz-12'>已领 <span class = 'color-red'>112</span></p>
+                                    <p class = 'dui-btn'>兑换</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+            </div>
+
+             <div class="aui-conten">
+              <ul class="aui-list aui-media-list">
+                  <li class="aui-list-item aui-list-item-middle">
+                      <div class="aui-media-list-item-inner">
+                          <div class="aui-list-item-media" style="width: 3rem;">
+                              <img src="../image/goods/t3.png" class="goods-img">
+                          </div>
+                          <div class="aui-list-item-inner posi-relative">
+                              <div class="aui-list-item-text">
+                                  <div class="aui-list-item-title aui-font-size-14">积分兑换红包</div>
+                              </div>
+                              <div class="aui-list-item-text line-two">
+                                 <div class="aui-list-item-title aui-font-size-14"><span class = 'xiao-num'>100</span> <span class = 'color-red'>需要消耗积分</span></div>
+                              </div>
+
+                               <div class="aui-list-item-text posi-ab">
+                                  <div>
+                                    <p class = 'fz-12'>已领 <span class = 'color-red'>112</span></p>
+                                    <p class = 'dui-btn'>兑换</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+            </div>
+
+       </div>
+      
+       <div class = 'dui-good-box'>
+        <div class = 'posi-box goods-posi-box'>
+            <div class = 'good-img-box'>
+               <img src="../image/goods/f14.jpg" class = 'good-img'>
+            </div>
+            <div class = 'goods-info-box'>
+                  <p class = 'color-b fz-12'>清洁耳勺小商品</p>
+                  <p class = 'good-line-two color-b'>需要积分 <span class = 'goods-nums'>80</span></p>
+                  <p class = 'good-line-two color-b'>库存 <span class = 'goods-nums'>964</span> 件 </p>
+            </div> 
+
+            <div class = 'address-box'>
+                <h4 class = 'font-weight'>收货信息</h4>
+                <img src="../image/banner/adress.png" class = 'adress-img'>
+                <p class = 'mg-t-10 mg-l-35'>胡保林</p>
+                <p class = 'mg-t-10 mg-l-35'>收货地址：广东省中山市小榄镇海港城</p>
+            </div>
+
+            <div class="aui-content">
+              <ul class="aui-list aui-list-in">
+                  <li class="aui-list-item aui-list-item-middle" style = 'border-top:1px solid #eee;'>
+                      <div class="aui-list-item-inner">
+                          <div class="aui-list-item-title" style = 'width: 100%;'>
+                            <div class = 'posi-box'>
+                                <span class = 'item-title'>商品类型</span>
+                                <div class=  'item-btn'>
+                                   <span class = 'xu-span'>虚拟</span>
+                                   <span class = 'item-span-active'>实物</span>
+                                </div>
+                              </div>
+                            </div>
+                      </div>
+                  </li>
+                  <li class="aui-list-item aui-list-item-middle">
+                      <div class="aui-list-item-inner">
+                          <div class="aui-list-item-title" style = 'width: 100%;'>
+                            <div class = 'posi-box'>
+                                <span class = 'item-title'>购买数量</span>
+                                <div class=  'right-num'>
+                                   <img src="../image/banner/jian.png" class = 'jian-img jie-btn'>
+                                   <input type="number" name="" value = '1'>
+                                   <img src="../image/banner/jia.png" class = 'jian-img jia-btn'>
+                                </div>
+                              </div>
+                            </div>
+                      </div>
+                  </li>
+                   <li class="aui-list-item aui-list-item-middle">
+                      <div class="aui-list-item-inner">
+                          <div class="aui-list-item-title" style = 'width: 100%;'>
+                            <div class = 'posi-box'>
+                                <span class = 'item-title'>兑换须知</span>
+                                <span class = 'zhuan-span'>赚取积分兑换实物</span>
+                              </div>
+                            </div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+
+          <div class = 'point-div-box'>
+            <span style = 'margin-right: 50px;'>当前积分：<span class = 'point-num'>146</span></span>
+            <span>兑换所需：<span class = 'point-num'>146</span></span>
+          </div>
+
+          <div class = 'goods-dui-footer'>
+             <span class = 'goods-footer-btn qu-f-btn' onclick = 'closemodel();'>取消</span>
+             <span class = 'goods-footer-btn dui-f-btn' onclick="openDialog('callback')">兑换</span>
+          </div>
+
+        </div> 
+     </div>
+
+    </div>
+    
+
+</body>
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/jquery.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/aui-dialog.js" ></script>
+<script type="text/javascript">
+
+function openduigoods()
+{
+    $('.overlay').css('display' , 'block');
+    $('.dui-good-box').css('display' , 'block');
+}
+
+function closemodel()
+{
+    $('.overlay').css('display' , 'none');
+    $('.dui-good-box').css('display' , 'none');
+}
+
+var dialog = new auiDialog({});
+
+function openDialog(type){
+    // $('.overlay').css('display' , 'none');
+    $('.dui-good-box').css('display' , 'none');
+
+    switch (type) {
+        case "callback":
+            dialog.alert({
+                    title:"温馨提示",
+                    msg:'恭喜你，兑换成功！！',
+                    buttons:['留在本页','兑换明细']
+                },function(ret){
+                    if(ret){
+                        if (ret.buttonIndex == '1') {
+                           // 取消
+                           $('.overlay').css('display' , 'none');
+                        }else if(ret.buttonIndex == '2'){
+                           $('.overlay').css('display' , 'none');
+                        }
+                    }
+                })
+            break;
+       
+        default:
+            break;
+
+    }
+}
+
+// function surebtn()
+// {
+//   api.confirm({
+//       title: '温馨提示',
+//       msg: '恭喜你，兑换成功!!',
+//       buttons: ['兑换明细', '留在本页']
+//   }, function(ret, err) {
+//       var index = ret.buttonIndex;
+//   });
+// }
+</script>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>粉丝</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../plugins/swiper/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/fans.css"/>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = 'normal-head-box' id = 'header'>
+             <div class = 'padding-t-10'>
+                <img src="../../image/back.png" class = 'normal-bk-img'>
+
+                <p class = 'normal-head-title'>粉丝</p>
+             </div>
+        </div>
+
+         <div class = 'head_classify' style = "background-color: #fff;  ">
+            <div class="swiper-pagination" >
+
+
+            </div>
+        </div>
+
+        <div class="swiper-container hg-100" style="margin-top:25px"   id = "swiper-container-one">
+             <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                     <div class="aui-content aui-margin-b-1"  >
+                        <ul class="aui-list aui-media-list"  id="el_tj_list"  >
+                            <li class="aui-list-item aui-list-item-middle"  v-for="item in datalist">
+                                <div class="aui-media-list-item-inner">
+                                    <div class=" " style="padding:10px;"  >
+                                        <img v-bind:src="item.avatarurl" width="80px" head="80px" style="border-radius:50%;" class=" ">
+                                    </div>
+                                    <div class="aui-list-item-inner aui-list-item-arrow">
+                                        <div class="aui-list-item-text">
+                                            <div class="aui-list-item-title aui-font-size-14">{{item.nickname}}</div>
+                                            <div v-if="item.ulevel == 1" class="aui-list-item-right"><img class='hy-img' src="../../image/user/level1.png"></div>
+                                            <div v-if="item.ulevel == 2" class="aui-list-item-right"><img class='hy-img' src="../../image/user/level2.png"></div>
+                                        </div>
+                                        <div class="aui-list-item-text">
+                                            <span  v-if="item.phone == '0****'" class = 'fz-12' ><span style=" background:red;border-radius:10px;font-size:8px;color:#fff; width:40px;text-align:center">未激活</span> </span>
+                                            <span   v-else class = 'fz-12'><span>{{item.phone}}</span></span>
+                                            <span class = 'mg-l-10'>{{item.createtime}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="nofansi">
+                        <div style="color:#696969">你还没有好友哦,快去邀请你的好友吧</div>
+                         <div class="yaoqingbtn">前往邀请</div>
+                    </div>
+
+                </div>
+
+                 <div class="swiper-slide">
+                    <!-- 全部粉丝 -->
+                    <div class="aui-content aui-margin-b-1"   id="el_tj_list2">
+                       <ul class="aui-list aui-media-list">
+
+
+                         <li class="aui-list-item aui-list-item-middle"  v-for="item in datalist2">
+                             <div class="aui-media-list-item-inner">
+                                 <div class=" " style="padding:10px;"  >
+                                     <img v-bind:src="item.avatarurl" width="80px" head="80px" style="border-radius:50%;" class=" ">
+                                 </div>
+                                 <div class="aui-list-item-inner aui-list-item-arrow">
+                                     <div class="aui-list-item-text">
+                                         <div class="aui-list-item-title aui-font-size-14">{{item.nickname}}</div>
+                                         <div v-if="item.ulevel == 1" class="aui-list-item-right"><img class='hy-img' src="../../image/user/level1.png"></div>
+                                         <div v-if="item.ulevel == 2" class="aui-list-item-right"><img class='hy-img' src="../../image/user/level2.png"></div>
+                                     </div>
+                                     <div class="aui-list-item-text">
+                                         <span  v-if="item.phone == '0****'" class = 'fz-12' ><span style=" background:red;border-radius:10px;font-size:8px;color:#fff; width:40px;text-align:center">未激活</span> </span>
+                                         <span   v-else class = 'fz-12'><span>{{item.phone}}</span></span>
+                                         <span class = 'mg-l-10'>{{item.createtime}}</span>
+                                     </div>
+                                 </div>
+                             </div>
+                         </li>
+
+                       </ul>
+                   </div>
+
+
+                </div>
+
+
+
+             </div>
+
+        </div>
+    </div>
+
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../plugins/swiper/swiper.min.js"></script>
+<script type="text/javascript" src="../../script/jquery.min.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/vue/vue.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+<script type="text/javascript" src="../../script/user/fensi.js"></script>
+<script type="text/javascript">
+$api.addCls($api.dom(".nofansi"), 'l_hide');
+
+
+
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+    $api.fixStatusBar( $api.dom('.head_classify') );
+
+     //初始化查找直接粉丝
+     pageMol.initlize();
+     //渲染数据
+     pageMol.dvv = new Vue({el:'#el_tj_list',data:pageMol});
+     pageMol.dvv2 = new Vue({el:'#el_tj_list2',data:pageMol});
+     pageMol.getFansi(0);
+
+       //关闭
+      $api.addEvt($api.dom('.normal-bk-img'), 'click', function(){
+           api.closeWin();
+      });
+
+}
+
+
+var classify_data =new Array()
+classify_data[0]="直属粉丝";
+classify_data[1]="推荐粉丝";
+
+var swiper = new Swiper('#swiper-container-one', {
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + (classify_data[index]) + '</span>';
+        },
+      },
+
+      observer:true,
+      observeParents:true,
+      on: {
+                slideChangeTransitionEnd: function(event){
+                    //滑动结束时候开始加载数据
+                    if(this.activeIndex == 1){
+                        pageMol.currtype = 2;
+                        if(pageMol.datalist2.length == 0)
+                             pageMol.getFansi(-1);
+                    }else{
+                        pageMol.currtype = 1;
+                    }
+
+                       //全部数据
+                }
+              }
+});
+</script>

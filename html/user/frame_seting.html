@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>用户设置</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+    <style>
+        .aui-list-item-title{
+            font-size: 15px !important;
+
+        }
+        .rebtn{
+          float: right;
+          margin-right: 10px;
+         background-color: #fa758c;
+          border-radius:20px;
+          width: 60px;
+          text-align: center;
+          color: #fff
+        }
+
+        .bg-btn-red{
+            background-color: #e06666 ;
+            background:linear-gradient(to right,#e06666 , #f93535 , #f93535);
+            color:#fff;
+        }
+
+        .btn
+        {
+            text-align: center;
+            width: 80%;
+            margin:0 auto;
+            border-radius: 25px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .weixin-btn{
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = 'normal-head-box' id = 'header'>
+             <div class = 'padding-t-10'>
+                <img src="../../image/back.png" class = 'normal-bk-img'>
+                <p class = 'normal-head-title'>设置中心</p>
+             </div>
+        </div>
+
+        <div class="aui-content aui-margin-b-25" style="margin-top:80px;">
+            <ul class="aui-list aui-list-in">
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-list-item-inner ">
+                        <div class="aui-list-item-title">头像</div>
+                        <img class = 'head-main-img'   src="../../image/thum.png" style='width:40px;' >
+
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner  aui-list-item-arrow">
+                        <div class="aui-list-item-title">昵称</div>
+                        <span class="cnick"> </span>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner  ">
+                        <div class="aui-list-item-title">手机号</div>
+                        <span class="phone" > </span>
+                    </div>
+                </li>
+                <li class="aui-list-item"  id="el_div2">
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-title">收货地址</div>
+                    </div>
+                </li>
+                <div style="width:100%; height:15px; background-color:#eee "> </div>
+                <li class="aui-list-item" onclick = "BingAPAY()" id="el_div1">
+                    <div class="aui-list-item-inner aui-list-item-arrow ">
+                        <div  class="aui-list-item-title">绑定支付宝</div>
+
+                    </div>
+                </li>
+                <li class="aui-list-item" id="weixinel_btn">
+                    <div class="aui-list-item-inner  ">
+                        <div class="aui-list-item-title">微信授权</div>
+                        <div id="weixinel" class="rebtn"> 登录 </div>
+                    </div>
+                </li>
+                <li class="aui-list-item"  id="taobaologin_btn">
+                    <div class="aui-list-item-inner  ">
+                        <div class="aui-list-item-title">淘宝授权登录</div>
+                        <div class="rebtn" id="taobaologin"> 登录 </div>
+                    </div>
+                </li>
+                <li class="aui-list-item" id="version_btn">
+                    <div class="aui-list-item-inner  ">
+                        <div class="aui-list-item-title">当前版本</div>
+                        <div id="versionid"  > 0 </div>
+                    </div>
+                </li>
+
+                <div style="width:100%; height:15px; background-color:#eee "> </div>
+                <li class="aui-list-item" id='huancun_el_btn'>
+                    <div class="aui-list-item-inner ">
+                        <div class="aui-list-item-title" >缓存</div>
+                          <div class="huancun_el" style="margin-right:-100px">
+                              <img class = 'head-main-img'  src="../../image/lloading.gif" style='width:15px;' >
+
+                          </div>
+                          <div class="rebtn" id="qingli"> 清理 </div>
+                    </div>
+                </li>
+            </ul>
+
+
+        </div>
+
+    </div>
+
+    <div class = 'btn bg-btn-red weixin-btn' id="btnok"  style = 'margin-top: 40px;box-shadow: 5px 5px 5px #efb7a9;   '>
+        <span>退出登录</span>
+    </div>
+
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery.min.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+<script type="text/javascript" src="../../script/topsdk/taobao.js"></script>
+<script type="text/javascript">
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+     if(istest()){
+        $api.css($api.dom("#el_div1"),"display:none");
+         $api.css($api.dom("#el_div2"),"display:none");
+     }
+     if(usermgr.checkLogin())
+     {
+        $api.text($api.dom('.cnick'), usermgr.get_username());
+        $api.text($api.dom('#versionid'), api.appVersion);
+        //设置头像
+        $api.attr($api.dom('.head-main-img'),'src',usermgr.get_userinfo().avatarurl);
+        $api.text($api.dom('.phone'), usermgr.get_phone());
+
+        //判断是否绑定微信
+        if(usermgr.get_openid() || usermgr.get_openid() !=""){
+            $api.text($api.dom('#weixinel'),"已绑定");
+            $api.removeCls($api.dom('#weixinel'), 'rebtn');
+        }
+        else {
+            $api.addEvt($api.dom('#weixinel_btn'), 'click', function(){
+                 //登录微信
+                 alert('登录微信');
+            });
+        }
+
+        if(usermgr.get_topopenid() || usermgr.get_topopenid() !=""){
+            $api.text($api.dom('#taobaologin'),"退出");
+        }
+
+
+        //退出登录
+        $api.addEvt($api.dom('#btnok'), 'click', function(){
+             api.closeWin();
+             usermgr.set_loginout();
+             api.sendEvent({name: 'loginout_event',extra: {  username: 0}});
+
+        });
+
+
+
+
+
+        //淘宝授权事件
+        $api.addEvt($api.dom('#taobaologin_btn'), 'click', function(){
+             //登录淘宝
+             if(usermgr.get_topnick() !=""){
+                  //退出
+                  Taobao.LoginOut();
+                  $api.text($api.dom('#taobaologin'),"登录");
+                  usermgr.set_topnick('');
+                  toast2('淘宝已退出');
+             }
+             else {
+                 Taobao.LoginTaobao(function(ret,data){
+                     if(ret){
+                         usermgr.set_topnick(data.userNick);
+                         $api.text($api.dom('#taobaologin'),data.userNick);
+                         toast2('淘宝登录成功');
+                     }
+                     else {
+                         toast2($api.strToJson(data).message);
+                     }
+                 });
+             }
+        });
+
+        //清理缓存事件
+        $api.addEvt($api.dom('#huancun_el_btn'), 'click', function(){
+          api.showProgress({title: '',  text: '',  modal: true});
+          api.clearCache(function() {
+            api.toast({
+                msg: '清除完成'
+              });
+              api.hideProgress();
+              //计算缓存大小
+              api.getCacheSize(function(ret) {
+                  var size = ret.size;
+                    $api.html($api.dom('.huancun_el'), "<span> 0.0 MB </span>");
+              });
+          });
+
+
+        });
+
+
+
+        //计算缓存大小
+        api.getCacheSize(function(ret) {
+            var size = ret.size;
+            if(size > 0){
+                $api.html($api.dom('.huancun_el'), "<span> "+numberto1(size/1000000)+"MB </span>");
+            }else {
+                  $api.html($api.dom('.huancun_el'), "<span> 0.0 MB </span>");
+            }
+        });
+
+
+     }
+
+      //关闭
+     $api.addEvt($api.dom('.normal-bk-img'), 'click', function(){
+            api.closeWin();
+
+     });
+
+}
+
+
+function BingAPAY()
+{
+    var parms = {
+      name:'bind_zfb',
+      url: './frame_alipay.html'
+    }
+    openFram(parms);
+}
+
+
+
+</script>

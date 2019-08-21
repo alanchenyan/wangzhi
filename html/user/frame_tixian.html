@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>提现</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../../plugins/swiper/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+     <link rel="stylesheet" type="text/css" href="../../css/takecash.css"/>
+    <style>
+    /*弹窗 */
+    .maskbox{width:100%;height:100%;background:rgba(0,0,0,0.7);display: none;position: absolute;z-index:1000;top:0;left:0;}
+    .qdbox{font-size: 14px;display:none;padding:12px 0;width:250px;border:3px solid #58bc8d;border-radius:10px;background:#fff;position:fixed;z-index:1001;top:50%;left:50%;margin-top:-113px;margin-left:-120px;}
+    .qdbox .text-green{color:red; font-weight: bold;font-size: 18px;}
+    .text-center{text-align: center;}
+    .text-center img{text-align: center;margin-left: 40%;}
+    .btn-lottery{width:80px;text-align:center;color:#fff;background:#58bc8d;font-size:16px; border-radius: 5px; margin-left:33%; margin-top: 10px}
+    </style>
+</head>
+<body>
+    <div class = 'box-warp'>
+
+        <div class = 'normal-head-box' id = 'header'>
+             <div class = 'padding-t-10'>
+                <img src="../../image/back.png" class = 'normal-bk-img' onclick="api.closeWin()">
+                <p class = 'normal-head-title'>提现</p>
+             </div>
+        </div>
+
+        <div>
+           <div class = 'logo-box'>
+              <img src="../../image/banner/logotest.png" class = 'logo-img'>
+              <img src="../../image/banner/ic_withdrawal_way.png" class = 'to-img'>
+              <img src="../../image/banner/ic_withdrawal_receive.png" class = 'logo-img'>
+           </div>
+        </div>
+
+        <div class="aui-content aui-margin-b-15 margin-t-30">
+             <ul class="aui-list aui-form-list">
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label fz-12">
+                            真实姓名
+                        </div>
+                        <div class="aui-list-item-input">
+                            <input id="el_name" type="text" placeholder="" readonly="">
+                        </div>
+                    </div>
+                </li>
+
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label fz-12">
+                            到账支付宝
+                        </div>
+                        <div class="aui-list-item-input" style = 'position: relative;'onclick="openwinframe('frame_alipay')">
+                            <input id="el_aplipay"  type="text" value="****先绑定" class = 'fz-12' readonly="">
+                            <span class = 'bd-zfb'>绑定支付宝</span>
+                        </div>
+                    </div>
+                </li>
+
+                 <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label fz-12">
+                            提现金额
+                        </div>
+                        <div class="aui-list-item-input">
+                            <input type="number" id="el_tixian"  placeholder="请输入提现金额" class = 'fz-12'>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="aui-list-item">
+                    <div style = 'line-height: 44px;position: relative;width: 100%;'>
+                       <span class = 'can-use'>可用余额：￥<span id="yue_el">0</span></span>
+                       <span class = 'can-use can-right'>最低提现余额为：<span>5</span>元</span>
+                    </div>
+                </li>
+
+             </ul>
+        </div>
+
+        <div class = 'tel-msg'>
+          *每月25号后可提现上个月内确认收货的订单收益
+        </div>
+
+        <div class = 'take-btn' onclick="tixian()">
+          提交申请
+        </div>
+
+    </div>
+
+    <div class="maskbox"></div>
+    <div class="qdbox">
+      <div class="text-center text-green font18"><strong>提现</strong></div>
+      <div id="title_el" class="text-center pt10"> </div>
+      <div class="text-center ptb15" style="margin-top:7px"><img src="../../image/hhbb.jpg" style="width:50px; "></div>
+      <div class="text-center" onclick="closediv()"><div class="btn btn-lottery">确定</div></div>
+    </div>
+</body>
+</html>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/usermgr.js"></script>
+<script type="text/javascript" src="../../plugins/swiper/swiper.min.js"></script>
+<script type="text/javascript" src="../../script/jquery.min.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript">
+apiready = function () {
+     $api.fixStatusBar( $api.dom('#header') );
+     if(usermgr.checkLogin()){
+        $api.text($api.dom('#yue_el'), usermgr.get_umoney());
+        var parms = {
+            url:"user/getalipay/token/"+usermgr.get_usertoken(),
+            callback:function(ret){
+                if(ret.flag)
+                {
+                  if(ret.data){
+                    document.getElementById("el_aplipay").value = ret.data.alipay;
+                    document.getElementById("el_name").value= ret.data.username;
+                  }
+
+                }
+                else {
+                   toast2(ret.msg);
+                }
+            }
+        }
+        JM_GET(parms);
+      }
+}
+
+function openwinframe(winname,titie){
+	api.openWin({
+	    name: 'bindalipay',
+	    url: 'widget://html/user/'+ winname +'.html',
+	});
+}
+
+function tixian(){
+    var ymoney = document.getElementById("el_tixian").value
+    api.showProgress({title: '',text: '申请提现...',modal: false});
+    var parms = {
+        url:"user/tixian/token/"+usermgr.get_usertoken(),
+        values:{
+           tmoney:ymoney,
+        },
+        callback:function(ret){
+            api.hideProgress();
+            $(".maskbox").fadeIn();
+            $(".qdbox").fadeIn();
+            $(".maskbox").height($(document).height());
+            if(ret.flag){
+                var money = ret.data.newmoney;
+                usermgr.set_umoney(money);
+                $api.text($api.dom('#yue_el'), usermgr.get_umoney());
+                $api.text($api.dom('#title_el'), '提现成功!客服将在2工作日打款');
+            }
+            else {
+              $api.text($api.dom('#title_el'), ret.msg);
+
+              //toast2(ret.msg);
+            }
+        }
+  }
+  JM_POST(parms);
+
+}
+function closediv(){
+    $(".maskbox").fadeOut();
+    $(".qdbox").fadeOut();
+
+}
+
+</script>

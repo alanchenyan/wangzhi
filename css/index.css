@@ -1,0 +1,191 @@
+  header{ background-color: #fff; height: 50px;}
+
+
+
+
+        #footer{
+            background-color: rgb(250, 250, 250);
+
+            height: 55px;
+            color: #6ab494;
+        }
+        #footer ul li{  padding-top: 32px; padding-bottom: 15px; background: url() no-repeat center 6px; background-size: auto 25px; text-align: center; font-size:12px;}
+        #footer ul li.active{ color: red; }
+        #footer ul li:nth-child(1){
+            background-image: url(http://cdn.52juanmi.com/app/footer/f1.png);
+        }
+        #footer ul li:nth-child(2){ background-image: url(http://cdn.52juanmi.com/app/footer/f2.png); }
+        #footer ul li:nth-child(3){ background-image: url(http://cdn.52juanmi.com/app/footer/f3.png);  background-size: auto 30px; background-position: center 0px;}
+        #footer ul li:nth-child(4){ background-image: url(http://cdn.52juanmi.com/app/footer/f4.png); }
+        #footer ul li:nth-child(5){ background-image: url(http://cdn.52juanmi.com/app/footer/f5.png); }
+
+        #footer ul li:nth-child(1).active{ background-image: url(http://cdn.52juanmi.com/app/footer/f1_s.png); }
+        #footer ul li:nth-child(2).active{ background-image: url(http://cdn.52juanmi.com/app/footer/f2_s.png); }
+        #footer ul li:nth-child(3).active{ background-image: url(http://cdn.52juanmi.com/app/footer/f3_s.png); }
+        #footer ul li:nth-child(4).active{ background-image: url(http://cdn.52juanmi.com/app/footer/f4_s.png); }
+        #footer ul li:nth-child(5).active{ background-image: url(http://cdn.52juanmi.com/app/footer/f5_s.png);  }
+
+        .header-item{
+             position: relative;
+             height: 40px;
+             display: none;
+             background-color:#fff !important;
+             margin-top: 10px;
+        }
+        .head_act{
+             display: block;
+             height: 40px;
+        }
+
+       /*  header>div:nth-child(1) {
+            position: relative;
+            background-color: #ff5000;
+            height: 50px;
+        } */
+
+        header>div:nth-child(2) {
+            /* position: relative;
+            height: 50px; */
+            background-color: rgb(252, 252, 252);
+        }
+
+        header>div:nth-child(3) {
+           /*  position: relative;
+            height: 50px; */
+            background-color: rgb(252, 252, 252);
+        }
+
+
+        /* header home */
+
+        .home-citylist {
+            float: left;
+            height: 50px;
+            line-height: 50px;
+            color: #fff;
+            font-size: 14px;
+            margin-left: 15px;
+        }
+
+        .home-citylist>img {
+            height: 20px;
+            vertical-align: top;
+            padding-top: 15px;
+        }
+
+        .home-search-dom{
+            color: #999;
+            margin-left: 45px;
+            height: 35px;
+            line-height: 35px;
+            margin-right: 80px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding-left: 35px;
+            min-width: 160px;
+            /* top: 10px; */
+            /* margin-top: 10px; */
+        }
+        .home-search-dom>span{
+            display: inline-block;
+            font-size: 12px;
+
+        }
+
+        .home-search-dom-calo{
+            color: #999;
+            margin-left: 30px;
+            height: 35px;
+            line-height: 35px;
+            margin-right: 30px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding-left: 15px;
+            /* width: 95%; */
+            text-align: center;
+
+        }
+        .home-search-dom-calo>span{
+            display: inline-block;
+            font-size: 12px;
+        }
+
+        .search_img {
+            height: 15px;
+            position: absolute;
+            left: 60px;
+            padding-top: 9px;
+            vertical-align: top;
+            bottom: 16px;
+        }
+        .search_img_calo{
+              height: 15px;
+            position: absolute;
+            left: 90px;
+            padding-top: 9px;
+            vertical-align: top;
+            bottom: 16px;
+        }
+       /* .serach-juan-img{
+             bottom: -3px !important;
+        }*/
+        .server_img{
+            height: 28px;
+            position: absolute;
+            /* right: 15px; */
+            right: 8px;
+            padding-top: 12px;
+            vertical-align: top;
+            bottom: 10px;
+        }
+        .boon_img{
+            height: 28px;
+            position: absolute;
+            /* right: 15px; */
+            right: 45px;
+            padding-top: 12px;
+            vertical-align: top;
+             bottom: 10px;
+        }
+        .qrcode{
+            position: absolute;
+            bottom: 11px;
+            left:11px;
+            height: 25px;
+            width: auto;
+            /*padding-top: 7px;*/
+        }
+
+        .home-msg {
+            float: right;
+        }
+
+        .home-msg>img {
+            height: 28px;
+            padding-top: 11px;
+            vertical-align: top;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .find-search {
+            position: absolute;
+            bottom: 8px;
+            left: 15px;
+            right: 15px;
+            height: 34px;
+            line-height: 34px;
+            border-radius: 34px;
+            background-color: rgb(232, 232, 232);
+            color: rgb(153, 153, 153);
+            font-size: 14px;
+        }
+
+
+        .find-search>img {
+            height: 20px;
+            padding-top: 7px;
+            padding-left: 10px;
+            padding-right: 10px;
+            vertical-align: top;
+        }

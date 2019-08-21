@@ -1,0 +1,61 @@
+.logo-img{
+	width: 35px;height: 35px;display: inline-block;vertical-align: middle;
+}
+.to-img{
+	width: 30px;height: 5px;display: inline-block;vertical-align: middle;margin-left: 10px;margin-right: 10px;
+}
+.logo-box{
+	text-align: center;
+	margin-top: 30px;
+}
+
+.bd-zfb{
+	position: absolute;
+	right: 10px;
+	top:12px;
+	font-size: 12px;
+	border:1px solid red;
+	color:red;
+	border-radius: 25px;
+	width: 72px;
+	text-align: center;
+}
+
+.can-use{
+	font-size: 12px;
+	color: #757575;
+}
+
+.can-right{
+	position: absolute;
+	right: 10px;
+	/*top:10px;*/
+}
+
+.tel-msg{
+	font-size: 12px;
+	color:red;
+	margin-left: 15px;
+}
+
+.take-btn{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	width: 250px;
+	background-color:#e6b8af;
+	color:#fff;
+	margin:30px auto;
+	border-radius: 25px;
+}
+
+.take-detail{
+	color:#9229d7;
+	font-size: 12px;
+	margin:0 auto;
+	width: 50px;
+}
+
+input{
+	font-size: 12px !important;
+}

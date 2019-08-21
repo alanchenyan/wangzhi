@@ -1,0 +1,277 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>搜索</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+      <link rel="stylesheet" type="text/css" href="../css/loaders.min.css" />
+
+    <style>
+		header{ background-color: #F6F6F7; }
+		.header-item{
+             position: relative;
+             height: 50px;
+             background-color:#fff;
+             background-color: #F6F6F7;
+        }
+		.home-search-dom{
+            color: #999;
+            margin-left: 45px;
+            height: 35px;
+            line-height: 30px;
+            margin-right: 80px;
+            background-color: #eee;
+            border-radius: 5px;
+            padding-left: 35px;
+            width: 55%;
+            min-width: 160px;
+            outline:none;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .search_img {
+            height: 15px;
+            position: absolute;
+            left: 60px;
+            padding-top: 9px;
+            vertical-align: top;
+            bottom: 18px;
+        }
+
+
+        .back{
+            position: absolute;
+            bottom: 13px;
+            left:11px;
+            height: 20px;
+            width: auto;
+            /*padding-top: 7px;*/
+        }
+        .search_btn{
+        	border-radius: 25px;
+        	background-color: red;color: #fff;font-size: 12px;
+        	width: 50px;height: 30px;
+          text-align: center;
+          line-height: 30px;
+        	position: absolute;top: 10px;left: 80%;
+        	font-size: 12px;
+        }
+        .hottitle{
+          margin-top: 10px;
+          font-size: 16px;
+          font-weight: bold;
+          width: 95%;
+          margin-left: 2.5%;
+          border-bottom: 1px solid #eee;
+        }
+        .hotitem{
+          width: 95%;
+          margin-left: 2.5%;
+          margin-top: 10px;
+        }
+        .hotitem ul li{
+            overflow:hidden;
+            float: left;
+            margin-left: 15px;
+            color: red;
+            background-color: #eee;
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+            width: 80px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 13px;
+
+        }
+
+        .lishititle{
+          margin-top: 20px;
+          font-size: 16px;
+          font-weight: bold;
+          width: 95%;
+          margin-left: 2.5%;
+          border-bottom: 1px solid #eee;
+        }
+
+        .lishiitem{
+          width: 95%;
+          margin-left: 2.5%;
+          margin-top: 15px;
+        }
+        .lishiitem ul li{
+            overflow:hidden;
+            width: 90%;
+            margin-left: 15px;
+            color: 	#696969;
+            height: 25px;
+            background-color: #eee;
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-size: 13px;
+            line-height: 25px;
+        }
+
+	</style>
+</head>
+<body>
+<div id="wrap" class="flex-wrap flex-vertical">
+	 <header  id="header">
+		<div class="header-item" id="home">
+            <img src="../image/back.png" class="back" onclick= "api.closeWin();">
+           <!--  <div class="home-search open-win" data-win="./html/win_Search" data-param='{"cat_id":"0"}' style="width:80%">
+                <span>黏贴宝贝标题 ，先领劵再购买</span>
+                <img class = "search_img" src="./image/bride_search.png">
+            </div> -->
+            <input class = "home-search-dom" id="home-search-dom" type="search" name="" placeholder="复制淘宝标题搜索更多优惠券~">
+                <!-- <span>推荐收益更高哦~</span> -->
+            <div class = "search_btn">搜索</div>
+
+            <img class = "search_img" src="../image/bride_search.png">
+
+        </div>
+	 </header>
+   <div class="hotserch">
+        <div class="hottitle">
+           热门搜索
+        </div>
+        <div class="hotitem">
+          <section class="list-wrapper" style="background-color:#fff; margin-left:35%;" id="list-wrapper">
+           <div class="list-item-loading">
+            <div class="loader-inner ball-pulse">
+             <div></div>
+             <div></div>
+             <div></div>
+            </div>
+           </div>
+          </section>
+
+              <ul id="hotitemul">
+
+
+              </ul>
+        </div>
+   </div>
+
+   <div class="lishiserch">
+        <div class="lishititle">
+           <div style="width:90px; float:left ">历史搜索</div>
+           <div style="margin-left:90%" ><img id="dellishi" src="../image/delitem.jpg" width="20px"> </div>
+        </div>
+        <div class="lishiitem">
+              <ul id="lishiitemul">
+
+              </ul>
+        </div>
+   </div>
+
+
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+apiready = function () {
+    $api.fixStatusBar( $api.dom('header') );
+    api.setStatusBarStyle({
+        style: 'dark',
+        color: '#fff'
+    });
+
+    $api.addEvt($api.dom('.search_btn'), 'click', function(){
+         var keystr = document.getElementById("home-search-dom").value;
+         if(keystr !='')
+             shot(keystr);
+    });
+
+    document.onkeydown = function (event) {
+      var e = event || window.event;
+              if (e && e.keyCode == 13) { //回车键的键值为13
+                var keystr = document.getElementById("home-search-dom").value;
+                if(keystr !='')
+                    shot(keystr);
+              }
+          };
+
+    //删除历史记录
+    $api.addEvt($api.dom('#dellishi'), 'click', function(){
+        //保存本地
+        api.setPrefs({
+            key: 'seach_list_lishi',
+            value:''
+        });
+        $api.html($api.dom("#lishiitemul"), '');
+    });
+
+
+    //查询热门关键词
+    var parms = {
+        url:"taokeapi1/gethotkey",
+        callback:function(ret){
+            if(ret.flag)
+            {
+                var dataitem = ret.data;
+                var htmstr = "";
+                for (var i = 0; i < dataitem.length; i++) {
+                     htmstr = htmstr +"<li onclick='shot(\""+dataitem[i].keywords+"\")'> "+dataitem[i].keywords+" </li>";
+                }
+                $api.html($api.dom("#hotitemul"), htmstr);
+
+                $api.css($api.dom("#list-wrapper"),'display:none');
+            }
+        }
+    }
+    JM_GET(parms);
+
+    //历史记录
+    var keys = 'seach_list_lishi';
+    api.getPrefs({
+      key: keys
+    }, function(ret, err) {
+        var datastr = ret.value;
+
+        if(datastr != null && datastr != ""){
+          var objlist = $api.strToJson(datastr);
+          if(objlist == null) objlist = Array();
+
+          var htmstr = "";
+          for (var i = 0; i < objlist.length; i++) {
+              htmstr = htmstr +"<li onclick='shot(\""+objlist[i]+"\")'> "+objlist[i]+" </li>";
+          }
+          $api.html($api.dom("#lishiitemul"), htmstr);
+        }
+
+
+    });
+
+}
+  var head_height = $api.dom('#header').offsetHeight;
+function shot(kk){
+
+  api.openFrame({
+    name: "search_frame",
+    url: './jm_title_search.html',
+    rect: {
+        x: 0,
+        y: 0,
+        w: 'auto',
+        h: 'auto'
+    },
+    pageParam: {
+        s_key:kk
+    }
+ });
+}
+
+function openframe()
+{
+
+}
+</script>
