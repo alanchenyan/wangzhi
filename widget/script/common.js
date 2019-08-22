@@ -9,10 +9,10 @@ var app={
       mao1:'http://www.modoua.com/index.php/web/viewinfo/index/cid/9',//天猫1元购物
       gonggao:'http://www.modoua.com/index.php/web/viewinfo/index/cid/10',//天猫1元购物
       author: 'http://www.modoua.com/index.php/api/taobaoapi/authorcode/', //联盟授权回调页面
-      sharepage: 'http://www.modoua.com/h5/sharegoods/index.html',    //分享的中间页面地址
+      sharepage: 'http://taobaoke.wzubi.com/h5/sharegoods/index.html',    //分享的中间页面地址
       //shareapp:'http://www.modoua.com/h5/shareapp/index.html',    //分享APP的链接地址
       alibao:'http://www.modoua.com/h5/alibao.html',             //zhifub活动
-      yinsi:'http://www.modoua.com/h5/yingsi.html',             //隐私政策
+      yinsi:'http://taobaoke.wzubi.com/h5/yingsi.html',             //隐私政策
     },
     SMS_KEY :'HUBAOLIN.',  //与服务器校验的KEY
 
