@@ -64,6 +64,7 @@ apiready = function () {
                if (ret.status) {
                    //登录成功；
                    var wxcode = ret.code;
+                   alert("code:" + wxcode);
                    loginWx(wxcode);
                } else {
                    alert(JSON.stringify(err));
