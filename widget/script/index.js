@@ -432,7 +432,7 @@ var pageMol = {
                   selected: 'widget://image/footer/f2_s.png',
                 },
                 title: {
-                    text: '超级导航',
+                    text: '分类',
                     size: 12.0,
                     normal: '#696969',
                     selected: '#eb4f38',
@@ -474,7 +474,7 @@ var pageMol = {
                   selected: 'widget://image/footer/f4_s.png',
                 },
                 title: {
-                    text: '喵圈',
+                    text: '社区',
                     size: 12.0,
                     normal: '#696969',
                     selected: '#eb4f38',
@@ -573,7 +573,7 @@ var pageMol = {
                   selected: 'widget://image/footer/f2_s.png',
                 },
                 title: {
-                    text: '超级导航',
+                    text: '分类',
                     size: 12.0,
                     normal: '#696969',
                     selected: '#eb4f38',
@@ -592,7 +592,7 @@ var pageMol = {
                   selected: 'widget://image/footer/f4_s.png',
                 },
                 title: {
-                    text: '喵圈',
+                    text: '社区',
                     size: 12.0,
                     normal: '#696969',
                     selected: '#eb4f38',
