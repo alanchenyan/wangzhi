@@ -106,6 +106,9 @@ function loginWx(wxcode)
   api.showProgress({title: '努力加载中...',text: '正在打开微信...',modal: false});
   var divcerid = getDeviceValue();
 
+  alert('QQQ');
+  alert(divcerid)
+
   var parms = {
       url:"user/loginwx",
       values:{
