@@ -113,6 +113,8 @@ function loginWx(wxcode)
          deviceid:divcerid
       },
       callback:function(ret){
+        alert('dayin');
+        alert(JSON.stringify(ret));
           if(ret.flag)
           {
               api.hideProgress();
