@@ -1,7 +1,7 @@
 
 var app={
-    host:'http://www.modoua.com/index.php/',
     //host:'http://www.modoua.com/index.php/',
+    host:'http://taobaoke.wzubi.com/index.php/',
     img_cdn:'',
     isdebug:1,//是否开启调试功能。开启调试功能将输入所有的请求信息
     fix:'api/',
@@ -92,6 +92,7 @@ function JM_POST(param)
         timeout:30
         //headers:param.token?{_token:param.token,union:app.unionid}:{_token:'',union:app.unionid}
     },function(ret, err){
+
         if(app.isdebug==true){
           console.log('post ajax complate;'+'ret:'+JSON.stringify(ret)+';err:'+JSON.stringify(err));
         }
