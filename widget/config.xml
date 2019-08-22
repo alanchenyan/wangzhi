@@ -33,7 +33,7 @@
 </feature>
 
 <feature name="alibaichuan">
-    <param name="urlScheme" value="tbopen25339544"/>
+    <param name="urlScheme" value="tbopen27800007"/>
 </feature>
 <preference name="querySchemes" value="tmall,tbopen" />
 
