@@ -474,7 +474,7 @@ var pageMol = {
                   selected: 'widget://image/footer/f4_s.png',
                 },
                 title: {
-                    text: '社区',
+                    text: '社区2',
                     size: 12.0,
                     normal: '#696969',
                     selected: '#eb4f38',
@@ -592,7 +592,7 @@ var pageMol = {
                   selected: 'widget://image/footer/f4_s.png',
                 },
                 title: {
-                    text: '社区',
+                    text: '社区3',
                     size: 12.0,
                     normal: '#696969',
                     selected: '#eb4f38',
